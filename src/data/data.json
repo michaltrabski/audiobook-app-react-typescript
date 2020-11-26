@@ -1,0 +1,35 @@
+{
+  "folderWithMp3": "https://www.w3schools.com/jsref/",
+  "audioBooks": [
+    {
+      "title": "Precedens",
+      "fileNames": [
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3"
+      ]
+    },
+    {
+      "title": "Precedens",
+      "fileNames": [
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3"
+      ]
+    },
+    {
+      "title": "Precedens",
+      "fileNames": [
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3",
+        "horse.mp3"
+      ]
+    }
+  ]
+}
