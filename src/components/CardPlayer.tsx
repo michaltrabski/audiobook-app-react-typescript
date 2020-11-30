@@ -27,12 +27,20 @@ interface Props {
   fileNames: string[];
   folderWithMp3: string;
 }
+interface State {
+  audio: HTMLAudioElement;
+  isPlaying: boolean;
+  currentTime: number;
+  duration: number;
+  ended: boolean;
+}
 
 const CardPlayer = (props: Props) => {
+  console.log("CardPlayer");
   const classes = useStyles();
   const theme = useTheme();
 
-  const [state, setState] = useState({
+  const [state, setState] = useState<State>({
     audio: new Audio(),
     isPlaying: false,
     currentTime: 0,
@@ -44,6 +52,11 @@ const CardPlayer = (props: Props) => {
   const { audio, isPlaying, currentTime, duration, ended } = state;
 
   useEffect(() => {
+    // setState((s) => {
+    //   const newAudio = new Audio(folderWithMp3 + fileNames[0]);
+    //   return { ...s, audio: newAudio };
+    // });
+
     setState((state) => {
       state.audio.src = folderWithMp3 + fileNames[0];
       state.audio.autoplay = false;
@@ -56,6 +69,7 @@ const CardPlayer = (props: Props) => {
 
     audio.addEventListener("timeupdate", (e) => {
       setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
+      // console.log("xxxxxxxxxx");
     });
 
     audio.addEventListener("ended", (e) => {
@@ -64,36 +78,32 @@ const CardPlayer = (props: Props) => {
   }, [audio.src]);
 
   useEffect(() => {
-    console.log("duration", duration);
+    // console.log("duration", duration);
   }, [duration]);
+
+  useEffect(() => {
+    // console.log("currentTime", currentTime);
+  }, [currentTime]);
 
   // console.log("state = ", state, state.audio);
   // console.dir(state.audio);
 
   const play = () => {
-    setState((s) => ({ ...s, isPlaying: true, ended: false }));
     audio.play();
-    // myAudioElement.addEventListener("canplaythrough", event => {
-    //   /* the audio is now playable; play it if permissions allow */
-    //   myAudioElement.play();
-    // });
+    setState((s) => ({ ...s, isPlaying: true, ended: false }));
   };
 
   const pause = () => {
-    setState((s) => ({ ...s, isPlaying: false }));
     audio.pause();
+    setState((s) => ({ ...s, isPlaying: false }));
   };
 
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
-    // console.log(e, newCurrentTime);
-
-    if (newCurrentTime instanceof Array) {
-      console.log("array", newCurrentTime);
-      setState((s) => ({ ...s, currentTime: newCurrentTime[0] }));
-    } else {
-      console.log("not arrau", newCurrentTime);
-      setState((s) => ({ ...s, currentTime: newCurrentTime }));
-    }
+    const currentTime =
+      newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
+    setState((s) => ({ ...s, currentTime, isPlaying: true, ended: false }));
+    audio.currentTime = currentTime;
+    audio.play();
   };
 
   return (
