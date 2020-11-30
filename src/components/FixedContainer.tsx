@@ -20,6 +20,7 @@ export default function FixedContainer() {
               title={book.title}
               fileNames={book.fileNames}
               folderWithMp3={folderWithMp3}
+              image={book.image}
             />
           </Fragment>
         ))}

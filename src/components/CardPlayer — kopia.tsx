@@ -43,69 +43,61 @@ const CardPlayer = (props: Props) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const { title, image, fileNames, folderWithMp3 } = props;
-  // const [audio, setAudio] = useState(new Audio(folderWithMp3 + fileNames[0]));
-
-  const audioRef = useRef(new Audio(folderWithMp3 + fileNames[0]));
-  const audio = audioRef.current;
-  console.log("audio", audio);
-
-  const intervalRef = useRef<number | null>(null);
-
   const [state, setState] = useState<State>({
     audio: new Audio(),
     loadedData: false,
     isPlaying: false,
-    currentTime: 120,
+    currentTime: 0,
     duration: 0,
     ended: false,
   });
 
-  // setTimeout(() => {
-  // console.dir("setTimeout", audio);
-  // }, 10);
-
-  const { loadedData, isPlaying, currentTime, duration, ended } = state;
+  const { title, image, fileNames, folderWithMp3 } = props;
+  const { audio, loadedData, isPlaying, currentTime, duration, ended } = state;
 
   useEffect(() => {
+    // setState((s) => {
+    //   const newAudio = new Audio(folderWithMp3 + fileNames[0]);
+    //   return { ...s, audio: newAudio };
+    // });
+
+    setState((state) => {
+      state.audio.src = folderWithMp3 + fileNames[0];
+      state.audio.autoplay = false;
+      return state;
+    });
+
     audio.addEventListener("loadeddata", (e) => {
       setState((s) => ({
         ...s,
         loadedData: true,
-        duration: Math.floor(audio.duration),
+        duration: Math.floor(s.audio.duration),
       }));
-      audio.currentTime = currentTime;
-      console.log("loadeddata");
+      // console.log("loadeddata");
     });
 
     audio.addEventListener("timeupdate", (e) => {
       setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
-      console.log("timeupdate", Math.floor(audio.currentTime));
+      console.log("timeupdate");
     });
 
     audio.addEventListener("ended", (e) => {
       setState((s) => ({ ...s, isPlaying: false, ended: true }));
-      console.log("ended");
     });
-
-    // audio.addEventListener("play", (e) => {
-    //   intervalRef.current = window.setInterval(() => {
-    //     setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
-    //     console.log("play");
-    //   }, 2000);
-    // });
-
-    // Sync slider position with song current time
-    // this.audio.onplay = () => {
-    // 	this.currentTimeInterval = setInterval( () => {
-    // 		this.slider.value = this.audio.currentTime;
-    // 	}, 500);
-    // };
   }, [audio.src]);
 
+  useEffect(() => {
+    // console.log("duration", duration);
+  }, [duration]);
+
+  useEffect(() => {
+    // console.log("currentTime", currentTime);
+  }, [currentTime]);
+
+  // console.log("state = ", state, state.audio);
+  // console.dir(state.audio);
+
   const play = () => {
-    audio.currentTime = currentTime;
-    if (ended) audio.currentTime = 0;
     audio.play();
     setState((s) => ({ ...s, isPlaying: true, ended: false }));
   };
@@ -113,15 +105,15 @@ const CardPlayer = (props: Props) => {
   const pause = () => {
     audio.pause();
     setState((s) => ({ ...s, isPlaying: false }));
-    clearInterval(intervalRef.current || 0);
   };
 
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
     const currentTime =
       newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
-
-    audio.currentTime = currentTime;
+    setState((s) => ({ ...s, currentTime, isPlaying: true, ended: false }));
     console.log(currentTime);
+    audio.currentTime = currentTime;
+    audio.play();
   };
 
   return (

@@ -5,13 +5,9 @@ import Slider from "@material-ui/core/Slider";
 
 const useStyles = makeStyles({
   root: {
-    width: "100%",
+    // width: "100%",
   },
 });
-
-function valuetext(value: number) {
-  return `${value}°C`;
-}
 
 interface Props {
   currentTime: number;
