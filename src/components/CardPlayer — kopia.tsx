@@ -28,61 +28,88 @@ interface Props {
   folderWithMp3: string;
 }
 
+interface State {
+  name: string;
+  currentIndexFile: number;
+  currentPlayTime: number;
+  isPlaying: boolean;
+}
+
+function reducer(state: State, action: any) {
+  switch (action.type) {
+    case "START_PLAYING":
+      state = { ...state, isPlaying: true };
+      return state;
+
+    case "PAUSE_PLAYING":
+      state = { ...state, isPlaying: false };
+      return state;
+
+    case "NEXT_FILE":
+      state = { ...state, currentIndexFile: state.currentIndexFile + 1 };
+      return state;
+
+    default:
+      throw new Error();
+  }
+}
+
 const CardPlayer = (props: Props) => {
   const classes = useStyles();
   const theme = useTheme();
-
-  const [state, setState] = useState({
+  const [xxx, setXxx] = useState({
     audio: new Audio(),
-    isPlaying: false,
-    currentTime: 0,
-    duration: 0,
-    ended: false,
   });
 
+  useEffect(() => {
+    setXxx((xxx) => {
+      xxx.audio.src = folderWithMp3 + fileNames[state.currentIndexFile];
+      xxx.audio.autoplay = true;
+      return xxx;
+    });
+  }, []);
+
+  console.log("xxx = ", xxx);
+
+  const [audio, setAudio] = useState(document.createElement("audio"));
+  // console.log("1", audio);
+
   const { title, fileNames, folderWithMp3 } = props;
-  const { audio, isPlaying, currentTime, duration, ended } = state;
 
-  useEffect(() => {
-    setState((state) => {
-      state.audio.src = folderWithMp3 + fileNames[0];
-      state.audio.autoplay = false;
-      return state;
-    });
-
-    audio.addEventListener("loadeddata", (e) => {
-      setState((s) => ({ ...s, duration: Math.floor(s.audio.duration) }));
-    });
-
-    audio.addEventListener("timeupdate", (e) => {
-      setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
-    });
-
-    audio.addEventListener("ended", (e) => {
-      setState((s) => ({ ...s, isPlaying: false, ended: true }));
-    });
-  }, [audio.src]);
-
-  useEffect(() => {
-    console.log("duration", duration);
-  }, [duration]);
-
-  // console.log("state = ", state, state.audio);
-  // console.dir(state.audio);
+  const [state, dispatch] = useReducer(reducer, {
+    name: makeSlug(title),
+    currentIndexFile: 0,
+    currentPlayTime: 0,
+    isPlaying: false,
+  });
 
   const play = () => {
-    setState((prevState) => ({ ...prevState, isPlaying: true }));
-    audio.play();
+    // audio.src = folderWithMp3 + fileNames[state.currentIndexFile];
+    setAudio((audio) => {
+      audio.src = folderWithMp3 + fileNames[state.currentIndexFile];
+      return audio;
+    });
 
-    // myAudioElement.addEventListener("canplaythrough", event => {
-    //   /* the audio is now playable; play it if permissions allow */
-    //   myAudioElement.play();
-    // });
+    audio.play();
+    dispatch({ type: "START_PLAYING" });
+
+    // const interval = setInterval(() => {
+    //   const currentPlayTime = Math.floor(audio.currentTime);
+    //   console.log("xxxxxxxxxxxxxxx", interval, currentPlayTime);
+    // }, 1000);
+
+    audio.addEventListener("loadeddata", function (e) {
+      console.log(this.duration);
+    });
+
+    audio.addEventListener("ended", function (e) {
+      dispatch({ type: "NEXT_FILE" });
+    });
   };
 
   const pause = () => {
-    setState((prevState) => ({ ...prevState, isPlaying: false }));
     audio.pause();
+    dispatch({ type: "PAUSE_PLAYING" });
   };
 
   return (
@@ -126,8 +153,6 @@ const CardPlayer = (props: Props) => {
             )}
           </IconButton>
         </div>
-
-        <CustomizedSlider currentTime={currentTime} duration={duration} />
       </CardContent>
 
       {/* <CardActions>
