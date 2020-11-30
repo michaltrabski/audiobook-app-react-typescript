@@ -71,9 +71,8 @@ const CardPlayer = (props: Props) => {
   // console.dir(state.audio);
 
   const play = () => {
-    setState((prevState) => ({ ...prevState, isPlaying: true }));
+    setState((s) => ({ ...s, isPlaying: true, ended: false }));
     audio.play();
-
     // myAudioElement.addEventListener("canplaythrough", event => {
     //   /* the audio is now playable; play it if permissions allow */
     //   myAudioElement.play();
@@ -81,8 +80,20 @@ const CardPlayer = (props: Props) => {
   };
 
   const pause = () => {
-    setState((prevState) => ({ ...prevState, isPlaying: false }));
+    setState((s) => ({ ...s, isPlaying: false }));
     audio.pause();
+  };
+
+  const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
+    // console.log(e, newCurrentTime);
+
+    if (newCurrentTime instanceof Array) {
+      console.log("array", newCurrentTime);
+      setState((s) => ({ ...s, currentTime: newCurrentTime[0] }));
+    } else {
+      console.log("not arrau", newCurrentTime);
+      setState((s) => ({ ...s, currentTime: newCurrentTime }));
+    }
   };
 
   return (
@@ -127,7 +138,11 @@ const CardPlayer = (props: Props) => {
           </IconButton>
         </div>
 
-        <CustomizedSlider currentTime={currentTime} duration={duration} />
+        <CustomizedSlider
+          currentTime={currentTime}
+          duration={duration}
+          handleSliderChange={handleSliderChange}
+        />
       </CardContent>
 
       {/* <CardActions>

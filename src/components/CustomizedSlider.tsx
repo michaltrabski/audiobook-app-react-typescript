@@ -16,24 +16,21 @@ function valuetext(value: number) {
 interface Props {
   currentTime: number;
   duration: number;
+  handleSliderChange: (a: any, b: number | number[]) => void;
 }
 
 export default function RangeSlider(props: Props) {
   const classes = useStyles();
-  // const [value, setValue] = React.useState<number[]>([0]);
-
-  // const handleChange = (event: any, newValue: number | number[]) => {
-  //   setValue(newValue as number[]);
-  // };
 
   return (
     <div className={classes.root}>
       <Slider
         value={props.currentTime}
-        // onChange={handleChange}
+        onChange={(e, newCurrentTime) =>
+          props.handleSliderChange(e, newCurrentTime)
+        }
         valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-        getAriaValueText={valuetext}
+        aria-labelledby="slider"
         max={props.duration}
       />
     </div>
