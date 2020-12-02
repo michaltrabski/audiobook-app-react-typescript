@@ -9,3 +9,15 @@ export const makeSlug = (text: string) => {
     locale: "vi", // language code of the locale to use
   });
 };
+
+export const convertSeconds = (seconds: number) => {
+  let s = seconds < 0 ? 0 : Math.floor(seconds);
+  let m = Math.floor(s / 60);
+  s = s - m * 60;
+  if (seconds < 60 * 60) return `${m}:${s}`;
+
+  return `> 1h`;
+
+  // s = s - m * 60;
+  // h = m - h * 60;
+};

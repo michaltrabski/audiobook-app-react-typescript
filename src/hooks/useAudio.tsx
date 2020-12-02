@@ -5,6 +5,11 @@ export const useAudio = (src: string) => {
     paused: true,
     waiting: false,
     time: 0,
+    duration: 0,
+    buffered: {
+      start: 0,
+      end: 0,
+    },
   });
   const ref = useRef<HTMLAudioElement | null>(null);
 
@@ -20,6 +25,14 @@ export const useAudio = (src: string) => {
       const audio = ref.current;
       if (!audio) return;
       setState((s) => ({ ...s, time: audio.currentTime }));
+    },
+    onDurationChange: () => {
+      const audio = ref.current;
+      if (!audio) return;
+      const { duration, buffered } = audio;
+
+      console.log("buffered", buffered);
+      setState((s) => ({ ...s, duration }));
     },
   });
 

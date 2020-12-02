@@ -14,7 +14,7 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import PauseIcon from "@material-ui/icons/Pause";
-import CustomizedSlider from "./CustomizedSlider";
+import Slider from "./Slider";
 
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -23,6 +23,7 @@ import Button from "@material-ui/core/Button";
 import { makeSlug } from "../utils/utils";
 import MySkeleton from "./MySkeleton";
 import { useAudio } from "../hooks/useAudio";
+import { CircularProgress } from "@material-ui/core";
 
 interface Props {
   title: string;
@@ -83,10 +84,16 @@ const Player = (props: Props) => {
           </IconButton>
           <IconButton aria-label="play/pause">
             {state.paused ? (
-              <PlayArrowIcon
-                onClick={() => controls.play()}
-                className={classes.playPauseIcon}
-              />
+              <>
+                {state.waiting ? (
+                  <CircularProgress color="inherit" />
+                ) : (
+                  <PlayArrowIcon
+                    onClick={() => controls.play()}
+                    className={classes.playPauseIcon}
+                  />
+                )}
+              </>
             ) : (
               <PauseIcon
                 onClick={() => controls.pause()}
@@ -102,6 +109,13 @@ const Player = (props: Props) => {
               <SkipNextIcon />
             )}
           </IconButton>
+        </div>
+        <div>
+          <Slider
+            time={state.time}
+            duration={state.duration}
+            handleSliderChange={(a, b) => console.log(a, b)}
+          />
         </div>
         <div>{audioElement}</div>
       </CardContent>
