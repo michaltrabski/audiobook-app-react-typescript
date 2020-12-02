@@ -31,14 +31,6 @@ interface Props {
   fileNames: string[];
   folderWithMp3: string;
 }
-interface State {
-  audio: HTMLAudioElement;
-  loadedData: boolean;
-  isPlaying: boolean;
-  currentTime: number;
-  duration: number;
-  ended: boolean;
-}
 
 const Player = (props: Props) => {
   // console.log("CardPlayer");
@@ -47,12 +39,15 @@ const Player = (props: Props) => {
 
   const { title, image, fileNames, folderWithMp3 } = props;
 
-  const { audioElement, state, controls } = useAudio(
-    folderWithMp3 + fileNames[0]
-  );
-  console.log("audioElement = ", audioElement);
-  console.log("state = ", state);
-  console.log("controls = ", controls);
+  const { audioElement, state, controls } = useAudio(folderWithMp3, fileNames);
+  // console.log("audioElement = ", audioElement);
+  // console.log("state = ", state);
+  // console.log("controls = ", controls);
+
+  const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
+    // console.log(newCurrentTime);
+    controls.seek(newCurrentTime);
+  };
 
   return (
     <Card className={classes.root}>
@@ -74,6 +69,15 @@ const Player = (props: Props) => {
           <strong>state = </strong>
           {JSON.stringify(state, null, 2)}
         </pre>
+
+        <div>
+          <Slider
+            currentTime={state.currentTime}
+            duration={state.duration}
+            handleSliderChange={handleSliderChange}
+          />
+        </div>
+
         <div className={classes.controls}>
           <IconButton aria-label="previous">
             {theme.direction === "rtl" ? (
@@ -82,23 +86,23 @@ const Player = (props: Props) => {
               <SkipPreviousIcon />
             )}
           </IconButton>
-          <IconButton aria-label="play/pause">
-            {state.paused ? (
+          <IconButton color="primary" aria-label="play/pause">
+            {state.waiting ? (
+              <CircularProgress color="inherit" />
+            ) : (
               <>
-                {state.waiting ? (
-                  <CircularProgress color="inherit" />
-                ) : (
+                {state.paused ? (
                   <PlayArrowIcon
                     onClick={() => controls.play()}
                     className={classes.playPauseIcon}
                   />
+                ) : (
+                  <PauseIcon
+                    onClick={() => controls.pause()}
+                    className={classes.playPauseIcon}
+                  />
                 )}
               </>
-            ) : (
-              <PauseIcon
-                onClick={() => controls.pause()}
-                className={classes.playPauseIcon}
-              />
             )}
           </IconButton>
 
@@ -110,13 +114,7 @@ const Player = (props: Props) => {
             )}
           </IconButton>
         </div>
-        <div>
-          <Slider
-            time={state.time}
-            duration={state.duration}
-            handleSliderChange={(a, b) => console.log(a, b)}
-          />
-        </div>
+
         <div>{audioElement}</div>
       </CardContent>
     </Card>

@@ -11,9 +11,9 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  time: number;
+  currentTime: number;
   duration: number;
-  handleSliderChange: (a: any, b: number | number[]) => void;
+  handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
 }
 
 export default function RangeSlider(props: Props) {
@@ -22,12 +22,14 @@ export default function RangeSlider(props: Props) {
   return (
     <div className={classes.root}>
       <Slider
-        value={Math.floor(props.time)}
-        onChange={(e, newtime) => props.handleSliderChange(e, newtime)}
+        value={Math.floor(props.currentTime)}
+        onChange={(e, newCurrentTime) =>
+          props.handleSliderChange(e, newCurrentTime)
+        }
         valueLabelDisplay="on"
         aria-labelledby="slider"
         max={Math.floor(props.duration)}
-        valueLabelFormat={() => convertSeconds(props.time)}
+        valueLabelFormat={() => convertSeconds(props.currentTime)}
       />
     </div>
   );
