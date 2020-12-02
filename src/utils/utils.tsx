@@ -9,3 +9,12 @@ export const makeSlug = (text: string) => {
     locale: "vi", // language code of the locale to use
   });
 };
+
+export const getStorageDataAsNumber = (
+  key: string,
+  defaultNumber: number
+): number => {
+  let string = localStorage.getItem(key);
+  if (!string) string = "" + defaultNumber;
+  return parseInt(string);
+};

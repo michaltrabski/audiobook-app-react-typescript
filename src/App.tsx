@@ -4,9 +4,6 @@ import "./App.css";
 import FixedContainer from "./components/FixedContainer";
 
 function App() {
-  const myAudio = () => {};
-
-  myAudio();
   return <FixedContainer />;
 }
 

@@ -20,7 +20,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 
 import Button from "@material-ui/core/Button";
-import { makeSlug } from "../utils/utils";
+import { getStorageDataAsNumber, makeSlug } from "../utils/utils";
 import MySkeleton from "./MySkeleton";
 
 interface Props {
@@ -30,7 +30,6 @@ interface Props {
   folderWithMp3: string;
 }
 interface State {
-  audio: HTMLAudioElement;
   loadedData: boolean;
   isPlaying: boolean;
   currentTime: number;
@@ -44,64 +43,61 @@ const CardPlayer = (props: Props) => {
   const theme = useTheme();
 
   const { title, image, fileNames, folderWithMp3 } = props;
-  // const [audio, setAudio] = useState(new Audio(folderWithMp3 + fileNames[0]));
+  const fileName = fileNames[0];
 
-  const audioRef = useRef(new Audio(folderWithMp3 + fileNames[0]));
+  const audioRef = useRef(new Audio(folderWithMp3 + fileName));
   const audio = audioRef.current;
-  console.log("audio", audio);
-
-  const intervalRef = useRef<number | null>(null);
+  console.dir(audio);
 
   const [state, setState] = useState<State>({
-    audio: new Audio(),
     loadedData: false,
     isPlaying: false,
-    currentTime: 120,
+    currentTime: getStorageDataAsNumber(`${title}-currentTime`, 0),
     duration: 0,
     ended: false,
   });
 
-  // setTimeout(() => {
-  // console.dir("setTimeout", audio);
-  // }, 10);
-
   const { loadedData, isPlaying, currentTime, duration, ended } = state;
 
   useEffect(() => {
-    audio.addEventListener("loadeddata", (e) => {
-      setState((s) => ({
-        ...s,
-        loadedData: true,
-        duration: Math.floor(audio.duration),
-      }));
-      audio.currentTime = currentTime;
-      console.log("loadeddata");
-    });
+    console.log("state useEffect");
+    localStorage.setItem(
+      `${title}-currentTime`,
+      JSON.stringify(state.currentTime)
+    );
+  }, [state.currentTime]);
 
-    audio.addEventListener("timeupdate", (e) => {
-      setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
-      console.log("timeupdate", Math.floor(audio.currentTime));
-    });
+  useEffect(() => {
+    audio.addEventListener("loadeddata", onLoadedData);
+    audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("ended", onEnded);
 
-    audio.addEventListener("ended", (e) => {
-      setState((s) => ({ ...s, isPlaying: false, ended: true }));
-      console.log("ended");
-    });
-
-    // audio.addEventListener("play", (e) => {
-    //   intervalRef.current = window.setInterval(() => {
-    //     setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
-    //     console.log("play");
-    //   }, 2000);
-    // });
-
-    // Sync slider position with song current time
-    // this.audio.onplay = () => {
-    // 	this.currentTimeInterval = setInterval( () => {
-    // 		this.slider.value = this.audio.currentTime;
-    // 	}, 500);
-    // };
+    return () => {
+      audio.removeEventListener("loadeddata", onLoadedData);
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("ended", onEnded);
+    };
   }, [audio.src]);
+
+  const onLoadedData = () => {
+    setState((s) => ({
+      ...s,
+      loadedData: true,
+      duration: Math.floor(audio.duration),
+    }));
+    audio.currentTime = currentTime;
+    console.log("loadeddata");
+  };
+
+  const onTimeUpdate = () => {
+    setState((s) => ({ ...s, currentTime: Math.floor(audio.currentTime) }));
+    console.log("timeupdate", Math.floor(audio.currentTime));
+  };
+
+  const onEnded = () => {
+    setState((s) => ({ ...s, isPlaying: false, ended: true }));
+    console.log("ended");
+  };
 
   const play = () => {
     audio.currentTime = currentTime;
@@ -113,7 +109,6 @@ const CardPlayer = (props: Props) => {
   const pause = () => {
     audio.pause();
     setState((s) => ({ ...s, isPlaying: false }));
-    clearInterval(intervalRef.current || 0);
   };
 
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
@@ -121,6 +116,10 @@ const CardPlayer = (props: Props) => {
       newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
 
     audio.currentTime = currentTime;
+
+    setState((s) => ({ ...s, currentTime: Math.floor(currentTime) }));
+
+    audio.play();
     console.log(currentTime);
   };
 
@@ -171,6 +170,9 @@ const CardPlayer = (props: Props) => {
               duration={duration}
               handleSliderChange={handleSliderChange}
             />
+            {/* <div>
+              <audio src={folderWithMp3 + fileName} controls></audio>
+            </div> */}
           </>
         ) : (
           <MySkeleton />
