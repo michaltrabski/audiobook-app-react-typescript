@@ -11,13 +11,14 @@ export const makeSlug = (text: string) => {
 };
 
 export const convertSeconds = (seconds: number) => {
-  let s = seconds < 0 ? 0 : Math.floor(seconds);
-  let m = Math.floor(s / 60);
-  s = s - m * 60;
-  if (seconds < 60 * 60) return `${m}:${s}`;
+  const s = Math.floor(seconds);
+  const date = new Date(s * 1000).toISOString();
 
-  return `> 1h`;
+  if (s < 10 * 60) return date.substr(15, 4);
 
-  // s = s - m * 60;
-  // h = m - h * 60;
+  if (s < 3600) return date.substr(14, 5);
+
+  if (s < 3600 * 10) return date.substr(12, 7);
+
+  return date.substr(11, 8);
 };
