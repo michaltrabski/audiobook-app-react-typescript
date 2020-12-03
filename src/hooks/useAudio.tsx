@@ -51,5 +51,5 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
       audio.play();
     },
   };
-  return { audioElement, state, controls };
+  return { audioElement, state, setState, controls };
 };

@@ -39,14 +39,21 @@ const Player = (props: Props) => {
 
   const { title, image, fileNames, folderWithMp3 } = props;
 
-  const { audioElement, state, controls } = useAudio(folderWithMp3, fileNames);
+  const { audioElement, state, setState, controls } = useAudio(
+    folderWithMp3,
+    fileNames
+  );
   // console.log("audioElement = ", audioElement);
   // console.log("state = ", state);
   // console.log("controls = ", controls);
 
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
-    // console.log(newCurrentTime);
-    controls.seek(newCurrentTime);
+    let currentTime =
+      newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
+
+    console.log(currentTime);
+    setState((s) => ({ ...s, currentTime }));
+    controls.seek(currentTime);
   };
 
   return (
