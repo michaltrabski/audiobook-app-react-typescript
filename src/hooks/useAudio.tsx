@@ -1,10 +1,12 @@
-import { createElement, useRef, useState } from "react";
+import { createElement, useEffect, useRef, useState } from "react";
 
 export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
   const [state, setState] = useState({
+    fileNames,
     fileNameIndex: 0,
     paused: true,
     waiting: false,
+    // autoplay: true,
     currentTime: 0,
     duration: 0,
     buffered: {
@@ -13,18 +15,35 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
     },
   });
   const ref = useRef<HTMLAudioElement | null>(null);
-
+  const src = folderWithMp3 + fileNames[state.fileNameIndex];
   // console.log(folderWithMp3 + fileNames[state.fileNameIndex]);
 
   const audioElement = createElement("audio", {
-    src: folderWithMp3 + fileNames[state.fileNameIndex],
+    src,
     ref,
     controls: true,
     onPlay: () => setState((s) => ({ ...s, paused: false })),
     onPause: () => setState((s) => ({ ...s, paused: true })),
     onWaiting: () => setState((s) => ({ ...s, waiting: true })),
     onPlaying: () => setState((s) => ({ ...s, waiting: false })),
+    onLoadedData: () => {
+      console.log("onLoadedData");
+      const audio = ref.current;
+      if (!audio) return;
+      // audio.play();
+    },
+    onEnded: () => {
+      const audio = ref.current;
+      if (!audio) return;
+      console.log("ended");
+      setState((s) => ({
+        ...s,
+        ended: true,
+        fileNameIndex: s.fileNameIndex + 1,
+      }));
+    },
     onTimeUpdate: () => {
+      console.log("onTimeUpdate");
       const audio = ref.current;
       if (!audio) return;
       setState((s) => ({ ...s, currentTime: audio.currentTime }));
@@ -50,6 +69,14 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
       audio.currentTime = newCurrentTime || 0;
       audio.play();
     },
+    changeFile: (fileNameIndex: number) => {
+      console.log(fileNameIndex);
+      if (fileNameIndex) setState((s) => ({ ...s, fileNameIndex }));
+    },
   };
+
+  useEffect(() => {
+    console.log("useEffect");
+  }, [src]);
   return { audioElement, state, setState, controls };
 };

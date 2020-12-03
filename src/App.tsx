@@ -1,9 +1,9 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import FixedContainer from "./components/FixedContainer";
 import { CssBaseline } from "@material-ui/core";
 
-const theme = createMuiTheme({
+const lightTheme = createMuiTheme({
   palette: {
     type: "light",
     // primary: {
@@ -20,12 +20,34 @@ const theme = createMuiTheme({
     // },
   },
 });
+const darkTheme = createMuiTheme({
+  palette: {
+    type: "dark",
+    // primary: {
+    //   light: "#757ce8",
+    //   main: "#3f50b5",
+    //   dark: "#002884",
+    //   contrastText: "#fff",
+    // },
+    // secondary: {
+    //   light: "#ff7961",
+    //   main: "#f44336",
+    //   dark: "#ba000d",
+    //   contrastText: "#000",
+    // },
+  },
+});
+
+// const Context = createContext(undefined);
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkMode ? lightTheme : darkTheme}>
+      {/* <Context.Provider value={{ darkMode, setDarkMode }}> */}
       <CssBaseline />
-      <FixedContainer />
+      <FixedContainer darkMode={darkMode} setDarkMode={setDarkMode} />
+      {/* </Context.Provider> */}
     </ThemeProvider>
   );
 }

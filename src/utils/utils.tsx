@@ -15,10 +15,7 @@ export const convertSeconds = (seconds: number) => {
   const date = new Date(s * 1000).toISOString();
 
   if (s < 10 * 60) return date.substr(15, 4);
-
   if (s < 3600) return date.substr(14, 5);
-
   if (s < 3600 * 10) return date.substr(12, 7);
-
   return date.substr(11, 8);
 };

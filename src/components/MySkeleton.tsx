@@ -20,6 +20,8 @@ const MySkeleton = () => {
       <Skeleton animation={false} /> */}
 
       <Skeleton animation="wave" />
+      <Skeleton animation="wave" />
+      <Skeleton animation="wave" />
     </div>
   );
 };

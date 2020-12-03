@@ -23,7 +23,8 @@ import Button from "@material-ui/core/Button";
 import { makeSlug } from "../utils/utils";
 import MySkeleton from "./MySkeleton";
 import { useAudio } from "../hooks/useAudio";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Grid } from "@material-ui/core";
+import MySelect from "./MySelect";
 
 interface Props {
   title: string;
@@ -50,10 +51,7 @@ const Player = (props: Props) => {
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
     let currentTime =
       newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
-
-    console.log(currentTime);
     setState((s) => ({ ...s, currentTime }));
-    controls.seek(currentTime);
   };
 
   return (
@@ -72,57 +70,74 @@ const Player = (props: Props) => {
           color="textSecondary"
           component="p"
         ></Typography>
-        <pre>
-          <strong>state = </strong>
-          {JSON.stringify(state, null, 2)}
-        </pre>
+        <Grid container spacing={3}>
+          <Grid xs={6}>
+            <pre>
+              <strong>state = </strong>
+              {JSON.stringify(state, null, 2)}
+            </pre>
+          </Grid>
+          <Grid xs={6}>
+            <MySelect
+              fileNames={state.fileNames}
+              fileNameIndex={state.fileNameIndex}
+              changeFile={controls.changeFile}
+            />
+          </Grid>
+        </Grid>
 
-        <div>
-          <Slider
-            currentTime={state.currentTime}
-            duration={state.duration}
-            handleSliderChange={handleSliderChange}
-          />
-        </div>
+        {state.duration > 0 ? (
+          <>
+            <div>
+              <Slider
+                currentTime={state.currentTime}
+                duration={state.duration}
+                handleSliderChange={handleSliderChange}
+              />
+            </div>
 
-        <div className={classes.controls}>
-          <IconButton aria-label="previous">
-            {theme.direction === "rtl" ? (
-              <SkipNextIcon />
-            ) : (
-              <SkipPreviousIcon />
-            )}
-          </IconButton>
-          <IconButton color="primary" aria-label="play/pause">
-            {state.waiting ? (
-              <CircularProgress color="inherit" />
-            ) : (
-              <>
-                {state.paused ? (
-                  <PlayArrowIcon
-                    onClick={() => controls.play()}
-                    className={classes.playPauseIcon}
-                  />
+            <div className={classes.controls}>
+              <IconButton aria-label="previous">
+                {theme.direction === "rtl" ? (
+                  <SkipNextIcon />
                 ) : (
-                  <PauseIcon
-                    onClick={() => controls.pause()}
-                    className={classes.playPauseIcon}
-                  />
+                  <SkipPreviousIcon />
                 )}
-              </>
-            )}
-          </IconButton>
+              </IconButton>
+              <IconButton color="primary" aria-label="play/pause">
+                {state.waiting ? (
+                  <CircularProgress color="inherit" />
+                ) : (
+                  <>
+                    {state.paused ? (
+                      <PlayArrowIcon
+                        onClick={() => controls.play()}
+                        className={classes.playPauseIcon}
+                      />
+                    ) : (
+                      <PauseIcon
+                        onClick={() => controls.pause()}
+                        className={classes.playPauseIcon}
+                      />
+                    )}
+                  </>
+                )}
+              </IconButton>
 
-          <IconButton aria-label="next">
-            {theme.direction === "rtl" ? (
-              <SkipPreviousIcon />
-            ) : (
-              <SkipNextIcon />
-            )}
-          </IconButton>
-        </div>
+              <IconButton aria-label="next">
+                {theme.direction === "rtl" ? (
+                  <SkipPreviousIcon />
+                ) : (
+                  <SkipNextIcon />
+                )}
+              </IconButton>
+            </div>
 
-        <div>{audioElement}</div>
+            <div>{audioElement}</div>
+          </>
+        ) : (
+          <MySkeleton />
+        )}
       </CardContent>
     </Card>
   );

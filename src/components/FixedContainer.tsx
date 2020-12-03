@@ -8,7 +8,11 @@ import { Box, Button } from "@material-ui/core";
 import Player from "./Player";
 import HideAppBar from "./HideAppBar";
 
-export default function FixedContainer() {
+interface Props {
+  darkMode: boolean;
+  setDarkMode: (a: boolean) => void;
+}
+export default function FixedContainer(props: Props) {
   const [limit, setLimit] = useState(1);
   const { folderWithMp3, audioBooks } = data;
 
@@ -17,7 +21,9 @@ export default function FixedContainer() {
       <HideAppBar>
         <></>
       </HideAppBar>
-
+      <button onClick={() => props.setDarkMode(!props.darkMode)}>
+        {JSON.stringify(props.darkMode)}
+      </button>
       <Container fixed>
         <Box my={2}>
           {audioBooks.slice(0, limit).map((book, i) => (
