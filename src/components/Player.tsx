@@ -52,6 +52,7 @@ const Player = (props: Props) => {
     let currentTime =
       newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
     setState((s) => ({ ...s, currentTime }));
+    controls.seek(currentTime);
   };
 
   return (
@@ -132,12 +133,15 @@ const Player = (props: Props) => {
                 )}
               </IconButton>
             </div>
-
-            <div>{audioElement}</div>
           </>
         ) : (
           <MySkeleton />
         )}
+
+        <div>
+          <p>I will be inwisible, but it is needed to load media</p>
+          {audioElement}
+        </div>
       </CardContent>
     </Card>
   );

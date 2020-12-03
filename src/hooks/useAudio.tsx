@@ -16,7 +16,6 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
   });
   const ref = useRef<HTMLAudioElement | null>(null);
   const src = folderWithMp3 + fileNames[state.fileNameIndex];
-  // console.log(folderWithMp3 + fileNames[state.fileNameIndex]);
 
   const audioElement = createElement("audio", {
     src,
@@ -76,7 +75,7 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
   };
 
   useEffect(() => {
-    console.log("useEffect");
+    console.log("useEffect src = ", src);
   }, [src]);
   return { audioElement, state, setState, controls };
 };
