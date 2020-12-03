@@ -10,6 +10,7 @@ export const makeSlug = (text: string) => {
   });
 };
 
+<<<<<<< HEAD
 export const getStorageDataAsNumber = (
   key: string,
   defaultNumber: number
@@ -17,4 +18,17 @@ export const getStorageDataAsNumber = (
   let string = localStorage.getItem(key);
   if (!string) string = "" + defaultNumber;
   return parseInt(string);
+=======
+export const convertSeconds = (seconds: number) => {
+  const s = Math.floor(seconds);
+  const date = new Date(s * 1000).toISOString();
+
+  if (s < 10 * 60) return date.substr(15, 4);
+
+  if (s < 3600) return date.substr(14, 5);
+
+  if (s < 3600 * 10) return date.substr(12, 7);
+
+  return date.substr(11, 8);
+>>>>>>> master
 };
