@@ -23,7 +23,7 @@ import Button from "@material-ui/core/Button";
 import { makeSlug } from "../utils/utils";
 import MySkeleton from "./MySkeleton";
 import { useAudio } from "../hooks/useAudio";
-import { CircularProgress, Grid } from "@material-ui/core";
+import { CircularProgress, Grid, Paper } from "@material-ui/core";
 import MySelect from "./MySelect";
 
 interface Props {
@@ -33,6 +33,54 @@ interface Props {
   fileNames: string[];
   folderWithMp3: string;
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paperRoot: {
+      marginBottom: theme.spacing(2),
+    },
+    cardRoot: {
+      paddingTop: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(2),
+      boxShadow: "none",
+    },
+    cardActionArea: {
+      display: "flex",
+      justifyContent: "flex-start",
+      // alignItems: "flex-start",
+    },
+    media: {
+      height: 200,
+    },
+    details: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+    },
+    content: {
+      flex: "1 0 auto",
+    },
+    cover: {
+      width: 90,
+      height: 130,
+      flexShrink: 0,
+      borderRadius: theme.spacing(0.5),
+    },
+    controls: {
+      display: "flex",
+      alignItems: "center",
+      // paddingLeft: theme.spacing(1),
+      // paddingBottom: theme.spacing(1),
+      // backgroundColor: "red",
+      justifyContent: "space-between",
+    },
+    playPauseIcon: {
+      height: 38,
+      width: 38,
+    },
+  })
+);
 
 const Player = (props: Props) => {
   // console.log("CardPlayer");
@@ -57,126 +105,88 @@ const Player = (props: Props) => {
   };
 
   return (
-    <div>
-      <Card className={classes.root}>
-        <div className={classes.cardActionArea}>
-          <CardMedia
-            className={classes.cover}
-            image={folderWithMp3 + image}
-            title={title}
-          />
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Typography component="h2" variant="h6">
-                {title}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
-                {author}
-              </Typography>
-            </CardContent>
-            <MySelect
-              fileNames={state.fileNames}
-              fileNameIndex={state.fileNameIndex}
-              changeFile={controls.changeFile}
+    <Paper elevation={3} className={classes.paperRoot}>
+      <div>
+        <Card className={classes.cardRoot}>
+          <div className={classes.cardActionArea}>
+            <CardMedia
+              className={classes.cover}
+              image={folderWithMp3 + image}
+              title={title}
             />
-            <div className={classes.controls}>
-              <IconButton aria-label="previous">
-                {theme.direction === "rtl" ? (
-                  <SkipNextIcon />
-                ) : (
-                  <SkipPreviousIcon />
-                )}
-              </IconButton>
-              <IconButton color="primary" aria-label="play/pause">
-                {state.waiting ? (
-                  <CircularProgress color="inherit" />
-                ) : (
-                  <>
-                    {state.paused ? (
-                      <PlayArrowIcon
-                        onClick={() => controls.play()}
-                        className={classes.playPauseIcon}
-                      />
-                    ) : (
-                      <PauseIcon
-                        onClick={() => controls.pause()}
-                        className={classes.playPauseIcon}
-                      />
-                    )}
-                  </>
-                )}
-              </IconButton>
-              <IconButton aria-label="next">
-                {theme.direction === "rtl" ? (
-                  <SkipPreviousIcon />
-                ) : (
-                  <SkipNextIcon />
-                )}
-              </IconButton>
+            <div className={classes.details}>
+              <CardContent className={classes.content}>
+                <Typography component="h2" variant="h6">
+                  {title}
+                </Typography>
+                <Typography variant="subtitle1" color="textSecondary">
+                  {author}
+                </Typography>
+                <MySelect
+                  fileNames={state.fileNames}
+                  fileNameIndex={state.fileNameIndex}
+                  changeFile={controls.changeFile}
+                />
+              </CardContent>
             </div>
           </div>
-        </div>
-      </Card>
+        </Card>
 
-      <div>
         <div>
           <Slider
             currentTime={state.currentTime}
             duration={state.duration}
             handleSliderChange={handleSliderChange}
           />
-        </div>
 
-        <div>{audioElement}</div>
+          <div className={classes.controls}>
+            <IconButton aria-label="previous">
+              {theme.direction === "rtl" ? (
+                <SkipNextIcon />
+              ) : (
+                <SkipPreviousIcon />
+              )}
+            </IconButton>
+            <IconButton color="primary" aria-label="play/pause">
+              {state.waiting ? (
+                <CircularProgress color="inherit" />
+              ) : (
+                <>
+                  {state.paused ? (
+                    <PlayArrowIcon
+                      onClick={() => controls.play()}
+                      className={classes.playPauseIcon}
+                    />
+                  ) : (
+                    <PauseIcon
+                      onClick={() => controls.pause()}
+                      className={classes.playPauseIcon}
+                    />
+                  )}
+                </>
+              )}
+            </IconButton>
+            <IconButton aria-label="next">
+              {theme.direction === "rtl" ? (
+                <SkipPreviousIcon />
+              ) : (
+                <SkipNextIcon />
+              )}
+            </IconButton>
+          </div>
 
-        <div>
-          <pre>
-            <strong>state = </strong>
-            {JSON.stringify(state, null, 2)}
-          </pre>
+          <div>{audioElement}</div>
+
+          {/* <div>
+            <pre>
+              <strong>state = </strong>
+              {JSON.stringify(state, null, 2)}
+            </pre>
+          </div> */}
         </div>
       </div>
-    </div>
+    </Paper>
   );
 };
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      marginBottom: theme.spacing(2),
-    },
-    cardActionArea: {
-      display: "flex",
-      justifyContent: "flex-start",
-      // alignItems: "flex-start",
-    },
-    media: {
-      height: 200,
-    },
-    details: {
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-    },
-    content: {
-      flex: "1 0 auto",
-    },
-    cover: {
-      width: 115,
-      minHeight: 170,
-      flexShrink: 0,
-    },
-    controls: {
-      display: "flex",
-      alignItems: "center",
-      paddingLeft: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
-    },
-    playPauseIcon: {
-      height: 38,
-      width: 38,
-    },
-  })
-);
 
 export default Player;

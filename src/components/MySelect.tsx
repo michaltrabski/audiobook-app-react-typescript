@@ -16,12 +16,13 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
-      margin: theme.spacing(1),
+      margin: theme.spacing(0),
       // backgroundColor: "red",
+      justifyContent: "space-between",
     },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      // minWidth: 120,
     },
     selectEmpty: {
       // marginTop: theme.spacing(2),
@@ -60,7 +61,7 @@ export default function MySelect(props: Props) {
         >
           {fileNames.map((file, i) => (
             <MenuItem key={file} value={i}>
-              {file}
+              {file.slice(0, 14)}
             </MenuItem>
           ))}
         </Select>

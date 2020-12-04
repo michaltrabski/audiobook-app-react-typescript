@@ -1,14 +1,26 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  Theme,
+  createStyles,
+  makeStyles,
+  useTheme,
+} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { convertSeconds } from "../utils/utils";
 
-const useStyles = makeStyles({
-  root: {
-    // width: "100%",
-  },
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      // width: "100%",
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(2),
+
+      paddingTop: theme.spacing(4),
+      // paddingBottom: theme.spacing(0),
+    },
+  })
+);
 
 interface Props {
   currentTime: number;

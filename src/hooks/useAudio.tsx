@@ -20,7 +20,7 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
   const audioElement = createElement("audio", {
     src,
     ref,
-    controls: true,
+    controls: false,
     onPlay: () => setState((s) => ({ ...s, paused: false })),
     onPause: () => setState((s) => ({ ...s, paused: true })),
     onWaiting: () => setState((s) => ({ ...s, waiting: true })),
