@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Switch from "@material-ui/core/Switch";
 import { Box } from "@material-ui/core";
+import { Context } from "../App";
 
 export default function MySwith() {
-  const [state, setState] = React.useState({
-    checked: false,
-  });
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
+  const { darkMode, setDarkMode } = useContext(Context);
 
   return (
     <Box>
-      Dark theme
+      {darkMode ? "Dark" : "Light"} theme
       <Switch
-        checked={state.checked}
-        onChange={handleChange}
+        checked={darkMode}
+        onChange={() => setDarkMode(!darkMode)}
         name="checked"
         inputProps={{ "aria-label": "secondary checkbox" }}
       />

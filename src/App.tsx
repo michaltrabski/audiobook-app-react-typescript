@@ -38,16 +38,16 @@ const darkTheme = createMuiTheme({
   },
 });
 
-// const Context = createContext(undefined);
+export const Context = createContext<any>({});
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   return (
-    <ThemeProvider theme={darkMode ? lightTheme : darkTheme}>
-      {/* <Context.Provider value={{ darkMode, setDarkMode }}> */}
-      <CssBaseline />
-      <FixedContainer darkMode={darkMode} setDarkMode={setDarkMode} />
-      {/* </Context.Provider> */}
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <Context.Provider value={{ darkMode, setDarkMode }}>
+        <CssBaseline />
+        <FixedContainer darkMode={darkMode} setDarkMode={setDarkMode} />
+      </Context.Provider>
     </ThemeProvider>
   );
 }
