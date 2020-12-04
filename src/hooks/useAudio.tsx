@@ -80,7 +80,7 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
     console.log("useEffect src = ", src);
     const audio = ref.current;
     if (!audio) return;
-    // if (state.autoplay) audio.play();
+    if (state.autoplay) audio.play();
 
     setState((s) => ({ ...s, ended: false, duration: 0 }));
   }, [src]);

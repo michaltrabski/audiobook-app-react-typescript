@@ -57,28 +57,45 @@ const Player = (props: Props) => {
   };
 
   return (
-    <div>
-      <Card className={classes.root}>
-        <div className={classes.cardActionArea}>
-          <CardMedia
-            className={classes.cover}
-            image={folderWithMp3 + image}
-            title={title}
-          />
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Typography component="h2" variant="h6">
-                {title}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
-                {author}
-              </Typography>
-            </CardContent>
+    <Card className={classes.root}>
+      <CardMedia
+        className={classes.media}
+        image={folderWithMp3 + image}
+        title={title}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {author}
+        </Typography>
+        <Grid container spacing={3}>
+          <Grid xs={6}>
+            <pre>
+              <strong>state = </strong>
+              {JSON.stringify(state, null, 2)}
+            </pre>
+          </Grid>
+          <Grid xs={6}>
             <MySelect
               fileNames={state.fileNames}
               fileNameIndex={state.fileNameIndex}
               changeFile={controls.changeFile}
             />
+          </Grid>
+        </Grid>
+
+        {state.duration > 0 ? (
+          <>
+            <div>
+              <Slider
+                currentTime={state.currentTime}
+                duration={state.duration}
+                handleSliderChange={handleSliderChange}
+              />
+            </div>
+
             <div className={classes.controls}>
               <IconButton aria-label="previous">
                 {theme.direction === "rtl" ? (
@@ -106,6 +123,7 @@ const Player = (props: Props) => {
                   </>
                 )}
               </IconButton>
+
               <IconButton aria-label="next">
                 {theme.direction === "rtl" ? (
                   <SkipPreviousIcon />
@@ -114,41 +132,25 @@ const Player = (props: Props) => {
                 )}
               </IconButton>
             </div>
-          </div>
-        </div>
-      </Card>
-
-      <div>
-        <div>
-          <Slider
-            currentTime={state.currentTime}
-            duration={state.duration}
-            handleSliderChange={handleSliderChange}
-          />
-        </div>
-
-        <div>{audioElement}</div>
+          </>
+        ) : (
+          <MySkeleton />
+        )}
 
         <div>
-          <pre>
-            <strong>state = </strong>
-            {JSON.stringify(state, null, 2)}
-          </pre>
+          <p>I will be inwisible, but it is needed to load media</p>
+          {audioElement}
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      maxWidth: 700,
       marginBottom: theme.spacing(2),
-    },
-    cardActionArea: {
-      display: "flex",
-      justifyContent: "flex-start",
-      // alignItems: "flex-start",
     },
     media: {
       height: 200,
@@ -156,15 +158,12 @@ const useStyles = makeStyles((theme: Theme) =>
     details: {
       display: "flex",
       flexDirection: "column",
-      width: "100%",
     },
     content: {
       flex: "1 0 auto",
     },
     cover: {
-      width: 115,
-      minHeight: 170,
-      flexShrink: 0,
+      width: 151,
     },
     controls: {
       display: "flex",

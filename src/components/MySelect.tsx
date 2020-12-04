@@ -5,15 +5,26 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import { Box, IconButton } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import SkipNextIcon from "@material-ui/icons/SkipNext";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      display: "flex",
+      margin: theme.spacing(1),
+      // backgroundColor: "red",
+    },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: "100%",
+      minWidth: 120,
     },
     selectEmpty: {
-      marginTop: theme.spacing(2),
+      // marginTop: theme.spacing(2),
     },
   })
 );
@@ -34,25 +45,29 @@ export default function MySelect(props: Props) {
   };
 
   return (
-    <FormControl variant="outlined" className={classes.formControl}>
-      <InputLabel htmlFor="outlined-age-native-simple">mp3 files:</InputLabel>
-      <Select
-        native
-        value={fileNameIndex}
-        onChange={handleChange}
-        label="mp3 file"
-        inputProps={{
-          name: "file",
-          id: "outlined-age-native-simple",
-        }}
-      >
-        {/* <option aria-label="None" value="" /> */}
-        {fileNames.map((file, i) => (
-          <option key={file} value={i}>
-            {file}
-          </option>
-        ))}
-      </Select>
-    </FormControl>
+    <Box className={classes.root}>
+      <IconButton aria-label="previes">
+        <SkipPreviousIcon />
+      </IconButton>
+
+      <FormControl className={classes.formControl}>
+        <Select
+          value={fileNameIndex}
+          onChange={handleChange}
+          displayEmpty
+          className={classes.selectEmpty}
+          inputProps={{ "aria-label": "Without label" }}
+        >
+          {fileNames.map((file, i) => (
+            <MenuItem key={file} value={i}>
+              {file}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <IconButton aria-label="next">
+        <SkipNextIcon />
+      </IconButton>
+    </Box>
   );
 }

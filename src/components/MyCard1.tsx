@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
-import { CardActionArea } from "@material-ui/core";
+import { Button, CardActionArea } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -77,6 +77,7 @@ export default function MyCard1(props: Props) {
             <Typography variant="subtitle1" color="textSecondary">
               {author}
             </Typography>
+            <Button variant="contained">Listen</Button>
           </CardContent>
         </div>
       </CardActionArea>

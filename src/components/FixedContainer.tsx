@@ -67,7 +67,7 @@ export default function FixedContainer(props: Props) {
         <></>
       </HideAppBar>
 
-      <Container fixed>
+      <Container maxWidth="md">
         <Box my={2}>
           {audioBooks.slice(0, limit).map((book, index) => (
             <Fragment key={book.id}>
