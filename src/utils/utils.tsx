@@ -1,4 +1,5 @@
 import slugify from "slugify";
+import { SingleAudioBookI } from "../components/FixedContainer";
 
 export const makeSlug = (text: string) => {
   return slugify(text, {
@@ -18,4 +19,36 @@ export const convertSeconds = (seconds: number) => {
   if (s < 3600) return date.substr(14, 5);
   if (s < 3600 * 10) return date.substr(12, 7);
   return date.substr(11, 8);
+};
+
+export const mapArrayOrder = (
+  arrayWithDataToOrder: SingleAudioBookI[],
+  arrayWithTitleOrder: string[],
+  key: string
+) => {
+  arrayWithDataToOrder.sort(function (a: any, b: any) {
+    let A = a[key];
+    let B = b[key];
+
+    if (arrayWithTitleOrder.indexOf(A) > arrayWithTitleOrder.indexOf(B)) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  return arrayWithDataToOrder;
+};
+
+export const getStorage = (key: string, defaultValue: any) => {
+  let data = localStorage.getItem(key);
+
+  if (!data) return defaultValue;
+  data = JSON.parse(data);
+
+  return data;
+};
+
+export const setStorage = (key: string, value: any) => {
+  localStorage.setItem(key, JSON.stringify(value));
 };

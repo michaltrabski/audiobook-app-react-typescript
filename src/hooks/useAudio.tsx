@@ -6,7 +6,7 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
     fileNameIndex: 0,
     paused: true,
     waiting: false,
-    // autoplay: true,
+    autoplay: true,
     currentTime: 0,
     duration: 0,
     buffered: {
@@ -29,7 +29,6 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
       console.log("onLoadedData");
       const audio = ref.current;
       if (!audio) return;
-      // audio.play();
     },
     onEnded: () => {
       const audio = ref.current;
@@ -38,7 +37,10 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
       setState((s) => ({
         ...s,
         ended: true,
-        fileNameIndex: s.fileNameIndex + 1,
+        fileNameIndex:
+          fileNames.length > s.fileNameIndex + 1
+            ? s.fileNameIndex + 1
+            : s.fileNameIndex,
       }));
     },
     onTimeUpdate: () => {
@@ -69,13 +71,18 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
       audio.play();
     },
     changeFile: (fileNameIndex: number) => {
-      console.log(fileNameIndex);
+      console.log("changeFile", fileNameIndex);
       if (fileNameIndex) setState((s) => ({ ...s, fileNameIndex }));
     },
   };
 
   useEffect(() => {
     console.log("useEffect src = ", src);
+    const audio = ref.current;
+    if (!audio) return;
+    // if (state.autoplay) audio.play();
+
+    setState((s) => ({ ...s, ended: false, duration: 0 }));
   }, [src]);
   return { audioElement, state, setState, controls };
 };

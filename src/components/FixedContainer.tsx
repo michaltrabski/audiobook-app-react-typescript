@@ -10,6 +10,8 @@ import Player from "./Player";
 import HideAppBar from "./HideAppBar";
 import MyCard1 from "./MyCard1";
 import { animateScroll as scroll } from "react-scroll";
+import { v4 as uuidv4 } from "uuid";
+import { setStorage, getStorage, mapArrayOrder } from "../utils/utils";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,14 +24,36 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+export interface SingleAudioBookI {
+  id: string;
+  title: string;
+  author: string;
+  image: string;
+  fileNames: string[];
+}
+
 interface Props {
   darkMode: boolean;
   setDarkMode: (a: boolean) => void;
 }
 export default function FixedContainer(props: Props) {
   const classes = useStyles();
-  const [limit, setLimit] = useState(8);
-  const [audioBooks, setAudioBooks] = useState(data.audioBooks);
+  const [limit, setLimit] = useState(5);
+  const [audioBooks, setAudioBooks] = useState(() => {
+    const arrayToOrder = data.audioBooks.map((book) => {
+      book.id = uuidv4();
+      return book;
+    });
+
+    const audioBooksOrder = getStorage("audioBooksOrder", [""]);
+    return mapArrayOrder(arrayToOrder, audioBooksOrder, "title");
+  });
+
+  useEffect(() => {
+    // remember audioBooks array order by title
+    const audioBooksOrder = audioBooks.map((book) => book.title);
+    setStorage("audioBooksOrder", audioBooksOrder);
+  });
 
   const handleClick = (index: number) => {
     const changedArr = [...audioBooks];
@@ -46,7 +70,7 @@ export default function FixedContainer(props: Props) {
       <Container fixed>
         <Box my={2}>
           {audioBooks.slice(0, limit).map((book, index) => (
-            <Fragment key={book.title}>
+            <Fragment key={book.id}>
               {index === 0 ? (
                 <Player
                   title={book.title}
@@ -76,16 +100,13 @@ export default function FixedContainer(props: Props) {
             size="large"
             onClick={() => setLimit(limit + 10)}
           >
-            Show more {audioBooks.length} {limit}
+            Show more
           </Button>
         ) : (
           <Typography variant="subtitle1" color="textSecondary" align="center">
             There is no more audiobooks...
           </Typography>
         )}
-        <button onClick={() => props.setDarkMode(!props.darkMode)}>
-          {JSON.stringify(props.darkMode)}
-        </button>
       </Container>
     </>
   );

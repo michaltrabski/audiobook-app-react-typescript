@@ -33,8 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: "1 0 auto",
     },
     cover: {
-      width: 150,
-      minHeight: 220,
+      width: 115,
+      minHeight: 170,
+      flexShrink: 0,
     },
     controls: {
       display: "flex",
@@ -59,21 +60,22 @@ interface Props {
 export default function MyCard1(props: Props) {
   const classes = useStyles();
 
+  const { title, folderWithMp3, image, author } = props;
   return (
     <Card className={classes.root}>
       <CardActionArea className={classes.cardActionArea}>
         <CardMedia
           className={classes.cover}
-          image={props.folderWithMp3 + props.image}
-          title={props.title}
+          image={folderWithMp3 + image}
+          title={title}
         />
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-              {props.title}
+            <Typography component="h2" variant="h6">
+              {title}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary">
-              {props.author}
+              {author}
             </Typography>
           </CardContent>
         </div>
