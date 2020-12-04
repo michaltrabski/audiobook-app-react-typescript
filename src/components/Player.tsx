@@ -28,6 +28,7 @@ import MySelect from "./MySelect";
 
 interface Props {
   title: string;
+  author: string;
   image: string;
   fileNames: string[];
   folderWithMp3: string;
@@ -38,7 +39,7 @@ const Player = (props: Props) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const { title, image, fileNames, folderWithMp3 } = props;
+  const { title, author, image, fileNames, folderWithMp3 } = props;
 
   const { audioElement, state, setState, controls } = useAudio(
     folderWithMp3,
@@ -66,11 +67,9 @@ const Player = (props: Props) => {
         <Typography gutterBottom variant="h5" component="h2">
           {title}
         </Typography>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-          component="p"
-        ></Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {author}
+        </Typography>
         <Grid container spacing={3}>
           <Grid xs={6}>
             <pre>

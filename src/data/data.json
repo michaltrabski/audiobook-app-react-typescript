@@ -3,6 +3,7 @@
   "audioBooks": [
     {
       "title": "Precedens",
+      "author": "Unnown",
       "image": "precedens.jpg",
       "fileNames": [
         "Precedens (01).mp3",
@@ -15,8 +16,87 @@
     },
     {
       "title": "Angielski",
-      "image": "",
+      "author": "Remigiusz Mróz",
+      "image": "precedens.jpg",
       "fileNames": ["21_0.mp3", "21_1.mp3", "21_2.mp3", "21_3.mp3"]
+    },
+    {
+      "title": "Echo z otchłani",
+      "author": "Remigiusz Mróz",
+      "image": "echo-z-otchlani.jpg",
+      "fileNames": [
+        "Precedens (01).mp3",
+        "Precedens (02).mp3",
+        "Precedens (03).mp3",
+        "Precedens (04).mp3",
+        "Precedens (05).mp3",
+        "Precedens (06).mp3"
+      ]
+    },
+    {
+      "title": "Głosy z zaświatów",
+      "author": "Remigiusz Mróz",
+      "image": "glosy-z-zaswiatow.jpg",
+      "fileNames": [
+        "Precedens (01).mp3",
+        "Precedens (02).mp3",
+        "Precedens (03).mp3",
+        "Precedens (04).mp3",
+        "Precedens (05).mp3",
+        "Precedens (06).mp3"
+      ]
+    },
+    {
+      "title": "Halny",
+      "author": "Remigiusz Mróz",
+      "image": "halny.jpg",
+      "fileNames": [
+        "Precedens (01).mp3",
+        "Precedens (02).mp3",
+        "Precedens (03).mp3",
+        "Precedens (04).mp3",
+        "Precedens (05).mp3",
+        "Precedens (06).mp3"
+      ]
+    },
+    {
+      "title": "Iluzjonista",
+      "author": "Remigiusz Mróz",
+      "image": "iluzjonista.jpg",
+      "fileNames": [
+        "Precedens (01).mp3",
+        "Precedens (02).mp3",
+        "Precedens (03).mp3",
+        "Precedens (04).mp3",
+        "Precedens (05).mp3",
+        "Precedens (06).mp3"
+      ]
+    },
+    {
+      "title": "Listy z za grobu",
+      "author": "Remigiusz Mróz",
+      "image": "listy-z-za-grobu.jpg",
+      "fileNames": [
+        "Precedens (01).mp3",
+        "Precedens (02).mp3",
+        "Precedens (03).mp3",
+        "Precedens (04).mp3",
+        "Precedens (05).mp3",
+        "Precedens (06).mp3"
+      ]
+    },
+    {
+      "title": "Wyrok",
+      "author": "Remigiusz Mróz",
+      "image": "wyrok.jpg",
+      "fileNames": [
+        "Precedens (01).mp3",
+        "Precedens (02).mp3",
+        "Precedens (03).mp3",
+        "Precedens (04).mp3",
+        "Precedens (05).mp3",
+        "Precedens (06).mp3"
+      ]
     }
   ]
 }
