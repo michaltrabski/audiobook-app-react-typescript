@@ -12,6 +12,7 @@ import MyCard1 from "./MyCard1";
 import { animateScroll as scroll } from "react-scroll";
 import { v4 as uuidv4 } from "uuid";
 import { setStorage, getStorage, mapArrayOrder } from "../utils/utils";
+import Footer from "./Footer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,8 +28,10 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface SingleAudioBookI {
   id: string;
   title: string;
+  available: boolean;
   author: string;
   image: string;
+  subFolder: string;
   fileNames: string[];
 }
 
@@ -55,7 +58,7 @@ export default function FixedContainer(props: Props) {
     setStorage("audioBooksOrder", audioBooksOrder);
   });
 
-  const handleClick = (index: number) => {
+  const listenAudioBook = (index: number) => {
     const changedArr = [...audioBooks];
     changedArr.splice(index, 1);
     setAudioBooks((s) => [audioBooks[index], ...changedArr]);
@@ -77,17 +80,20 @@ export default function FixedContainer(props: Props) {
                   author={book.author}
                   fileNames={book.fileNames}
                   folderWithMp3={data.folderWithMp3}
+                  subFolder={book.subFolder}
                   image={book.image}
                 />
               ) : (
-                <div onClick={() => handleClick(index)}>
-                  <MyCard1
-                    title={book.title}
-                    author={book.author}
-                    folderWithMp3={data.folderWithMp3}
-                    image={book.image}
-                  />
-                </div>
+                <MyCard1
+                  index={index}
+                  title={book.title}
+                  available={book.available}
+                  author={book.author}
+                  folderWithMp3={data.folderWithMp3}
+                  subFolder={book.subFolder}
+                  image={book.image}
+                  listenAudioBook={listenAudioBook}
+                />
               )}
             </Fragment>
           ))}
@@ -108,6 +114,7 @@ export default function FixedContainer(props: Props) {
           </Typography>
         )}
       </Container>
+      <Footer />
     </>
   );
 }

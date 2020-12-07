@@ -1,6 +1,10 @@
 import { createElement, useEffect, useRef, useState } from "react";
 
-export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
+export const useAudio = (
+  folderWithMp3: string,
+  subFolder: string,
+  fileNames: string[]
+) => {
   const [state, setState] = useState({
     fileNames,
     fileNameIndex: 0,
@@ -15,7 +19,7 @@ export const useAudio = (folderWithMp3: string, fileNames: string[]) => {
     },
   });
   const ref = useRef<HTMLAudioElement | null>(null);
-  const src = folderWithMp3 + fileNames[state.fileNameIndex];
+  const src = folderWithMp3 + subFolder + fileNames[state.fileNameIndex];
 
   const audioElement = createElement("audio", {
     src,

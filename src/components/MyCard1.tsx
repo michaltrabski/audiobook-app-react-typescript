@@ -51,19 +51,31 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
+  index: number;
   title: string;
+  available: boolean;
   author: string;
   image: string;
   folderWithMp3: string;
+  subFolder: string;
+  listenAudioBook: (index: number) => void;
 }
 
 export default function MyCard1(props: Props) {
   const classes = useStyles();
 
-  const { title, folderWithMp3, image, author } = props;
+  const {
+    index,
+    title,
+    available,
+    folderWithMp3,
+    image,
+    author,
+    listenAudioBook,
+  } = props;
   return (
     <Card className={classes.root}>
-      <CardActionArea className={classes.cardActionArea}>
+      <div className={classes.cardActionArea}>
         <CardMedia
           className={classes.cover}
           image={folderWithMp3 + image}
@@ -77,10 +89,16 @@ export default function MyCard1(props: Props) {
             <Typography variant="subtitle1" color="textSecondary">
               {author}
             </Typography>
-            <Button variant="contained">Listen</Button>
+            <Button
+              variant="contained"
+              onClick={() => listenAudioBook(index)}
+              disabled={!available}
+            >
+              {available ? "Listen" : "Not available"}
+            </Button>
           </CardContent>
         </div>
-      </CardActionArea>
+      </div>
     </Card>
   );
 }

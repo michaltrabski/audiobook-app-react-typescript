@@ -26,12 +26,18 @@ import { useAudio } from "../hooks/useAudio";
 import { CircularProgress, Grid, Paper } from "@material-ui/core";
 import MySelect from "./MySelect";
 
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+
 interface Props {
   title: string;
   author: string;
   image: string;
   fileNames: string[];
   folderWithMp3: string;
+  subFolder: string;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -87,10 +93,11 @@ const Player = (props: Props) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const { title, author, image, fileNames, folderWithMp3 } = props;
+  const { title, author, image, fileNames, folderWithMp3, subFolder } = props;
 
   const { audioElement, state, setState, controls } = useAudio(
     folderWithMp3,
+    subFolder,
     fileNames
   );
   // console.log("audioElement = ", audioElement);
@@ -133,21 +140,15 @@ const Player = (props: Props) => {
         </Card>
 
         <div>
-          <Slider
-            currentTime={state.currentTime}
-            duration={state.duration}
-            handleSliderChange={handleSliderChange}
-          />
-
           <div className={classes.controls}>
-            <IconButton aria-label="previous">
-              {theme.direction === "rtl" ? (
-                <SkipNextIcon />
-              ) : (
-                <SkipPreviousIcon />
-              )}
-            </IconButton>
-            <IconButton color="primary" aria-label="play/pause">
+            {[30].map((button) => (
+              <IconButton aria-label="previous">
+                <ArrowBackIosIcon />
+                {button}s
+              </IconButton>
+            ))}
+
+            <IconButton aria-label="play/pause">
               {state.waiting ? (
                 <CircularProgress color="inherit" />
               ) : (
@@ -166,23 +167,27 @@ const Player = (props: Props) => {
                 </>
               )}
             </IconButton>
-            <IconButton aria-label="next">
-              {theme.direction === "rtl" ? (
-                <SkipPreviousIcon />
-              ) : (
-                <SkipNextIcon />
-              )}
-            </IconButton>
+            {[15].map((button) => (
+              <IconButton aria-label="next">
+                {button}s<ArrowForwardIosIcon />
+              </IconButton>
+            ))}
           </div>
+
+          <Slider
+            currentTime={state.currentTime}
+            duration={state.duration}
+            handleSliderChange={handleSliderChange}
+          />
 
           <div>{audioElement}</div>
 
-          {/* <div>
+          <div>
             <pre>
               <strong>state = </strong>
               {JSON.stringify(state, null, 2)}
             </pre>
-          </div> */}
+          </div>
         </div>
       </div>
     </Paper>

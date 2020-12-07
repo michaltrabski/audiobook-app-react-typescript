@@ -11,6 +11,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -48,7 +50,7 @@ export default function MySelect(props: Props) {
   return (
     <Box className={classes.root}>
       <IconButton aria-label="previes">
-        <SkipPreviousIcon />
+        <NavigateBeforeIcon />
       </IconButton>
 
       <FormControl className={classes.formControl}>
@@ -61,13 +63,13 @@ export default function MySelect(props: Props) {
         >
           {fileNames.map((file, i) => (
             <MenuItem key={file} value={i}>
-              {file.slice(0, 14)}
+              {file}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
       <IconButton aria-label="next">
-        <SkipNextIcon />
+        <NavigateNextIcon />
       </IconButton>
     </Box>
   );

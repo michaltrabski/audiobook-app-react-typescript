@@ -23,25 +23,19 @@ const lightTheme = createMuiTheme({
 const darkTheme = createMuiTheme({
   palette: {
     type: "dark",
-    // primary: {
-    //   light: "#757ce8",
-    //   main: "#3f50b5",
-    //   dark: "#002884",
-    //   contrastText: "#fff",
-    // },
-    // secondary: {
-    //   light: "#ff7961",
-    //   main: "#f44336",
-    //   dark: "#ba000d",
-    //   contrastText: "#000",
-    // },
+    primary: {
+      main: "#90caf9",
+    },
+    secondary: {
+      main: "#f48fb1",
+    },
   },
 });
 
 export const Context = createContext<any>({});
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Context.Provider value={{ darkMode, setDarkMode }}>

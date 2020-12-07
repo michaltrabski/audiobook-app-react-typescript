@@ -3,15 +3,10 @@
   "audioBooks": [
     {
       "id": "",
-      "title": "Angielski",
-      "author": "Remigiusz Mróz",
-      "image": "precedens.jpg",
-      "fileNames": ["21_0.mp3", "21_1.mp3", "21_2.mp3", "21_3.mp3"]
-    },
-    {
-      "id": "",
+      "available": true,
       "title": "Precedens",
-      "author": "Unnown",
+      "author": "Remigiusz Mróz",
+      "subFolder": "precedens/",
       "image": "precedens.jpg",
       "fileNames": [
         "Precedens (01).mp3",
@@ -19,98 +14,34 @@
         "Precedens (03).mp3",
         "Precedens (04).mp3",
         "Precedens (05).mp3",
-        "Precedens (06).mp3"
+        "Precedens (06).mp3",
+        "Precedens (07).mp3",
+        "Precedens (08).mp3",
+        "Precedens (09).mp3",
+        "Precedens (10).mp3",
+        "Precedens (11).mp3",
+        "Precedens (12).mp3",
+        "Precedens (13).mp3",
+        "Precedens (14).mp3",
+        "Precedens (15).mp3",
+        "Precedens (16).mp3",
+        "Precedens (17).mp3",
+        "Precedens (18).mp3",
+        "Precedens (19).mp3",
+        "Precedens (20).mp3",
+        "Precedens (21).mp3"
       ]
     },
     {
       "id": "",
-      "title": "Angielski",
-      "author": "Remigiusz Mróz",
-      "image": "precedens.jpg",
-      "fileNames": ["21_0.mp3", "21_1.mp3", "21_2.mp3", "21_3.mp3"]
-    },
-    {
-      "id": "",
-      "title": "Echo z otchłani",
-      "author": "Remigiusz Mróz",
-      "image": "echo-z-otchlani.jpg",
+      "available": true,
+      "title": "Wiedźmin",
+      "author": "Andrzej Sapkowski",
+      "subFolder": "wiedzmin/",
+      "image": "wiedzmin/wiedzmin.jpg",
       "fileNames": [
-        "Precedens (01).mp3",
-        "Precedens (02).mp3",
-        "Precedens (03).mp3",
-        "Precedens (04).mp3",
-        "Precedens (05).mp3",
-        "Precedens (06).mp3"
-      ]
-    },
-    {
-      "id": "",
-      "title": "Głosy z zaświatów",
-      "author": "Remigiusz Mróz",
-      "image": "glosy-z-zaswiatow.jpg",
-      "fileNames": [
-        "Precedens (01).mp3",
-        "Precedens (02).mp3",
-        "Precedens (03).mp3",
-        "Precedens (04).mp3",
-        "Precedens (05).mp3",
-        "Precedens (06).mp3"
-      ]
-    },
-    {
-      "id": "",
-      "title": "Halny",
-      "author": "Remigiusz Mróz",
-      "image": "halny.jpg",
-      "fileNames": [
-        "Precedens (01).mp3",
-        "Precedens (02).mp3",
-        "Precedens (03).mp3",
-        "Precedens (04).mp3",
-        "Precedens (05).mp3",
-        "Precedens (06).mp3"
-      ]
-    },
-    {
-      "id": "",
-      "title": "Iluzjonista",
-      "author": "Remigiusz Mróz",
-      "image": "iluzjonista.jpg",
-      "fileNames": [
-        "Precedens (01).mp3",
-        "Precedens (02).mp3",
-        "Precedens (03).mp3",
-        "Precedens (04).mp3",
-        "Precedens (05).mp3",
-        "Precedens (06).mp3"
-      ]
-    },
-    {
-      "id": "",
-      "title": "Listy z za grobu",
-      "author": "Remigiusz Mróz",
-      "image": "listy-z-za-grobu.jpg",
-      "fileNames": [
-        "Precedens (01).mp3",
-        "Precedens (02).mp3",
-        "Precedens (03).mp3",
-        "Precedens (04).mp3",
-        "Precedens (05).mp3",
-        "Precedens (06).mp3"
-      ]
-    },
-    {
-      "id": "",
-      "title": "Wyrok",
-      "author": "Remigiusz Mróz",
-      "image": "wyrok.jpg",
-      "fileNames": [
-        "Precedens (01).mp3",
-        "Precedens (02).mp3",
-        "Precedens (03).mp3",
-        "Precedens (04).mp3",
-        "Precedens (05).mp3",
-        "Precedens (06).mp3"
+        "02 Wiedzmin Ostatnie zyczenie - Ziarno prawdy _Audiobook_.mp3",
+        "05 Wiedzmin Ostatnie zyczenie - Kraniec swiata _Audiobook_"
       ]
     }
   ]
