@@ -118,7 +118,7 @@ const Player = (props: Props) => {
           <div className={classes.cardActionArea}>
             <CardMedia
               className={classes.cover}
-              image={folderWithMp3 + image}
+              image={folderWithMp3 + subFolder + image}
               title={title}
             />
             <div className={classes.details}>
@@ -182,12 +182,12 @@ const Player = (props: Props) => {
 
           <div>{audioElement}</div>
 
-          <div>
+          {/* <div>
             <pre>
               <strong>state = </strong>
               {JSON.stringify(state, null, 2)}
             </pre>
-          </div>
+          </div> */}
         </div>
       </div>
     </Paper>

@@ -69,6 +69,7 @@ export default function MyCard1(props: Props) {
     title,
     available,
     folderWithMp3,
+    subFolder,
     image,
     author,
     listenAudioBook,
@@ -78,7 +79,7 @@ export default function MyCard1(props: Props) {
       <div className={classes.cardActionArea}>
         <CardMedia
           className={classes.cover}
-          image={folderWithMp3 + image}
+          image={folderWithMp3 + subFolder + image}
           title={title}
         />
         <div className={classes.details}>
