@@ -15,24 +15,6 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import { FileI } from "./FixedContainer";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      margin: theme.spacing(0),
-      // backgroundColor: "red",
-      justifyContent: "space-between",
-    },
-    formControl: {
-      margin: theme.spacing(1),
-      // minWidth: 120,
-    },
-    selectEmpty: {
-      // marginTop: theme.spacing(2),
-    },
-  })
-);
-
 interface Props {
   files: FileI[];
   fileNameIndex: number;
@@ -64,7 +46,7 @@ export default function MySelect(props: Props) {
           inputProps={{ "aria-label": "Without label" }}
         >
           {files.map((file, i) => (
-            <MenuItem key={file.mp3} value={i}>
+            <MenuItem className={classes.menuItem} key={file.mp3} value={i}>
               {file.name}
             </MenuItem>
           ))}
@@ -76,3 +58,24 @@ export default function MySelect(props: Props) {
     </Box>
   );
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+      margin: theme.spacing(0),
+      // backgroundColor: "red",
+      justifyContent: "space-between",
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      // minWidth: 120,
+    },
+    selectEmpty: {
+      // marginTop: theme.spacing(2),
+    },
+    menuItem: {
+      whiteSpace: "normal",
+    },
+  })
+);
