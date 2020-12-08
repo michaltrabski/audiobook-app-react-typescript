@@ -78,7 +78,7 @@ const Player = (props: Props) => {
               image={props.folderWithMp3 + subFolder + image}
               title={title}
             />
-            <h1>ready = {JSON.stringify(ready)}</h1>
+            {/* <h1>ready = {JSON.stringify(ready)}</h1> */}
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <Typography component="h2" variant="h6">
@@ -137,6 +137,7 @@ const Player = (props: Props) => {
             duration={state.duration}
             allFilesDuration={allFilesDuration}
             handleSliderChange={handleSliderChange}
+            ready={ready}
           />
 
           <div>{audioElement}</div>

@@ -14,6 +14,7 @@ interface Props {
   currentTime: number;
   duration: number;
   allFilesDuration: number;
+  ready: boolean;
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
 }
 
@@ -31,6 +32,7 @@ export default function RangeSlider(props: Props) {
         aria-labelledby="slider"
         max={Math.floor(props.duration)}
         valueLabelFormat={() => convertSeconds(props.currentTime)}
+        disabled={!props.ready}
       />
       <Box className={classes.center}>
         <Button>{convertSeconds(props.currentTime)}</Button>
