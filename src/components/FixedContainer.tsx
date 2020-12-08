@@ -74,14 +74,7 @@ export default function FixedContainer(props: Props) {
           {audioBooks.slice(0, limit).map((book, index) => (
             <Fragment key={book.id}>
               {index === 0 ? (
-                <Player
-                  title={book.title}
-                  author={book.author}
-                  files={book.files}
-                  folderWithMp3={data.folderWithMp3}
-                  subFolder={book.subFolder}
-                  image={book.image}
-                />
+                <Player audioBook={book} folderWithMp3={data.folderWithMp3} />
               ) : (
                 <MyCard
                   index={index}

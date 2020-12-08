@@ -8,23 +8,12 @@ import {
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { convertSeconds } from "../utils/utils";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      // width: "100%",
-      paddingRight: theme.spacing(2),
-      paddingLeft: theme.spacing(2),
-
-      paddingTop: theme.spacing(4),
-      // paddingBottom: theme.spacing(0),
-    },
-  })
-);
+import { Box, Button } from "@material-ui/core";
 
 interface Props {
   currentTime: number;
   duration: number;
+  allFilesDuration: number;
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
 }
 
@@ -38,11 +27,32 @@ export default function RangeSlider(props: Props) {
         onChange={(e, newCurrentTime) =>
           props.handleSliderChange(e, newCurrentTime)
         }
-        valueLabelDisplay="on"
+        valueLabelDisplay="off"
         aria-labelledby="slider"
         max={Math.floor(props.duration)}
         valueLabelFormat={() => convertSeconds(props.currentTime)}
       />
+      <Box className={classes.center}>
+        <Button>{convertSeconds(props.currentTime)}</Button>
+        <span> / </span>
+        <Button>{convertSeconds(props.allFilesDuration)}</Button>
+      </Box>
     </div>
   );
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      // width: "100%",
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(2),
+
+      paddingTop: theme.spacing(2),
+      // paddingBottom: theme.spacing(0),
+    },
+    center: {
+      textAlign: "center",
+    },
+  })
+);

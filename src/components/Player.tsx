@@ -30,74 +30,29 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import { FileI } from "./FixedContainer";
+import { AudioBookI, FileI } from "./FixedContainer";
 
 interface Props {
-  title: string;
-  author: string;
-  image: string;
-  files: FileI[];
+  audioBook: AudioBookI;
   folderWithMp3: string;
-  subFolder: string;
 }
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paperRoot: {
-      marginBottom: theme.spacing(2),
-    },
-    cardRoot: {
-      paddingTop: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      paddingLeft: theme.spacing(2),
-      boxShadow: "none",
-    },
-    cardActionArea: {
-      display: "flex",
-      justifyContent: "flex-start",
-      // alignItems: "flex-start",
-    },
-    media: {
-      height: 200,
-    },
-    details: {
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-    },
-    content: {
-      flex: "1 0 auto",
-    },
-    cover: {
-      width: 90,
-      height: 130,
-      flexShrink: 0,
-      borderRadius: theme.spacing(0.5),
-    },
-    controls: {
-      display: "flex",
-      alignItems: "center",
-      // paddingLeft: theme.spacing(1),
-      // paddingBottom: theme.spacing(1),
-      // backgroundColor: "red",
-      justifyContent: "space-between",
-    },
-    playPauseIcon: {
-      height: 38,
-      width: 38,
-    },
-  })
-);
 
 const Player = (props: Props) => {
   // console.log("CardPlayer");
   const classes = useStyles();
   const theme = useTheme();
 
-  const { title, author, image, files, folderWithMp3, subFolder } = props;
+  const {
+    title,
+    author,
+    image,
+    files,
+    subFolder,
+    allFilesDuration,
+  } = props.audioBook;
 
-  const { audioElement, state, setState, controls } = useAudio(
-    folderWithMp3,
+  const { audioElement, state, setState, controls, ready } = useAudio(
+    props.folderWithMp3,
     subFolder,
     files
   );
@@ -108,6 +63,7 @@ const Player = (props: Props) => {
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
     let currentTime =
       newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
+    // console.log(currentTime, typeof currentTime);
     setState((s) => ({ ...s, currentTime }));
     controls.seek(currentTime);
   };
@@ -119,9 +75,10 @@ const Player = (props: Props) => {
           <div className={classes.cardActionArea}>
             <CardMedia
               className={classes.cover}
-              image={folderWithMp3 + subFolder + image}
+              image={props.folderWithMp3 + subFolder + image}
               title={title}
             />
+            <h1>ready = {JSON.stringify(ready)}</h1>
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <Typography component="h2" variant="h6">
@@ -178,15 +135,26 @@ const Player = (props: Props) => {
           <Slider
             currentTime={state.currentTime}
             duration={state.duration}
+            allFilesDuration={allFilesDuration}
             handleSliderChange={handleSliderChange}
           />
 
           <div>{audioElement}</div>
 
+          {/* <pre>
+            <strong>state = </strong>
+            {JSON.stringify(state.fileNameIndex, null, 2)}
+          </pre>
+          <p>{JSON.stringify(state.currentTime, null, 2)}</p> */}
+
           {/* <div>
             <pre>
               <strong>state = </strong>
-              {JSON.stringify(state, null, 2)}
+              {JSON.stringify({ ...state, files: [] }, null, 2)}
+            </pre>
+            <pre>
+              <strong>state = </strong>
+              {JSON.stringify({ ...state }, null, 2)}
             </pre>
           </div> */}
         </div>
@@ -194,5 +162,53 @@ const Player = (props: Props) => {
     </Paper>
   );
 };
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paperRoot: {
+      marginBottom: theme.spacing(2),
+    },
+    cardRoot: {
+      paddingTop: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(2),
+      boxShadow: "none",
+    },
+    cardActionArea: {
+      display: "flex",
+      justifyContent: "flex-start",
+      // alignItems: "flex-start",
+    },
+    media: {
+      height: 200,
+    },
+    details: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+    },
+    content: {
+      flex: "1 0 auto",
+    },
+    cover: {
+      width: 90,
+      height: 130,
+      flexShrink: 0,
+      borderRadius: theme.spacing(0.5),
+    },
+    controls: {
+      display: "flex",
+      alignItems: "center",
+      // paddingLeft: theme.spacing(1),
+      // paddingBottom: theme.spacing(1),
+      // backgroundColor: "red",
+      justifyContent: "space-between",
+    },
+    playPauseIcon: {
+      height: 38,
+      width: 38,
+    },
+  })
+);
 
 export default Player;

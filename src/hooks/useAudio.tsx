@@ -1,5 +1,6 @@
 import { createElement, useEffect, useRef, useState } from "react";
 import { FileI } from "../components/FixedContainer";
+import { getStorage, setStorage } from "../utils/utils";
 
 export const useAudio = (
   folderWithMp3: string,
@@ -7,18 +8,20 @@ export const useAudio = (
   files: FileI[]
 ) => {
   const [state, setState] = useState({
+    ready: false,
     files,
-    fileNameIndex: 0,
+    fileNameIndex: getStorage(`${subFolder}-fileNameIndex`, 0),
     paused: true,
     waiting: false,
-    autoplay: true,
-    currentTime: 0,
+    autoplay: false,
+    currentTime: getStorage(`${subFolder}-currentTime`, 0),
     duration: 0,
     buffered: {
       start: 0,
       end: 0,
     },
   });
+
   const ref = useRef<HTMLAudioElement | null>(null);
   const src = folderWithMp3 + subFolder + files[state.fileNameIndex].mp3;
 
@@ -29,7 +32,8 @@ export const useAudio = (
     onPlay: () => setState((s) => ({ ...s, paused: false })),
     onPause: () => setState((s) => ({ ...s, paused: true })),
     onWaiting: () => setState((s) => ({ ...s, waiting: true })),
-    onPlaying: () => setState((s) => ({ ...s, waiting: false })),
+    onPlaying: () =>
+      setState((s) => ({ ...s, waiting: false, autoplay: true })),
     onLoadedData: () => {
       console.log("onLoadedData");
       const audio = ref.current;
@@ -52,32 +56,42 @@ export const useAudio = (
       console.log("onTimeUpdate");
       const audio = ref.current;
       if (!audio) return;
+
       setState((s) => ({ ...s, currentTime: audio.currentTime }));
+      setStorage(`${subFolder}-fileNameIndex`, state.fileNameIndex);
+      setStorage(`${subFolder}-currentTime`, Math.floor(state.currentTime));
     },
     onDurationChange: () => {
       const audio = ref.current;
       if (!audio) return;
-      const { duration, buffered } = audio;
 
+      const { duration, buffered } = audio;
       console.log("buffered", buffered);
       setState((s) => ({ ...s, duration }));
     },
   });
 
   const controls = {
-    play: () => ref?.current?.play(),
+    play: () => {
+      const audio = ref.current;
+      if (!audio) return;
+
+      audio.currentTime = state.currentTime;
+      audio.play();
+    },
     pause: () => ref?.current?.pause(),
     seek: (newCurrentTime: number | number[]) => {
       const audio = ref.current;
       if (!audio) return;
+
       if (newCurrentTime instanceof Array) newCurrentTime = newCurrentTime[0];
       newCurrentTime = Math.min(state.duration, Math.max(0, newCurrentTime));
       audio.currentTime = newCurrentTime || 0;
       audio.play();
     },
     changeFile: (fileNameIndex: number) => {
-      console.log("changeFile", fileNameIndex);
-      if (fileNameIndex) setState((s) => ({ ...s, fileNameIndex }));
+      // console.log("changeFile", fileNameIndex);
+      setState((s) => ({ ...s, fileNameIndex }));
     },
   };
 
@@ -89,5 +103,12 @@ export const useAudio = (
 
     setState((s) => ({ ...s, ended: false, duration: 0 }));
   }, [src]);
-  return { audioElement, state, setState, controls };
+  useEffect(() => {
+    console.log("state.duration");
+    if (state.duration > 0) {
+      setState((s) => ({ ...s, ready: true }));
+    }
+  }, [state.duration]);
+
+  return { audioElement, state, setState, controls, ready: state.ready };
 };

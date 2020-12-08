@@ -45,6 +45,7 @@ export default function MySelect(props: Props) {
   const handleChange = (
     e: React.ChangeEvent<{ name?: string; value: unknown }>
   ) => {
+    // console.log(e.target.value);
     changeFile(e.target.value as number);
   };
 
