@@ -13,6 +13,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import { FileI } from "./FixedContainer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,14 +34,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
-  fileNames: string[];
+  files: FileI[];
   fileNameIndex: number;
   changeFile: (fileNameIndex: number) => void;
 }
 
 export default function MySelect(props: Props) {
   const classes = useStyles();
-  const { fileNames, fileNameIndex, changeFile } = props;
+  const { files, fileNameIndex, changeFile } = props;
   const handleChange = (
     e: React.ChangeEvent<{ name?: string; value: unknown }>
   ) => {
@@ -61,9 +62,9 @@ export default function MySelect(props: Props) {
           className={classes.selectEmpty}
           inputProps={{ "aria-label": "Without label" }}
         >
-          {fileNames.map((file, i) => (
-            <MenuItem key={file} value={i}>
-              {file}
+          {files.map((file, i) => (
+            <MenuItem key={file.mp3} value={i}>
+              {file.name}
             </MenuItem>
           ))}
         </Select>

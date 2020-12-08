@@ -1,5 +1,6 @@
 import slugify from "slugify";
-import { SingleAudioBookI } from "../components/FixedContainer";
+import { AudioBookI } from "../components/FixedContainer";
+import _ from "lodash";
 
 export const makeSlug = (text: string) => {
   return slugify(text, {
@@ -22,22 +23,30 @@ export const convertSeconds = (seconds: number) => {
 };
 
 export const mapArrayOrder = (
-  arrayWithDataToOrder: SingleAudioBookI[],
-  arrayWithTitleOrder: string[],
+  arrToOrder: AudioBookI[],
+  arrayWithKeysToOrderBy: string[],
   key: string
 ) => {
-  arrayWithDataToOrder.sort(function (a: any, b: any) {
+  // sort mp3 files
+  const arr = arrToOrder.map((item) => {
+    const files = item.files;
+    item.files = _.sortBy(files, [(f) => f.mp3]);
+    return item;
+  });
+
+  // sort array by title
+  arr.sort(function (a: any, b: any) {
     let A = a[key];
     let B = b[key];
 
-    if (arrayWithTitleOrder.indexOf(A) > arrayWithTitleOrder.indexOf(B)) {
+    if (arrayWithKeysToOrderBy.indexOf(A) > arrayWithKeysToOrderBy.indexOf(B)) {
       return 1;
     } else {
       return -1;
     }
   });
 
-  return arrayWithDataToOrder;
+  return arr;
 };
 
 export const getStorage = (key: string, defaultValue: any) => {

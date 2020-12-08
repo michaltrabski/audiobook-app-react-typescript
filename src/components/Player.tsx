@@ -30,12 +30,13 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { FileI } from "./FixedContainer";
 
 interface Props {
   title: string;
   author: string;
   image: string;
-  fileNames: string[];
+  files: FileI[];
   folderWithMp3: string;
   subFolder: string;
 }
@@ -93,12 +94,12 @@ const Player = (props: Props) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const { title, author, image, fileNames, folderWithMp3, subFolder } = props;
+  const { title, author, image, files, folderWithMp3, subFolder } = props;
 
   const { audioElement, state, setState, controls } = useAudio(
     folderWithMp3,
     subFolder,
-    fileNames
+    files
   );
   // console.log("audioElement = ", audioElement);
   // console.log("state = ", state);
@@ -130,7 +131,7 @@ const Player = (props: Props) => {
                   {author}
                 </Typography>
                 <MySelect
-                  fileNames={state.fileNames}
+                  files={state.files}
                   fileNameIndex={state.fileNameIndex}
                   changeFile={controls.changeFile}
                 />

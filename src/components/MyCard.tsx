@@ -61,7 +61,7 @@ interface Props {
   listenAudioBook: (index: number) => void;
 }
 
-export default function MyCard1(props: Props) {
+export default function MyCard(props: Props) {
   const classes = useStyles();
 
   const {

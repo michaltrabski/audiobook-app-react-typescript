@@ -1,14 +1,12 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-
-import data from "../data/data.json";
+import data from "../data/audioBooks.json";
 import { Box, Button } from "@material-ui/core";
 import Player from "./Player";
 import HideAppBar from "./HideAppBar";
-import MyCard1 from "./MyCard1";
+import MyCard from "./MyCard";
 import { animateScroll as scroll } from "react-scroll";
 import { v4 as uuidv4 } from "uuid";
 import { setStorage, getStorage, mapArrayOrder } from "../utils/utils";
@@ -25,14 +23,20 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export interface SingleAudioBookI {
-  id: string;
+export interface FileI {
+  name: string;
+  mp3: string;
+  duration: number;
+}
+export interface AudioBookI {
   title: string;
+  id: string;
   available: boolean;
   author: string;
   image: string;
+  allFilesDuration: number;
   subFolder: string;
-  fileNames: string[];
+  files: FileI[];
 }
 
 interface Props {
@@ -43,13 +47,8 @@ export default function FixedContainer(props: Props) {
   const classes = useStyles();
   const [limit, setLimit] = useState(5);
   const [audioBooks, setAudioBooks] = useState(() => {
-    const arrayToOrder = data.audioBooks.map((book) => {
-      book.id = uuidv4();
-      return book;
-    });
-
     const audioBooksOrder = getStorage("audioBooksOrder", [""]);
-    return mapArrayOrder(arrayToOrder, audioBooksOrder, "title");
+    return mapArrayOrder(data.audioBooks, audioBooksOrder, "title");
   });
 
   useEffect(() => {
@@ -78,13 +77,13 @@ export default function FixedContainer(props: Props) {
                 <Player
                   title={book.title}
                   author={book.author}
-                  fileNames={book.fileNames}
+                  files={book.files}
                   folderWithMp3={data.folderWithMp3}
                   subFolder={book.subFolder}
                   image={book.image}
                 />
               ) : (
-                <MyCard1
+                <MyCard
                   index={index}
                   title={book.title}
                   available={book.available}

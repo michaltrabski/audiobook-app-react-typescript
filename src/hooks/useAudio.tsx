@@ -1,12 +1,13 @@
 import { createElement, useEffect, useRef, useState } from "react";
+import { FileI } from "../components/FixedContainer";
 
 export const useAudio = (
   folderWithMp3: string,
   subFolder: string,
-  fileNames: string[]
+  files: FileI[]
 ) => {
   const [state, setState] = useState({
-    fileNames,
+    files,
     fileNameIndex: 0,
     paused: true,
     waiting: false,
@@ -19,7 +20,7 @@ export const useAudio = (
     },
   });
   const ref = useRef<HTMLAudioElement | null>(null);
-  const src = folderWithMp3 + subFolder + fileNames[state.fileNameIndex];
+  const src = folderWithMp3 + subFolder + files[state.fileNameIndex].mp3;
 
   const audioElement = createElement("audio", {
     src,
@@ -42,7 +43,7 @@ export const useAudio = (
         ...s,
         ended: true,
         fileNameIndex:
-          fileNames.length > s.fileNameIndex + 1
+          files.length > s.fileNameIndex + 1
             ? s.fileNameIndex + 1
             : s.fileNameIndex,
       }));
