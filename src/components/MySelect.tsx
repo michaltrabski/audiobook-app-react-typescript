@@ -27,16 +27,25 @@ export default function MySelect(props: Props) {
   const handleChange = (
     e: React.ChangeEvent<{ name?: string; value: unknown }>
   ) => {
-    // console.log(e.target.value);
     changeFile(e.target.value as number);
+  };
+
+  const handleClick = (newFileNameIndex: number) => {
+    // console.log(newFileNameIndex);
+    changeFile(newFileNameIndex);
   };
 
   return (
     <Box className={classes.root}>
-      <IconButton aria-label="previes">
-        <NavigateBeforeIcon />
-      </IconButton>
-
+      {files.length > 1 && (
+        <IconButton
+          disabled={fileNameIndex === 0 ? true : false}
+          aria-label="previes"
+          onClick={() => handleClick(fileNameIndex - 1)}
+        >
+          <NavigateBeforeIcon />
+        </IconButton>
+      )}
       <FormControl className={classes.formControl}>
         <Select
           value={fileNameIndex}
@@ -52,9 +61,15 @@ export default function MySelect(props: Props) {
           ))}
         </Select>
       </FormControl>
-      <IconButton aria-label="next">
-        <NavigateNextIcon />
-      </IconButton>
+      {files.length > 1 && (
+        <IconButton
+          disabled={fileNameIndex === files.length - 1 ? true : false}
+          aria-label="next"
+          onClick={() => handleClick(fileNameIndex + 1)}
+        >
+          <NavigateNextIcon />
+        </IconButton>
+      )}
     </Box>
   );
 }

@@ -1,24 +1,56 @@
 {
-  "folderWithMp3": "https://poznaj-testy.hekko24.pl/audiobooki/",
+  "folderWithMp3": "https://poznaj-testy.hekko24.pl/audiobooks/",
   "audioBooks": [
     {
       "title": "angielski-lekcja-21",
-      "id": "id178432",
+      "id": "id210067",
       "available": true,
       "author": "",
       "image": "",
-      "allFilesDuration": 9.6831,
+      "allFilesDuration": 9.683100000000001,
       "subFolder": "angielski-lekcja-21/",
       "files": [
-        { "name": "21_0", "mp3": "21_0.mp3", "duration": 1.1745 },
         { "name": "21_1", "mp3": "21_1.mp3", "duration": 4.1499 },
+        { "name": "21_3", "mp3": "21_3.mp3", "duration": 2.1663 },
         { "name": "21_2", "mp3": "21_2.mp3", "duration": 2.1924 },
-        { "name": "21_3", "mp3": "21_3.mp3", "duration": 2.1663 }
+        { "name": "21_0", "mp3": "21_0.mp3", "duration": 1.1745 }
+      ]
+    },
+    {
+      "title": "niewinny",
+      "id": "id113776",
+      "available": true,
+      "author": "Harlan Coben",
+      "image": "niewinny-w-iext54656553.jpg",
+      "allFilesDuration": 39205.302857,
+      "subFolder": "niewinny/",
+      "files": [
+        {
+          "name": "Niewinny Harlan Coben [Audiobook PL]",
+          "mp3": "Niewinny Harlan Coben [Audiobook PL].mp3",
+          "duration": 39205.302857
+        }
+      ]
+    },
+    {
+      "title": "Najczarniejszy strach",
+      "id": "id841633",
+      "available": true,
+      "author": "Harlan Coben",
+      "image": "najczarniejszy-strach-w-labiryncie-klamstw-tom-19-w-iext63063784.jpg",
+      "allFilesDuration": 6651.141224,
+      "subFolder": "Najczarniejszy strach/",
+      "files": [
+        {
+          "name": "Najczarniejszy strach - Harlan Coben   audiobook Pl",
+          "mp3": "Najczarniejszy strach - Harlan Coben   audiobook Pl.mp3",
+          "duration": 6651.141224
+        }
       ]
     },
     {
       "title": "precedens",
-      "id": "id870275",
+      "id": "id179483",
       "available": true,
       "author": "Remigiusz Mróz",
       "image": "precedens.jpg",
@@ -26,49 +58,9 @@
       "subFolder": "precedens/",
       "files": [
         {
-          "name": "Precedens (01)",
-          "mp3": "Precedens (01).mp3",
-          "duration": 1122.847347
-        },
-        {
           "name": "Precedens (03)",
           "mp3": "Precedens (03).mp3",
           "duration": 1127.235918
-        },
-        {
-          "name": "Precedens (05)",
-          "mp3": "Precedens (05).mp3",
-          "duration": 553.404082
-        },
-        {
-          "name": "Precedens (11)",
-          "mp3": "Precedens (11).mp3",
-          "duration": 1118.249796
-        },
-        {
-          "name": "Precedens (04)",
-          "mp3": "Precedens (04).mp3",
-          "duration": 530.390204
-        },
-        {
-          "name": "Precedens (12)",
-          "mp3": "Precedens (12).mp3",
-          "duration": 871.105306
-        },
-        {
-          "name": "Precedens (08)",
-          "mp3": "Precedens (08).mp3",
-          "duration": 1297.972245
-        },
-        {
-          "name": "Precedens (02)",
-          "mp3": "Precedens (02).mp3",
-          "duration": 950.543673
-        },
-        {
-          "name": "Precedens (09)",
-          "mp3": "Precedens (09).mp3",
-          "duration": 1441.48898
         },
         {
           "name": "Precedens (06)",
@@ -76,9 +68,24 @@
           "duration": 1128.411429
         },
         {
-          "name": "Precedens (07)",
-          "mp3": "Precedens (07).mp3",
-          "duration": 979.879184
+          "name": "Precedens (02)",
+          "mp3": "Precedens (02).mp3",
+          "duration": 950.543673
+        },
+        {
+          "name": "Precedens (05)",
+          "mp3": "Precedens (05).mp3",
+          "duration": 553.404082
+        },
+        {
+          "name": "Precedens (04)",
+          "mp3": "Precedens (04).mp3",
+          "duration": 530.390204
+        },
+        {
+          "name": "Precedens (11)",
+          "mp3": "Precedens (11).mp3",
+          "duration": 1118.249796
         },
         {
           "name": "Precedens (10)",
@@ -86,29 +93,34 @@
           "duration": 1845.263673
         },
         {
-          "name": "Precedens (16)",
-          "mp3": "Precedens (16).mp3",
-          "duration": 861.962449
-        },
-        {
-          "name": "Precedens (19)",
-          "mp3": "Precedens (19).mp3",
-          "duration": 647.862857
-        },
-        {
-          "name": "Precedens (13)",
-          "mp3": "Precedens (13).mp3",
-          "duration": 821.446531
-        },
-        {
           "name": "Precedens (14)",
           "mp3": "Precedens (14).mp3",
           "duration": 971.467755
         },
         {
-          "name": "Precedens (22)",
-          "mp3": "Precedens (22).mp3",
-          "duration": 1041.841633
+          "name": "Precedens (08)",
+          "mp3": "Precedens (08).mp3",
+          "duration": 1297.972245
+        },
+        {
+          "name": "Precedens (01)",
+          "mp3": "Precedens (01).mp3",
+          "duration": 1122.847347
+        },
+        {
+          "name": "Precedens (07)",
+          "mp3": "Precedens (07).mp3",
+          "duration": 979.879184
+        },
+        {
+          "name": "Precedens (09)",
+          "mp3": "Precedens (09).mp3",
+          "duration": 1441.48898
+        },
+        {
+          "name": "Precedens (12)",
+          "mp3": "Precedens (12).mp3",
+          "duration": 871.105306
         },
         {
           "name": "Precedens (18)",
@@ -116,14 +128,14 @@
           "duration": 802.847347
         },
         {
-          "name": "Precedens (35)",
-          "mp3": "Precedens (35).mp3",
-          "duration": 252.708571
+          "name": "Precedens (15)",
+          "mp3": "Precedens (15).mp3",
+          "duration": 857.025306
         },
         {
-          "name": "Precedens (20)",
-          "mp3": "Precedens (20).mp3",
-          "duration": 803.030204
+          "name": "Precedens (19)",
+          "mp3": "Precedens (19).mp3",
+          "duration": 647.862857
         },
         {
           "name": "Precedens (17)",
@@ -136,25 +148,45 @@
           "duration": 634.697143
         },
         {
+          "name": "Precedens (13)",
+          "mp3": "Precedens (13).mp3",
+          "duration": 821.446531
+        },
+        {
           "name": "Precedens (24)",
           "mp3": "Precedens (24).mp3",
           "duration": 963.213061
         },
         {
-          "name": "Precedens (15)",
-          "mp3": "Precedens (15).mp3",
-          "duration": 857.025306
+          "name": "Precedens (16)",
+          "mp3": "Precedens (16).mp3",
+          "duration": 861.962449
         },
         {
           "name": "Precedens (25)",
           "mp3": "Precedens (25).mp3",
           "duration": 943.516735
+        },
+        {
+          "name": "Precedens (20)",
+          "mp3": "Precedens (20).mp3",
+          "duration": 803.030204
+        },
+        {
+          "name": "Precedens (22)",
+          "mp3": "Precedens (22).mp3",
+          "duration": 1041.841633
+        },
+        {
+          "name": "Precedens (35)",
+          "mp3": "Precedens (35).mp3",
+          "duration": 252.708571
         }
       ]
     },
     {
       "title": "wiedzmin",
-      "id": "id825801",
+      "id": "id110032",
       "available": true,
       "author": "Andrzej Sapkowski",
       "image": "wiedzmin.jpg",
@@ -162,14 +194,14 @@
       "subFolder": "wiedzmin/",
       "files": [
         {
+          "name": "01 Wiedzmin Ostatnie zyczenie - Glos rozsadku _ Wiedzmin _Audiobook_",
+          "mp3": "01 Wiedzmin Ostatnie zyczenie - Glos rozsadku _ Wiedzmin _Audiobook_.mp3",
+          "duration": 4640.914286
+        },
+        {
           "name": "03 Wiedzmin Ostatnie zyczenie - Mniejsze zlo _Audiobook_",
           "mp3": "03 Wiedzmin Ostatnie zyczenie - Mniejsze zlo _Audiobook_.mp3",
           "duration": 7295.425306
-        },
-        {
-          "name": "02 Wiedzmin Ostatnie zyczenie - Ziarno prawdy _Audiobook_",
-          "mp3": "02 Wiedzmin Ostatnie zyczenie - Ziarno prawdy _Audiobook_.mp3",
-          "duration": 5985.671837
         },
         {
           "name": "04 Wiedzmin Ostatnie zyczenie - Kwestia ceny _Audiobook_",
@@ -182,9 +214,19 @@
           "duration": 6020.937143
         },
         {
-          "name": "01 Wiedzmin Ostatnie zyczenie - Glos rozsadku _ Wiedzmin _Audiobook_",
-          "mp3": "01 Wiedzmin Ostatnie zyczenie - Glos rozsadku _ Wiedzmin _Audiobook_.mp3",
-          "duration": 4640.914286
+          "name": "09 Wiedzmin Miecz przeznaczenia - Wieczny ogien _Audiobook_",
+          "mp3": "09 Wiedzmin Miecz przeznaczenia - Wieczny ogien _Audiobook_.mp3",
+          "duration": 6860.564898
+        },
+        {
+          "name": "05 Wiedzmin Ostatnie zyczenie - Kraniec swiata _Audiobook_",
+          "mp3": "05 Wiedzmin Ostatnie zyczenie - Kraniec swiata _Audiobook_.mp3",
+          "duration": 6777.70449
+        },
+        {
+          "name": "02 Wiedzmin Ostatnie zyczenie - Ziarno prawdy _Audiobook_",
+          "mp3": "02 Wiedzmin Ostatnie zyczenie - Ziarno prawdy _Audiobook_.mp3",
+          "duration": 5985.671837
         },
         {
           "name": "06 Wiedzmin Ostatnie zyczenie - Ostatnie zyczenie _Audiobook_",
@@ -195,16 +237,22 @@
           "name": "07 Wiedzmin Miecz przeznaczenia - Granica mozliwosci _Audiobook_",
           "mp3": "07 Wiedzmin Miecz przeznaczenia - Granica mozliwosci _Audiobook_.mp3",
           "duration": 10998.674286
-        },
+        }
+      ]
+    },
+    {
+      "title": "Zapach śmierci",
+      "id": "id805506",
+      "available": true,
+      "author": "Simon Beckett",
+      "image": "zapach-smierci-david-hunter-tom-6-p-iext55232656.jpg",
+      "allFilesDuration": 2239.608163,
+      "subFolder": "Zapach śmierci/",
+      "files": [
         {
-          "name": "05 Wiedzmin Ostatnie zyczenie - Kraniec swiata _Audiobook_",
-          "mp3": "05 Wiedzmin Ostatnie zyczenie - Kraniec swiata _Audiobook_.mp3",
-          "duration": 6777.70449
-        },
-        {
-          "name": "09 Wiedzmin Miecz przeznaczenia - Wieczny ogien _Audiobook_",
-          "mp3": "09 Wiedzmin Miecz przeznaczenia - Wieczny ogien _Audiobook_.mp3",
-          "duration": 6860.564898
+          "name": "Simon Beckett  Zapach śmierci audiobook PL całość",
+          "mp3": "Simon Beckett  Zapach śmierci audiobook PL całość.mp3",
+          "duration": 2239.608163
         }
       ]
     }

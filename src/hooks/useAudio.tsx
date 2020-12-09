@@ -103,12 +103,14 @@ export const useAudio = (
 
     setState((s) => ({ ...s, ended: false, duration: 0 }));
   }, [src]);
+
   useEffect(() => {
     console.log("state.duration");
+    setState((s) => ({ ...s, ready: false }));
     if (state.duration > 0) {
       setState((s) => ({ ...s, ready: true }));
     }
-  }, [state.duration]);
+  }, [src, state.duration]);
 
   return { audioElement, state, setState, controls, ready: state.ready };
 };

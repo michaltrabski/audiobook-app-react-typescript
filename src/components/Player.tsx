@@ -3,6 +3,7 @@ import {
   Theme,
   createStyles,
   makeStyles,
+  withStyles,
   useTheme,
 } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -23,7 +24,7 @@ import Button from "@material-ui/core/Button";
 import { makeSlug } from "../utils/utils";
 import MySkeleton from "./MySkeleton";
 import { useAudio } from "../hooks/useAudio";
-import { CircularProgress, Grid, Paper } from "@material-ui/core";
+import { Badge, CircularProgress, Grid, Paper } from "@material-ui/core";
 import MySelect from "./MySelect";
 
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
@@ -31,6 +32,8 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { AudioBookI, FileI } from "./FixedContainer";
+
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
 interface Props {
   audioBook: AudioBookI;
@@ -68,6 +71,22 @@ const Player = (props: Props) => {
     controls.seek(currentTime);
   };
 
+  const handleClick = (step: number, direction: "LEFT" | "RIGHT") => {
+    let currentTime = state.currentTime;
+    if (direction === "LEFT") {
+      currentTime = currentTime > step ? currentTime - step : 0;
+    }
+    if (direction === "RIGHT") {
+      console.log(state.duration, state.currentTime + step);
+      currentTime =
+        state.duration > state.currentTime + step
+          ? state.currentTime + step
+          : state.duration;
+    }
+    setState((s) => ({ ...s, currentTime }));
+    controls.seek(currentTime);
+  };
+
   return (
     <Paper elevation={3} className={classes.paperRoot}>
       <div>
@@ -100,35 +119,45 @@ const Player = (props: Props) => {
 
         <div>
           <div className={classes.controls}>
-            {[30].map((button) => (
-              <IconButton aria-label="previous">
-                <ArrowBackIosIcon />
-                {button}s
+            {[30].map((seconds) => (
+              <IconButton
+                aria-label="previous"
+                onClick={() => handleClick(seconds, "LEFT")}
+              >
+                <BadgeLeft badgeContent={seconds} color="secondary">
+                  <ArrowBackIosIcon />
+                </BadgeLeft>
               </IconButton>
             ))}
 
-            <IconButton aria-label="play/pause">
-              {state.waiting ? (
-                <CircularProgress color="inherit" />
+            <IconButton aria-label="play/pause" disabled={!ready}>
+              {state.paused ? (
+                <PlayArrowIcon
+                  onClick={() => controls.play()}
+                  className={classes.playPauseIcon}
+                />
               ) : (
-                <>
-                  {state.paused ? (
-                    <PlayArrowIcon
-                      onClick={() => controls.play()}
-                      className={classes.playPauseIcon}
-                    />
-                  ) : (
-                    <PauseIcon
-                      onClick={() => controls.pause()}
-                      className={classes.playPauseIcon}
-                    />
-                  )}
-                </>
+                <PauseIcon
+                  onClick={() => controls.pause()}
+                  className={classes.playPauseIcon}
+                />
               )}
             </IconButton>
-            {[15].map((button) => (
-              <IconButton aria-label="next">
-                {button}s<ArrowForwardIosIcon />
+            {[15].map((seconds) => (
+              <IconButton
+                aria-label="next"
+                onClick={() => handleClick(seconds, "RIGHT")}
+              >
+                <BadgeRight
+                  badgeContent={seconds}
+                  color="secondary"
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                >
+                  <ArrowForwardIosIcon />
+                </BadgeRight>
               </IconButton>
             ))}
           </div>
@@ -154,6 +183,8 @@ const Player = (props: Props) => {
               <strong>state = </strong>
               {JSON.stringify({ ...state, files: [] }, null, 2)}
             </pre>
+          </div> */}
+          {/* <div>
             <pre>
               <strong>state = </strong>
               {JSON.stringify({ ...state }, null, 2)}
@@ -164,6 +195,27 @@ const Player = (props: Props) => {
     </Paper>
   );
 };
+
+const BadgeRight = withStyles((theme: Theme) =>
+  createStyles({
+    badge: {
+      left: "-6px",
+      top: "50%",
+      // border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  })
+)(Badge);
+
+const BadgeLeft = withStyles((theme: Theme) =>
+  createStyles({
+    badge: {
+      // right: "-3px",
+      top: "50%",
+      padding: "0 4px",
+    },
+  })
+)(Badge);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
