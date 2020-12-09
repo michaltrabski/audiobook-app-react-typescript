@@ -24,11 +24,12 @@ export default function RangeSlider(props: Props) {
   return (
     <div className={classes.root}>
       <Slider
+        className={classes.sliderLabel}
         value={Math.floor(props.currentTime)}
         onChange={(e, newCurrentTime) =>
           props.handleSliderChange(e, newCurrentTime)
         }
-        valueLabelDisplay="off"
+        valueLabelDisplay="auto"
         aria-labelledby="slider"
         max={Math.floor(props.duration)}
         valueLabelFormat={() => convertSeconds(props.currentTime)}
@@ -55,6 +56,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     center: {
       textAlign: "center",
+    },
+    sliderLabel: {
+      // width: "50",
     },
   })
 );

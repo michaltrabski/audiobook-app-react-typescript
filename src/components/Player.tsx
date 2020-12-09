@@ -87,15 +87,16 @@ const Player = (props: Props) => {
                 <Typography variant="subtitle1" color="textSecondary">
                   {author}
                 </Typography>
-                <MySelect
-                  files={state.files}
-                  fileNameIndex={state.fileNameIndex}
-                  changeFile={controls.changeFile}
-                />
               </CardContent>
             </div>
           </div>
         </Card>
+
+        <MySelect
+          files={state.files}
+          fileNameIndex={state.fileNameIndex}
+          changeFile={controls.changeFile}
+        />
 
         <div>
           <div className={classes.controls}>
