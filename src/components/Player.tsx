@@ -112,13 +112,11 @@ const Player = (props: Props) => {
             </div>
           </div>
         </Card>
-
         <MySelect
           files={state.files}
           fileNameIndex={state.fileNameIndex}
           changeFile={controls.changeFile}
         />
-
         <div>
           <div className={classes.controls}>
             <IconButton
@@ -138,17 +136,27 @@ const Player = (props: Props) => {
             </IconButton>
 
             <IconButton aria-label="play/pause" disabled={!ready}>
-              {state.paused ? (
-                <PlayArrowIcon
-                  onClick={() => controls.play()}
-                  className={classes.playPauseIcon}
-                />
-              ) : (
-                <PauseIcon
-                  onClick={() => controls.pause()}
-                  className={classes.playPauseIcon}
-                />
-              )}
+              <BadgeLoadingInfo
+                badgeContent={"Loading..."}
+                invisible={ready}
+                color="primary"
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+              >
+                {state.paused ? (
+                  <PlayArrowIcon
+                    onClick={() => controls.play()}
+                    className={classes.playPauseIcon}
+                  />
+                ) : (
+                  <PauseIcon
+                    onClick={() => controls.pause()}
+                    className={classes.playPauseIcon}
+                  />
+                )}
+              </BadgeLoadingInfo>
             </IconButton>
 
             <IconButton
@@ -201,23 +209,11 @@ const Player = (props: Props) => {
   );
 };
 
-const BadgeRight = withStyles((theme: Theme) =>
+const BadgeLoadingInfo = withStyles((theme: Theme) =>
   createStyles({
     badge: {
-      left: "-6px",
-      top: "50%",
-      // border: `2px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-    },
-  })
-)(Badge);
-
-const BadgeLeft = withStyles((theme: Theme) =>
-  createStyles({
-    badge: {
-      // right: "-3px",
-      top: "50%",
-      padding: "0 4px",
+      bottom: "-7px",
+      right: "50%",
     },
   })
 )(Badge);
