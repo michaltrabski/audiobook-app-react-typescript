@@ -8,7 +8,9 @@ import {
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { convertSeconds } from "../utils/utils";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, IconButton } from "@material-ui/core";
+import AccessAlarmsTwoToneIcon from "@material-ui/icons/AccessAlarmsTwoTone";
+import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
 
 interface Props {
   currentTime: number;
@@ -36,10 +38,19 @@ export default function RangeSlider(props: Props) {
         disabled={!props.ready}
       />
 
-      <Box className={classes.center} pb={1}>
-        <Button>{convertSeconds(props.currentTime)}</Button>
-        <span> / </span>
-        <Button>{convertSeconds(props.duration)}</Button>
+      <Box className={classes.flex} pb={1}>
+        <IconButton>
+          <AccessAlarmsTwoToneIcon />
+        </IconButton>
+        <Box>
+          <Button>{convertSeconds(props.currentTime)}</Button>
+          <span> / </span>
+          <Button>{convertSeconds(props.duration)}</Button>
+        </Box>
+
+        <IconButton>
+          <SpeedTwoToneIcon />
+        </IconButton>
       </Box>
     </div>
   );
@@ -52,11 +63,15 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingRight: theme.spacing(2),
       paddingLeft: theme.spacing(2),
 
-      paddingTop: theme.spacing(2),
-      // paddingBottom: theme.spacing(0),
+      // paddingTop: theme.spacing(3),
+      // paddingBottom: theme.spacing(2),
     },
-    center: {
-      textAlign: "center",
+    flex: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(2),
     },
     sliderLabel: {
       "& > span > span > span ": {
