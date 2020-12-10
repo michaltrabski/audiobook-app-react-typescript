@@ -123,7 +123,7 @@ const Player = (props: Props) => {
           <div className={classes.controls}>
             <IconButton
               aria-label="previous"
-              onClick={() => handleClick(0, "LEFT")}
+              onClick={() => handleClick(state.currentTime, "LEFT")}
               disabled={!ready}
             >
               <SkipPreviousIcon />

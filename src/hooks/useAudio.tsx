@@ -66,7 +66,7 @@ export const useAudio = (
       if (!audio) return;
 
       const { duration, buffered } = audio;
-      console.log("buffered", buffered);
+      console.log("onDurationChange", duration);
       setState((s) => ({ ...s, duration }));
     },
   });
@@ -85,8 +85,9 @@ export const useAudio = (
       if (!audio) return;
 
       if (newCurrentTime instanceof Array) newCurrentTime = newCurrentTime[0];
-      newCurrentTime = Math.min(state.duration, Math.max(0, newCurrentTime));
-      audio.currentTime = newCurrentTime || 0;
+      // newCurrentTime = Math.min(state.duration, Math.max(0, newCurrentTime));
+      console.log("xxxxxxxxxxxxxx", Math.floor(newCurrentTime));
+      audio.currentTime = Math.floor(newCurrentTime) || 0;
       audio.play();
     },
     changeFile: (fileNameIndex: number) => {

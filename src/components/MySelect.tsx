@@ -79,8 +79,8 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: "flex",
       margin: theme.spacing(0),
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
       // backgroundColor: "red",
       justifyContent: "space-between",
     },
