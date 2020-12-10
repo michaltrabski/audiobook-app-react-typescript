@@ -35,7 +35,8 @@ export default function RangeSlider(props: Props) {
         valueLabelFormat={() => convertSeconds(props.currentTime)}
         disabled={!props.ready}
       />
-      <Box className={classes.center}>
+
+      <Box className={classes.center} pb={1}>
         <Button>{convertSeconds(props.currentTime)}</Button>
         <span> / </span>
         <Button>{convertSeconds(props.duration)}</Button>
