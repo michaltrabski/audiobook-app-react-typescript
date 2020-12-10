@@ -34,6 +34,8 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { AudioBookI, FileI } from "./FixedContainer";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import Forward10Icon from "@material-ui/icons/Forward10";
+import Replay30Icon from "@material-ui/icons/Replay30";
 
 interface Props {
   audioBook: AudioBookI;
@@ -119,16 +121,21 @@ const Player = (props: Props) => {
 
         <div>
           <div className={classes.controls}>
-            {[30].map((seconds) => (
-              <IconButton
-                aria-label="previous"
-                onClick={() => handleClick(seconds, "LEFT")}
-              >
-                <BadgeLeft badgeContent={seconds} color="secondary">
-                  <ArrowBackIosIcon />
-                </BadgeLeft>
-              </IconButton>
-            ))}
+            <IconButton
+              aria-label="previous"
+              onClick={() => handleClick(0, "LEFT")}
+              disabled={!ready}
+            >
+              <SkipPreviousIcon />
+            </IconButton>
+
+            <IconButton
+              aria-label="previous"
+              onClick={() => handleClick(30, "LEFT")}
+              disabled={!ready}
+            >
+              <Replay30Icon />
+            </IconButton>
 
             <IconButton aria-label="play/pause" disabled={!ready}>
               {state.paused ? (
@@ -143,23 +150,21 @@ const Player = (props: Props) => {
                 />
               )}
             </IconButton>
-            {[15].map((seconds) => (
-              <IconButton
-                aria-label="next"
-                onClick={() => handleClick(seconds, "RIGHT")}
-              >
-                <BadgeRight
-                  badgeContent={seconds}
-                  color="secondary"
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                >
-                  <ArrowForwardIosIcon />
-                </BadgeRight>
-              </IconButton>
-            ))}
+
+            <IconButton
+              aria-label="next"
+              onClick={() => handleClick(10, "RIGHT")}
+              disabled={!ready}
+            >
+              <Forward10Icon />
+            </IconButton>
+            <IconButton
+              aria-label="next"
+              onClick={() => handleClick(state.duration, "RIGHT")}
+              disabled={!ready}
+            >
+              <SkipNextIcon />
+            </IconButton>
           </div>
 
           <Slider
@@ -255,7 +260,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       // paddingLeft: theme.spacing(1),
       // paddingBottom: theme.spacing(1),
-      // backgroundColor: "red",
+      // backgroundColor: "blue",
       justifyContent: "space-between",
     },
     playPauseIcon: {

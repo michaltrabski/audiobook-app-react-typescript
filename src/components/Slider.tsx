@@ -38,7 +38,7 @@ export default function RangeSlider(props: Props) {
       <Box className={classes.center}>
         <Button>{convertSeconds(props.currentTime)}</Button>
         <span> / </span>
-        <Button>{convertSeconds(props.allFilesDuration)}</Button>
+        <Button>{convertSeconds(props.duration)}</Button>
       </Box>
     </div>
   );
@@ -51,14 +51,21 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingRight: theme.spacing(2),
       paddingLeft: theme.spacing(2),
 
-      paddingTop: theme.spacing(2),
+      paddingTop: theme.spacing(20),
       // paddingBottom: theme.spacing(0),
     },
     center: {
       textAlign: "center",
     },
     sliderLabel: {
-      // width: "50",
+      "& > span > span > span ": {
+        backgroundColor: "transparent",
+      },
+      "& > span > span > span > span": {
+        backgroundColor: theme.palette.primary.main,
+        padding: theme.spacing(0.25),
+        borderRadius: theme.spacing(0.25),
+      },
     },
   })
 );

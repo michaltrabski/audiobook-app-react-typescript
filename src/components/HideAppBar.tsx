@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import Slide from "@material-ui/core/Slide";
 import { Button, createStyles, makeStyles, Theme } from "@material-ui/core";
 import MySwith from "./MySwitch";
+import { Context } from "../App";
 
 interface Props {
   /**
@@ -54,10 +55,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function HideAppBar(props: Props) {
   const classes = useStyles();
+  const { darkMode } = useContext(Context);
+
   return (
     <>
       <HideOnScroll {...props}>
-        <AppBar className={classes.root}>
+        <AppBar
+          className={classes.root}
+          color={darkMode ? "inherit" : "primary"}
+        >
           <Toolbar>
             {/* <IconButton
               edge="start"
