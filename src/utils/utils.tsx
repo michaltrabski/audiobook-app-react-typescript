@@ -49,6 +49,13 @@ export const mapArrayOrder = (
   return arr;
 };
 
+export const saveData = (
+  subFolder: string,
+  fileNameIndex: number,
+  currentTime: number
+) => {
+  console.log("xxxxxxxxxxx", { subFolder, fileNameIndex, currentTime });
+};
 export const getStorage = (key: string, defaultValue: any) => {
   let data = localStorage.getItem(key);
 
@@ -57,6 +64,23 @@ export const getStorage = (key: string, defaultValue: any) => {
 
   return data;
 };
+// export const getStorage = <T,>(key: string, defaultValue: T): T => {
+//   let data = localStorage.getItem(key);
+
+//   if (!data) return defaultValue;
+//   try {
+//     data = JSON.parse(data);
+//   } catch (err) {
+//     console.log(err);
+//     return defaultValue;
+//   }
+
+//   if (typeof data === typeof defaultValue) {
+//     return data;
+//   } else {
+//     return defaultValue;
+//   }
+// };
 
 export const setStorage = (key: string, value: any) => {
   localStorage.setItem(key, JSON.stringify(value));

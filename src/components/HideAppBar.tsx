@@ -7,9 +7,16 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Slide from "@material-ui/core/Slide";
-import { Button, createStyles, makeStyles, Theme } from "@material-ui/core";
+import {
+  Button,
+  createStyles,
+  IconButton,
+  makeStyles,
+  Theme,
+} from "@material-ui/core";
 import MySwith from "./MySwitch";
 import { Context } from "../App";
+import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
 
 interface Props {
   /**
@@ -65,14 +72,14 @@ export default function HideAppBar(props: Props) {
           color={darkMode ? "inherit" : "primary"}
         >
           <Toolbar>
-            {/* <IconButton
+            <IconButton
               edge="start"
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
             >
-              <MenuIcon />
-            </IconButton> */}
+              <MenuBookTwoToneIcon />
+            </IconButton>
             <Typography variant="h6" className={classes.title}>
               AudioBook App
             </Typography>

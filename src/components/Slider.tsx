@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Theme,
   createStyles,
@@ -11,6 +11,8 @@ import { convertSeconds } from "../utils/utils";
 import { Box, Button, IconButton } from "@material-ui/core";
 import AccessAlarmsTwoToneIcon from "@material-ui/icons/AccessAlarmsTwoTone";
 import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
+import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
+import Snack from "./Snack";
 
 interface Props {
   currentTime: number;
@@ -20,8 +22,24 @@ interface Props {
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
 }
 
+const marks = [
+  {
+    value: 60,
+  },
+  {
+    value: 170,
+  },
+  {
+    value: 540,
+  },
+];
 export default function RangeSlider(props: Props) {
   const classes = useStyles();
+  const [snackOpen, setSnackOpen] = useState(false);
+
+  const handleClick = () => {
+    setSnackOpen(true);
+  };
 
   return (
     <div className={classes.root}>
@@ -36,11 +54,13 @@ export default function RangeSlider(props: Props) {
         max={Math.floor(props.duration)}
         valueLabelFormat={() => convertSeconds(props.currentTime)}
         disabled={!props.ready}
+        marks={marks}
+        // color="primary"
       />
-
+      {Math.floor(props.duration)}
       <Box className={classes.flex} pb={1}>
-        <IconButton>
-          <AccessAlarmsTwoToneIcon />
+        <IconButton onClick={handleClick}>
+          <HourglassEmptyIcon />
         </IconButton>
         <Box>
           <Button>{convertSeconds(props.currentTime)}</Button>
@@ -48,10 +68,12 @@ export default function RangeSlider(props: Props) {
           <Button>{convertSeconds(props.duration)}</Button>
         </Box>
 
-        <IconButton>
+        <IconButton onClick={handleClick}>
           <SpeedTwoToneIcon />
         </IconButton>
       </Box>
+
+      <Snack snackOpen={snackOpen} setSnackOpen={setSnackOpen} />
     </div>
   );
 }

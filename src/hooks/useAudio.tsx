@@ -1,6 +1,6 @@
 import { createElement, useEffect, useRef, useState } from "react";
 import { FileI } from "../components/FixedContainer";
-import { getStorage, setStorage } from "../utils/utils";
+import { getStorage, saveData, setStorage } from "../utils/utils";
 
 export const useAudio = (
   folderWithMp3: string,
@@ -60,6 +60,8 @@ export const useAudio = (
       setState((s) => ({ ...s, currentTime: audio.currentTime }));
       setStorage(`${subFolder}-fileNameIndex`, state.fileNameIndex);
       setStorage(`${subFolder}-currentTime`, Math.floor(state.currentTime));
+
+      saveData(subFolder, state.fileNameIndex, state.currentTime);
     },
     onDurationChange: () => {
       const audio = ref.current;

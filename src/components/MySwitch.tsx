@@ -8,7 +8,7 @@ export default function MySwith() {
 
   return (
     <Box>
-      {darkMode ? "Dark" : "Light"} theme
+      {/* {darkMode ? "Dark" : "Light"} theme */}
       <Switch
         checked={darkMode}
         onChange={() => setDarkMode(!darkMode)}

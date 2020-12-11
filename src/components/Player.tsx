@@ -61,6 +61,7 @@ const Player = (props: Props) => {
     subFolder,
     files
   );
+
   // console.log("audioElement = ", audioElement);
   // console.log("state = ", state);
   // console.log("controls = ", controls);
