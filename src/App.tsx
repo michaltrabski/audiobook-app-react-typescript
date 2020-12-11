@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import FixedContainer from "./components/FixedContainer";
 import { CssBaseline } from "@material-ui/core";
@@ -36,11 +36,24 @@ export const Context = createContext<any>({});
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [data, setData] = useState({ whereFrom: "fetched data" });
+
+  useEffect(() => {
+    fetch("https://poznaj-testy.hekko24.pl/cors/")
+      .then((res) => res.json())
+      .then((newData) => {
+        console.log("xxxxxxxxx", newData);
+
+        setData((data) => ({ ...data, ...newData }));
+      });
+  }, []);
+
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Context.Provider value={{ darkMode, setDarkMode }}>
         <CssBaseline />
         <FixedContainer darkMode={darkMode} setDarkMode={setDarkMode} />
+        {JSON.stringify(data)}
       </Context.Provider>
     </ThemeProvider>
   );
