@@ -86,6 +86,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     formControl: {
       margin: theme.spacing(1),
+
+      // backgroundColor: "red",
+      "& > div": {
+        fontSize: "smaller",
+      },
+      "& > div::before": {
+        borderBottom: "none",
+      },
       // minWidth: 120,
     },
     selectEmpty: {

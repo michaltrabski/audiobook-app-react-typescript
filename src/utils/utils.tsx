@@ -54,7 +54,10 @@ export const saveData = (
   fileNameIndex: number,
   currentTime: number
 ) => {
-  console.log("xxxxxxxxxxx", { subFolder, fileNameIndex, currentTime });
+  localStorage.setItem(
+    subFolder,
+    JSON.stringify({ fileNameIndex, currentTime: Math.floor(currentTime) })
+  );
 };
 export const getStorage = (key: string, defaultValue: any) => {
   let data = localStorage.getItem(key);

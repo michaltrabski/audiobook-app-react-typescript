@@ -55,7 +55,7 @@ const Player = (props: Props) => {
     subFolder,
     allFilesDuration,
   } = props.audioBook;
-
+  // console.log(props.folderWithMp3, subFolder, files);
   const { audioElement, state, setState, controls, ready } = useAudio(
     props.folderWithMp3,
     subFolder,
@@ -233,7 +233,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cardActionArea: {
       display: "flex",
       justifyContent: "flex-start",
-      // alignItems: "flex-start",
+      alignItems: "flex-start",
     },
     media: {
       height: 200,
