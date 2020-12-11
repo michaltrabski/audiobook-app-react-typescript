@@ -32,10 +32,39 @@ const marks = [
   {
     value: 540,
   },
+  {
+    value: 900,
+  },
+  {
+    value: 2540,
+  },
+  {
+    value: 7540,
+  },
+  {
+    value: 1500,
+  },
 ];
 export default function RangeSlider(props: Props) {
   const classes = useStyles();
   const [snackOpen, setSnackOpen] = useState(false);
+  const marks = [
+    {
+      value: Math.floor(props.duration * 0.05),
+    },
+    {
+      value: Math.floor(props.duration * 0.15),
+    },
+    {
+      value: Math.floor(props.duration * 0.4),
+    },
+    {
+      value: Math.floor(props.duration * 0.7),
+    },
+    {
+      value: Math.floor(props.duration * 0.9),
+    },
+  ];
 
   const handleClick = () => {
     setSnackOpen(true);
@@ -57,7 +86,6 @@ export default function RangeSlider(props: Props) {
         marks={marks}
         // color="primary"
       />
-      {Math.floor(props.duration)}
       <Box className={classes.flex} pb={1}>
         <IconButton onClick={handleClick}>
           <HourglassEmptyIcon />

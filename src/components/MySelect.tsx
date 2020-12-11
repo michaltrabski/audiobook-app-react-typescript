@@ -82,7 +82,8 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(3),
       // backgroundColor: "red",
-      justifyContent: "space-between",
+      justifyContent: "center",
+      alignItems: "center",
     },
     formControl: {
       margin: theme.spacing(1),

@@ -94,13 +94,32 @@ const Player = (props: Props) => {
     <Paper elevation={3} className={classes.paperRoot}>
       <div>
         <Card className={classes.cardRoot}>
+          {image ? (
+            <CardMedia
+              className={classes.coverTop}
+              image={props.folderWithMp3 + subFolder + image}
+              title={title}
+            />
+          ) : (
+            <div className={classes.details}>
+              <CardContent className={classes.content}>
+                <Typography component="h2" variant="h6">
+                  {title}
+                </Typography>
+                <Typography variant="subtitle1" color="textSecondary">
+                  {author}
+                </Typography>
+              </CardContent>
+            </div>
+          )}
+        </Card>
+        {/* <Card className={classes.cardRoot}>
           <div className={classes.cardActionArea}>
             <CardMedia
               className={classes.cover}
               image={props.folderWithMp3 + subFolder + image}
               title={title}
             />
-            {/* <h1>ready = {JSON.stringify(ready)}</h1> */}
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <Typography component="h2" variant="h6">
@@ -112,7 +131,7 @@ const Player = (props: Props) => {
               </CardContent>
             </div>
           </div>
-        </Card>
+        </Card> */}
         <MySelect
           files={state.files}
           fileNameIndex={state.fileNameIndex}
@@ -231,9 +250,22 @@ const useStyles = makeStyles((theme: Theme) =>
       boxShadow: "none",
     },
     cardActionArea: {
-      display: "flex",
-      justifyContent: "flex-start",
-      alignItems: "flex-start",
+      // display: "flex",
+      // justifyContent: "flex-start",
+      // alignItems: "flex-start",
+    },
+    coverTop: {
+      width: 150,
+      height: 220,
+      margin: "auto",
+      flexShrink: 0,
+      borderRadius: theme.spacing(0.5),
+    },
+    cover: {
+      width: 90,
+      height: 130,
+      flexShrink: 0,
+      borderRadius: theme.spacing(0.5),
     },
     media: {
       height: 200,
@@ -246,12 +278,7 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flex: "1 0 auto",
     },
-    cover: {
-      width: 90,
-      height: 130,
-      flexShrink: 0,
-      borderRadius: theme.spacing(0.5),
-    },
+
     controls: {
       display: "flex",
       alignItems: "center",
