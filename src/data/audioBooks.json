@@ -3,175 +3,687 @@
 
   "audioBooks": [
     {
+      "title": "Immunitet",
+      "id": "id872428",
+      "available": true,
+      "author": "Remigiusz Mróz",
+      "image": "498203-352x500.jpg",
+      "allFilesDuration": 59057.798125000016,
+      "subFolder": "Immunitet/",
+      "files": [
+        {
+          "name": "01_Immunitet",
+          "mp3": "01_Immunitet.mp3",
+          "duration": 957.1425
+        },
+        {
+          "name": "02_Immunitet",
+          "mp3": "02_Immunitet.mp3",
+          "duration": 1051.28775
+        },
+        {
+          "name": "03_Immunitet",
+          "mp3": "03_Immunitet.mp3",
+          "duration": 1174.69025
+        },
+        {
+          "name": "05_Immunitet",
+          "mp3": "05_Immunitet.mp3",
+          "duration": 2036.731
+        },
+        {
+          "name": "04_Immunitet",
+          "mp3": "04_Immunitet.mp3",
+          "duration": 1559.00375
+        },
+        {
+          "name": "06_Immunitet",
+          "mp3": "06_Immunitet.mp3",
+          "duration": 1102.304875
+        },
+        {
+          "name": "07_Immunitet",
+          "mp3": "07_Immunitet.mp3",
+          "duration": 1279.049375
+        },
+        {
+          "name": "08_Immunitet",
+          "mp3": "08_Immunitet.mp3",
+          "duration": 1688.388125
+        },
+        {
+          "name": "09_Immunitet",
+          "mp3": "09_Immunitet.mp3",
+          "duration": 1738.830625
+        },
+        {
+          "name": "10_Immunitet",
+          "mp3": "10_Immunitet.mp3",
+          "duration": 1306.399625
+        },
+        {
+          "name": "11_Immunitet",
+          "mp3": "11_Immunitet.mp3",
+          "duration": 1105.387375
+        },
+        {
+          "name": "15_Immunitet",
+          "mp3": "15_Immunitet.mp3",
+          "duration": 807.513125
+        },
+        {
+          "name": "17_Immunitet",
+          "mp3": "17_Immunitet.mp3",
+          "duration": 1298.0665
+        },
+        {
+          "name": "22_Immunitet",
+          "mp3": "22_Immunitet.mp3",
+          "duration": 1129.26325
+        },
+        {
+          "name": "31_Immunitet",
+          "mp3": "31_Immunitet.mp3",
+          "duration": 980.3915
+        },
+        {
+          "name": "23_Immunitet",
+          "mp3": "23_Immunitet.mp3",
+          "duration": 1554.01425
+        },
+        {
+          "name": "16_Immunitet",
+          "mp3": "16_Immunitet.mp3",
+          "duration": 863.937625
+        },
+        {
+          "name": "25_Immunitet",
+          "mp3": "25_Immunitet.mp3",
+          "duration": 931.882
+        },
+        {
+          "name": "20_Immunitet",
+          "mp3": "20_Immunitet.mp3",
+          "duration": 1182.997125
+        },
+        {
+          "name": "21_Immunitet",
+          "mp3": "21_Immunitet.mp3",
+          "duration": 915.7645
+        },
+        {
+          "name": "34_Immunitet",
+          "mp3": "34_Immunitet.mp3",
+          "duration": 1050.556375
+        },
+        {
+          "name": "27_Immunitet",
+          "mp3": "27_Immunitet.mp3",
+          "duration": 942.90575
+        },
+        {
+          "name": "32_Immunitet",
+          "mp3": "32_Immunitet.mp3",
+          "duration": 788.861625
+        },
+        {
+          "name": "14_Immunitet",
+          "mp3": "14_Immunitet.mp3",
+          "duration": 1358.017625
+        },
+        {
+          "name": "36_Immunitet",
+          "mp3": "36_Immunitet.mp3",
+          "duration": 952.753875
+        },
+        {
+          "name": "28_Immunitet",
+          "mp3": "28_Immunitet.mp3",
+          "duration": 873.47225
+        },
+        {
+          "name": "12_Immunitet",
+          "mp3": "12_Immunitet.mp3",
+          "duration": 1124.012625
+        },
+        {
+          "name": "29_Immunitet",
+          "mp3": "29_Immunitet.mp3",
+          "duration": 1153.949
+        },
+        {
+          "name": "49_Immunitet",
+          "mp3": "49_Immunitet.mp3",
+          "duration": 1077.697625
+        },
+        {
+          "name": "42_Immunitet",
+          "mp3": "42_Immunitet.mp3",
+          "duration": 625.805375
+        },
+        {
+          "name": "41_Immunitet",
+          "mp3": "41_Immunitet.mp3",
+          "duration": 1239.918
+        },
+        {
+          "name": "44_Immunitet",
+          "mp3": "44_Immunitet.mp3",
+          "duration": 1366.455125
+        },
+        {
+          "name": "30_Immunitet",
+          "mp3": "30_Immunitet.mp3",
+          "duration": 1409.37425
+        },
+        {
+          "name": "40_Immunitet",
+          "mp3": "40_Immunitet.mp3",
+          "duration": 835.568625
+        },
+        {
+          "name": "26_Immunitet",
+          "mp3": "26_Immunitet.mp3",
+          "duration": 1161.916375
+        },
+        {
+          "name": "48_Immunitet",
+          "mp3": "48_Immunitet.mp3",
+          "duration": 854.350625
+        },
+        {
+          "name": "39_Immunitet",
+          "mp3": "39_Immunitet.mp3",
+          "duration": 980.548125
+        },
+        {
+          "name": "43_Immunitet",
+          "mp3": "43_Immunitet.mp3",
+          "duration": 838.1025
+        },
+        {
+          "name": "38_Immunitet",
+          "mp3": "38_Immunitet.mp3",
+          "duration": 833.37425
+        },
+        {
+          "name": "33_Immunitet",
+          "mp3": "33_Immunitet.mp3",
+          "duration": 942.931875
+        },
+        {
+          "name": "47_Immunitet",
+          "mp3": "47_Immunitet.mp3",
+          "duration": 1103.32375
+        },
+        {
+          "name": "35_Immunitet",
+          "mp3": "35_Immunitet.mp3",
+          "duration": 1078.37675
+        },
+        {
+          "name": "52_Immunitet",
+          "mp3": "52_Immunitet.mp3",
+          "duration": 701.821625
+        },
+        {
+          "name": "13_Immunitet",
+          "mp3": "13_Immunitet.mp3",
+          "duration": 936.29675
+        },
+        {
+          "name": "45_Immunitet",
+          "mp3": "45_Immunitet.mp3",
+          "duration": 1123.098375
+        },
+        {
+          "name": "18_Immunitet",
+          "mp3": "18_Immunitet.mp3",
+          "duration": 1179.104875
+        },
+        {
+          "name": "50_Immunitet",
+          "mp3": "50_Immunitet.mp3",
+          "duration": 980.13025
+        },
+        {
+          "name": "19_Immunitet",
+          "mp3": "19_Immunitet.mp3",
+          "duration": 2082.9155
+        },
+        {
+          "name": "51_Immunitet",
+          "mp3": "51_Immunitet.mp3",
+          "duration": 611.17675
+        },
+        {
+          "name": "46_Immunitet",
+          "mp3": "46_Immunitet.mp3",
+          "duration": 1388.99875
+        },
+        {
+          "name": "37_Immunitet",
+          "mp3": "37_Immunitet.mp3",
+          "duration": 1111.056
+        },
+        {
+          "name": "24_Immunitet",
+          "mp3": "24_Immunitet.mp3",
+          "duration": 888.336
+        },
+        {
+          "name": "53_Immunitet",
+          "mp3": "53_Immunitet.mp3",
+          "duration": 799.54575
+        }
+      ]
+    },
+    {
+      "title": "Kasacja",
+      "id": "id180756",
+      "available": true,
+      "author": "Remigiusz Mróz",
+      "image": "kasacja-joanna-chylka-tom-1-b-iext38731197.jpg",
+      "allFilesDuration": 49074.126000000026,
+      "subFolder": "Kasacja/",
+      "files": [
+        {
+          "name": "Remigiusz Mróz - Kasacja - 04 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 04 - czyta, K.Gosztyła @64.mp3",
+          "duration": 867.3335
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 15 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 15 - czyta, K.Gosztyła @64.mp3",
+          "duration": 694.768625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 11 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 11 - czyta, K.Gosztyła @64.mp3",
+          "duration": 274.876375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 09 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 09 - czyta, K.Gosztyła @64.mp3",
+          "duration": 651.82325
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 05 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 05 - czyta, K.Gosztyła @64.mp3",
+          "duration": 479.44125
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 10 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 10 - czyta, K.Gosztyła @64.mp3",
+          "duration": 799.18
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 36 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 36 - czyta, K.Gosztyła @64.mp3",
+          "duration": 448.72125
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 07 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 07 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1172.33925
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 13 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 13 - czyta, K.Gosztyła @64.mp3",
+          "duration": 169.132625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 22 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 22 - czyta, K.Gosztyła @64.mp3",
+          "duration": 955.967
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 16 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 16 - czyta, K.Gosztyła @64.mp3",
+          "duration": 665.171875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 35 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 35 - czyta, K.Gosztyła @64.mp3",
+          "duration": 662.664125
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 02 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 02 - czyta, K.Gosztyła @64.mp3",
+          "duration": 451.647
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 08 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 08 - czyta, K.Gosztyła @64.mp3",
+          "duration": 647.565375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 03 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 03 - czyta, K.Gosztyła @64.mp3",
+          "duration": 480.224875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 17 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 17 - czyta, K.Gosztyła @64.mp3",
+          "duration": 541.95225
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 20 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 20 - czyta, K.Gosztyła @64.mp3",
+          "duration": 700.959625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 19 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 19 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1027.202875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 18 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 18 - czyta, K.Gosztyła @64.mp3",
+          "duration": 432.969375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 06 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 06 - czyta, K.Gosztyła @64.mp3",
+          "duration": 586.3865
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 27 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 27 - czyta, K.Gosztyła @64.mp3",
+          "duration": 712.61025
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 14 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 14 - czyta, K.Gosztyła @64.mp3",
+          "duration": 416.19875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 48 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 48 - czyta, K.Gosztyła @64.mp3",
+          "duration": 984.51875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 25 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 25 - czyta, K.Gosztyła @64.mp3",
+          "duration": 225.24375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 32 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 32 - czyta, K.Gosztyła @64.mp3",
+          "duration": 217.485375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 26 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 26 - czyta, K.Gosztyła @64.mp3",
+          "duration": 667.18325
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 21 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 21 - czyta, K.Gosztyła @64.mp3",
+          "duration": 719.167
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 33 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 33 - czyta, K.Gosztyła @64.mp3",
+          "duration": 561.491875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 46 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 46 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1112.806125
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 01 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 01 - czyta, K.Gosztyła @64.mp3",
+          "duration": 602.869875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 31 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 31 - czyta, K.Gosztyła @64.mp3",
+          "duration": 609.713875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 24 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 24 - czyta, K.Gosztyła @64.mp3",
+          "duration": 613.710625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 34 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 34 - czyta, K.Gosztyła @64.mp3",
+          "duration": 712.2445
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 28 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 28 - czyta, K.Gosztyła @64.mp3",
+          "duration": 462.931875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 12 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 12 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1257.080375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 43 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 43 - czyta, K.Gosztyła @64.mp3",
+          "duration": 715.039625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 30 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 30 - czyta, K.Gosztyła @64.mp3",
+          "duration": 976.447
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 65 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 65 - czyta, K.Gosztyła @64.mp3",
+          "duration": 872.767
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 23 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 23 - czyta, K.Gosztyła @64.mp3",
+          "duration": 664.78
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 39 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 39 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1057.217625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 52 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 52 - czyta, K.Gosztyła @64.mp3",
+          "duration": 841.57675
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 29 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 29 - czyta, K.Gosztyła @64.mp3",
+          "duration": 824.440375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 56 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 56 - czyta, K.Gosztyła @64.mp3",
+          "duration": 315.49675
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 37 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 37 - czyta, K.Gosztyła @64.mp3",
+          "duration": 528.891
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 47 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 47 - czyta, K.Gosztyła @64.mp3",
+          "duration": 790.246125
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 40 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 40 - czyta, K.Gosztyła @64.mp3",
+          "duration": 844.0845
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 45 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 45 - czyta, K.Gosztyła @64.mp3",
+          "duration": 736.590625
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 57 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 57 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1199.898375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 42 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 42 - czyta, K.Gosztyła @64.mp3",
+          "duration": 505.90325
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 51 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 51 - czyta, K.Gosztyła @64.mp3",
+          "duration": 787.60775
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 58 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 58 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1003.27475
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 60 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 60 - czyta, K.Gosztyła @64.mp3",
+          "duration": 527.97675
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 53 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 53 - czyta, K.Gosztyła @64.mp3",
+          "duration": 888.858375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 64 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 64 - czyta, K.Gosztyła @64.mp3",
+          "duration": 961.531
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 50 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 50 - czyta, K.Gosztyła @64.mp3",
+          "duration": 512.878
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 55 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 55 - czyta, K.Gosztyła @64.mp3",
+          "duration": 447.362875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 63 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 63 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1667.38575
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 62 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 62 - czyta, K.Gosztyła @64.mp3",
+          "duration": 978.667375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 49 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 49 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1334.507375
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 67 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 67 - czyta, K.Gosztyła @64.mp3",
+          "duration": 505.407
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 44 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 44 - czyta, K.Gosztyła @64.mp3",
+          "duration": 725.0445
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 41 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 41 - czyta, K.Gosztyła @64.mp3",
+          "duration": 383.153875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 61 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 61 - czyta, K.Gosztyła @64.mp3",
+          "duration": 894.4225
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 54 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 54 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1305.0935
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 59 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 59 - czyta, K.Gosztyła @64.mp3",
+          "duration": 645.971875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 38 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 38 - czyta, K.Gosztyła @64.mp3",
+          "duration": 892.149875
+        },
+        {
+          "name": "Remigiusz Mróz - Kasacja - 66 - czyta, K.Gosztyła @64",
+          "mp3": "Remigiusz Mróz - Kasacja - 66 - czyta, K.Gosztyła @64.mp3",
+          "duration": 1153.870625
+        }
+      ]
+    },
+    {
       "title": "Najczarniejszy strach",
-      "id": "id625225",
+      "id": "id48461",
       "available": true,
       "author": "Harlan Coben",
       "image": "najczarniejszy-strach-w-labiryncie-klamstw-tom-19-w-iext63063784.jpg",
-      "allFilesDuration": 38488.248,
+      "allFilesDuration": 17067.99425,
       "subFolder": "Najczarniejszy strach/",
       "files": [
         {
-          "name": "Najczarniejszy strach - Harlan Coben   audiobook Pl",
-          "mp3": "Najczarniejszy strach - Harlan Coben   audiobook Pl.mp3",
-          "duration": 38488.248
+          "name": "Harlan Coben Najczarniejszy strach audiobook pl cz1",
+          "mp3": "Harlan Coben Najczarniejszy strach audiobook pl cz1.mp3",
+          "duration": 17067.99425
         }
       ]
     },
     {
       "title": "niewinny",
-      "id": "id799619",
+      "id": "id924337",
       "available": true,
       "author": "Harlan Coben",
       "image": "niewinny-w-iext54656553.jpg",
-      "allFilesDuration": 39205.302857,
+      "allFilesDuration": 2752.351125,
       "subFolder": "niewinny/",
       "files": [
         {
-          "name": "Niewinny Harlan Coben [Audiobook PL]",
-          "mp3": "Niewinny Harlan Coben [Audiobook PL].mp3",
-          "duration": 39205.302857
+          "name": "Harlan_Coben-Niewinny (04)",
+          "mp3": "Harlan_Coben-Niewinny (04).mp3",
+          "duration": 628.078
+        },
+        {
+          "name": "Harlan_Coben-Niewinny (03)",
+          "mp3": "Harlan_Coben-Niewinny (03).mp3",
+          "duration": 679.669875
+        },
+        {
+          "name": "Harlan_Coben-Niewinny (02)",
+          "mp3": "Harlan_Coben-Niewinny (02).mp3",
+          "duration": 648.375125
+        },
+        {
+          "name": "Harlan_Coben-Niewinny (01)",
+          "mp3": "Harlan_Coben-Niewinny (01).mp3",
+          "duration": 796.228125
         }
       ]
     },
     {
       "title": "precedens",
-      "id": "id454769",
+      "id": "id374309",
       "available": true,
       "author": "Remigiusz Mróz",
       "image": "precedens.jpg",
-      "allFilesDuration": 27188.166531,
+      "allFilesDuration": 45361.21469600001,
       "subFolder": "precedens/",
       "files": [
-        {
-          "name": "Precedens (02)",
-          "mp3": "Precedens (02).mp3",
-          "duration": 950.543673
-        },
-        {
-          "name": "Precedens (09)",
-          "mp3": "Precedens (09).mp3",
-          "duration": 1441.48898
-        },
-        {
-          "name": "Precedens (10)",
-          "mp3": "Precedens (10).mp3",
-          "duration": 1845.263673
-        },
-        {
-          "name": "Precedens (03)",
-          "mp3": "Precedens (03).mp3",
-          "duration": 1127.235918
-        },
-        {
-          "name": "Precedens (17)",
-          "mp3": "Precedens (17).mp3",
-          "duration": 699.533061
-        },
-        {
-          "name": "Precedens (12)",
-          "mp3": "Precedens (12).mp3",
-          "duration": 871.105306
-        },
-        {
-          "name": "Precedens (01)",
-          "mp3": "Precedens (01).mp3",
-          "duration": 1122.847347
-        },
-        {
-          "name": "Precedens (04)",
-          "mp3": "Precedens (04).mp3",
-          "duration": 530.390204
-        },
-        {
-          "name": "Precedens (08)",
-          "mp3": "Precedens (08).mp3",
-          "duration": 1297.972245
-        },
-        {
-          "name": "Precedens (06)",
-          "mp3": "Precedens (06).mp3",
-          "duration": 1128.411429
-        },
-        {
-          "name": "Precedens (14)",
-          "mp3": "Precedens (14).mp3",
-          "duration": 971.467755
-        },
-        {
-          "name": "Precedens (05)",
-          "mp3": "Precedens (05).mp3",
-          "duration": 553.404082
-        },
-        {
-          "name": "Precedens (19)",
-          "mp3": "Precedens (19).mp3",
-          "duration": 647.862857
-        },
-        {
-          "name": "Precedens (07)",
-          "mp3": "Precedens (07).mp3",
-          "duration": 979.879184
-        },
-        {
-          "name": "Precedens (13)",
-          "mp3": "Precedens (13).mp3",
-          "duration": 821.446531
-        },
-        {
-          "name": "Precedens (16)",
-          "mp3": "Precedens (16).mp3",
-          "duration": 861.962449
-        },
-        {
-          "name": "Precedens (24)",
-          "mp3": "Precedens (24).mp3",
-          "duration": 963.213061
-        },
-        {
-          "name": "Precedens (20)",
-          "mp3": "Precedens (20).mp3",
-          "duration": 803.030204
-        },
-        {
-          "name": "Precedens (18)",
-          "mp3": "Precedens (18).mp3",
-          "duration": 802.847347
-        },
-        {
-          "name": "Precedens (26)",
-          "mp3": "Precedens (26).mp3",
-          "duration": 1592.633469
-        },
-        {
-          "name": "Precedens (35)",
-          "mp3": "Precedens (35).mp3",
-          "duration": 252.708571
-        },
-        {
-          "name": "Precedens (11)",
-          "mp3": "Precedens (11).mp3",
-          "duration": 1118.249796
-        },
-        {
-          "name": "Precedens (28)",
-          "mp3": "Precedens (28).mp3",
-          "duration": 1237.498776
-        },
         {
           "name": "Precedens (25)",
           "mp3": "Precedens (25).mp3",
           "duration": 943.516735
-        },
-        {
-          "name": "Precedens (15)",
-          "mp3": "Precedens (15).mp3",
-          "duration": 857.025306
-        },
-        {
-          "name": "Precedens (21)",
-          "mp3": "Precedens (21).mp3",
-          "duration": 634.697143
         },
         {
           "name": "Precedens (23)",
@@ -179,15 +691,255 @@
           "duration": 1090.089796
         },
         {
+          "name": "Precedens (34)",
+          "mp3": "Precedens (34).mp3",
+          "duration": 749.139592
+        },
+        {
+          "name": "Precedens (07)",
+          "mp3": "Precedens (07).mp3",
+          "duration": 979.879184
+        },
+        {
+          "name": "Precedens (08)",
+          "mp3": "Precedens (08).mp3",
+          "duration": 1297.972245
+        },
+        {
+          "name": "Precedens (02)",
+          "mp3": "Precedens (02).mp3",
+          "duration": 950.543673
+        },
+        {
+          "name": "Precedens (01)",
+          "mp3": "Precedens (01).mp3",
+          "duration": 1122.847347
+        },
+        {
+          "name": "Precedens (11)",
+          "mp3": "Precedens (11).mp3",
+          "duration": 1118.249796
+        },
+        {
+          "name": "Precedens (04)",
+          "mp3": "Precedens (04).mp3",
+          "duration": 530.390204
+        },
+        {
+          "name": "Precedens (46) (1)",
+          "mp3": "Precedens (46) (1).mp3",
+          "duration": 1138.494694
+        },
+        {
+          "name": "Precedens (09)",
+          "mp3": "Precedens (09).mp3",
+          "duration": 1441.48898
+        },
+        {
+          "name": "Precedens (05)",
+          "mp3": "Precedens (05).mp3",
+          "duration": 553.404082
+        },
+        {
+          "name": "Precedens (31)",
+          "mp3": "Precedens (31).mp3",
+          "duration": 1505.253878
+        },
+        {
+          "name": "Precedens (24)",
+          "mp3": "Precedens (24).mp3",
+          "duration": 963.213061
+        },
+        {
+          "name": "Precedens (03)",
+          "mp3": "Precedens (03).mp3",
+          "duration": 1127.235918
+        },
+        {
+          "name": "Precedens (32)",
+          "mp3": "Precedens (32).mp3",
+          "duration": 1039.751837
+        },
+        {
+          "name": "Precedens (20)",
+          "mp3": "Precedens (20).mp3",
+          "duration": 803.030204
+        },
+        {
+          "name": "Precedens (39)",
+          "mp3": "Precedens (39).mp3",
+          "duration": 448.574694
+        },
+        {
+          "name": "Precedens (46)",
+          "mp3": "Precedens (46).mp3",
+          "duration": 1138.494694
+        },
+        {
+          "name": "Precedens (13)",
+          "mp3": "Precedens (13).mp3",
+          "duration": 821.446531
+        },
+        {
+          "name": "Precedens (26)",
+          "mp3": "Precedens (26).mp3",
+          "duration": 1592.633469
+        },
+        {
+          "name": "Precedens (12)",
+          "mp3": "Precedens (12).mp3",
+          "duration": 871.105306
+        },
+        {
+          "name": "Precedens (21)",
+          "mp3": "Precedens (21).mp3",
+          "duration": 634.697143
+        },
+        {
+          "name": "Precedens (36)",
+          "mp3": "Precedens (36).mp3",
+          "duration": 350.92898
+        },
+        {
+          "name": "Precedens (48)",
+          "mp3": "Precedens (48).mp3",
+          "duration": 365.139592
+        },
+        {
+          "name": "Precedens (28)",
+          "mp3": "Precedens (28).mp3",
+          "duration": 1237.498776
+        },
+        {
+          "name": "Precedens (17)",
+          "mp3": "Precedens (17).mp3",
+          "duration": 699.533061
+        },
+        {
+          "name": "Precedens (44)",
+          "mp3": "Precedens (44).mp3",
+          "duration": 968.986122
+        },
+        {
+          "name": "Precedens (16)",
+          "mp3": "Precedens (16).mp3",
+          "duration": 861.962449
+        },
+        {
+          "name": "Precedens (14)",
+          "mp3": "Precedens (14).mp3",
+          "duration": 971.467755
+        },
+        {
+          "name": "Precedens (47)",
+          "mp3": "Precedens (47).mp3",
+          "duration": 1103.647347
+        },
+        {
+          "name": "Precedens (49)",
+          "mp3": "Precedens (49).mp3",
+          "duration": 425.482449
+        },
+        {
+          "name": "Precedens (29)",
+          "mp3": "Precedens (29).mp3",
+          "duration": 1364.68898
+        },
+        {
+          "name": "Precedens (42)",
+          "mp3": "Precedens (42).mp3",
+          "duration": 894.902857
+        },
+        {
+          "name": "Precedens (37)",
+          "mp3": "Precedens (37).mp3",
+          "duration": 219.820408
+        },
+        {
+          "name": "Precedens (38)",
+          "mp3": "Precedens (38).mp3",
+          "duration": 246.857143
+        },
+        {
+          "name": "Precedens (33) (1)",
+          "mp3": "Precedens (33) (1).mp3",
+          "duration": 833.619592
+        },
+        {
+          "name": "Precedens (06)",
+          "mp3": "Precedens (06).mp3",
+          "duration": 1128.411429
+        },
+        {
+          "name": "Precedens (45)",
+          "mp3": "Precedens (45).mp3",
+          "duration": 830.223673
+        },
+        {
+          "name": "Precedens (19)",
+          "mp3": "Precedens (19).mp3",
+          "duration": 647.862857
+        },
+        {
+          "name": "Precedens (43)",
+          "mp3": "Precedens (43).mp3",
+          "duration": 857.939592
+        },
+        {
+          "name": "Precedens (10)",
+          "mp3": "Precedens (10).mp3",
+          "duration": 1845.263673
+        },
+        {
+          "name": "Precedens (40)",
+          "mp3": "Precedens (40).mp3",
+          "duration": 400.509388
+        },
+        {
+          "name": "Precedens (35)",
+          "mp3": "Precedens (35).mp3",
+          "duration": 252.708571
+        },
+        {
+          "name": "Precedens (27)",
+          "mp3": "Precedens (27).mp3",
+          "duration": 947.487347
+        },
+        {
+          "name": "Precedens (33)",
+          "mp3": "Precedens (33).mp3",
+          "duration": 833.619592
+        },
+        {
           "name": "Precedens (22)",
           "mp3": "Precedens (22).mp3",
           "duration": 1041.841633
+        },
+        {
+          "name": "Precedens (30)",
+          "mp3": "Precedens (30).mp3",
+          "duration": 1013.55102
+        },
+        {
+          "name": "Precedens (15)",
+          "mp3": "Precedens (15).mp3",
+          "duration": 857.025306
+        },
+        {
+          "name": "Precedens (41)",
+          "mp3": "Precedens (41).mp3",
+          "duration": 495.934694
+        },
+        {
+          "name": "Precedens (18)",
+          "mp3": "Precedens (18).mp3",
+          "duration": 802.847347
         }
       ]
     },
     {
       "title": "Wiedźmin - miecz przeznaczenia",
-      "id": "id572651",
+      "id": "id788588",
       "available": true,
       "author": "Andrzej Sapkowski",
       "image": "wiedzmin.jpg",
@@ -213,13 +965,23 @@
     },
     {
       "title": "Wiedźmin - ostatnie życzenie",
-      "id": "id495463",
+      "id": "id859128",
       "available": true,
       "author": "Andrzej Sapkowski",
       "image": "wiedzmin.jpg",
-      "allFilesDuration": 41663.791021000005,
+      "allFilesDuration": 41663.791021,
       "subFolder": "Wiedźmin - ostatnie życzenie/",
       "files": [
+        {
+          "name": "06 Wiedzmin Ostatnie zyczenie - Ostatnie zyczenie _Audiobook_",
+          "mp3": "06 Wiedzmin Ostatnie zyczenie - Ostatnie zyczenie _Audiobook_.mp3",
+          "duration": 10488.868571
+        },
+        {
+          "name": "03 Wiedzmin Ostatnie zyczenie - Mniejsze zlo _Audiobook_",
+          "mp3": "03 Wiedzmin Ostatnie zyczenie - Mniejsze zlo _Audiobook_.mp3",
+          "duration": 7295.425306
+        },
         {
           "name": "01 Wiedzmin Ostatnie zyczenie - Glos rozsadku _ Wiedzmin _Audiobook_",
           "mp3": "01 Wiedzmin Ostatnie zyczenie - Glos rozsadku _ Wiedzmin _Audiobook_.mp3",
@@ -236,35 +998,40 @@
           "duration": 6777.70449
         },
         {
-          "name": "06 Wiedzmin Ostatnie zyczenie - Ostatnie zyczenie _Audiobook_",
-          "mp3": "06 Wiedzmin Ostatnie zyczenie - Ostatnie zyczenie _Audiobook_.mp3",
-          "duration": 10488.868571
-        },
-        {
           "name": "04 Wiedzmin Ostatnie zyczenie - Kwestia ceny _Audiobook_",
           "mp3": "04 Wiedzmin Ostatnie zyczenie - Kwestia ceny _Audiobook_.mp3",
           "duration": 6475.206531
-        },
-        {
-          "name": "03 Wiedzmin Ostatnie zyczenie - Mniejsze zlo _Audiobook_",
-          "mp3": "03 Wiedzmin Ostatnie zyczenie - Mniejsze zlo _Audiobook_.mp3",
-          "duration": 7295.425306
         }
       ]
     },
     {
       "title": "Zapach śmierci",
-      "id": "id114735",
+      "id": "id545255",
       "available": true,
       "author": "Simon Beckett",
       "image": "zapach-smierci-david-hunter-tom-6-p-iext55232656.jpg",
-      "allFilesDuration": 38980.536,
+      "allFilesDuration": 5851.010611999999,
       "subFolder": "Zapach śmierci/",
       "files": [
         {
-          "name": "Simon Beckett  Zapach śmierci audiobook PL całość",
-          "mp3": "Simon Beckett  Zapach śmierci audiobook PL całość.mp3",
-          "duration": 38980.536
+          "name": "04. David Hunter 06. Zapach Śmierci - Rozdział 04",
+          "mp3": "04. David Hunter 06. Zapach Śmierci - Rozdział 04.mp3",
+          "duration": 1671.47102
+        },
+        {
+          "name": "01. David Hunter 06. Zapach Śmierci - Rozdział 01",
+          "mp3": "01. David Hunter 06. Zapach Śmierci - Rozdział 01.mp3",
+          "duration": 1623.013878
+        },
+        {
+          "name": "02. David Hunter 06. Zapach Śmierci - Rozdział 02",
+          "mp3": "02. David Hunter 06. Zapach Śmierci - Rozdział 02.mp3",
+          "duration": 1577.769796
+        },
+        {
+          "name": "03. David Hunter 06. Zapach Śmierci - Rozdział 03",
+          "mp3": "03. David Hunter 06. Zapach Śmierci - Rozdział 03.mp3",
+          "duration": 978.755918
         }
       ]
     }
