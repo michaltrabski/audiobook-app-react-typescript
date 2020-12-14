@@ -28,6 +28,7 @@ export const mapArrayOrder = (
   key: string
 ) => {
   // sort mp3 files
+  // console.log(arrToOrder, arrayWithKeysToOrderBy, key);
   const arr = arrToOrder.map((item) => {
     const files = item.files;
     item.files = _.sortBy(files, [(f) => f.mp3]);
