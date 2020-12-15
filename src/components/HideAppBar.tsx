@@ -14,7 +14,7 @@ import {
   makeStyles,
   Theme,
 } from "@material-ui/core";
-import MySwith from "./MySwitch";
+import Switch from "./Switch";
 import { Context } from "../App";
 import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
 
@@ -84,7 +84,7 @@ export default function HideAppBar(props: Props) {
               AudioBook App
             </Typography>
 
-            <MySwith />
+            <Switch />
 
             {/* <Button color="inherit">Login</Button> */}
           </Toolbar>

@@ -3,6 +3,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import FixedContainer from "./components/FixedContainer";
 import { CssBaseline } from "@material-ui/core";
 import { ENDPOINT } from "./settings/settings";
+import LoadingScreen from "./components/LoadingScreen";
 
 const lightTheme = createMuiTheme({
   palette: {
@@ -49,14 +50,16 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Context.Provider value={{ darkMode, setDarkMode }}>
         <CssBaseline />
-        {Object.keys(audioBooksData).length > 0 && (
+
+        {Object.keys(audioBooksData).length > 0 ? (
           <FixedContainer
             darkMode={darkMode}
             setDarkMode={setDarkMode}
             audioBooksData={audioBooksData}
           />
+        ) : (
+          <LoadingScreen />
         )}
-        {/* {JSON.stringify(data)} */}
       </Context.Provider>
     </ThemeProvider>
   );
