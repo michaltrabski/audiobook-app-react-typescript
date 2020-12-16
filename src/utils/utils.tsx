@@ -68,6 +68,14 @@ export const getStorage = (key: string, defaultValue: any) => {
 
   return data;
 };
+export const getStorageX = (key: string, defaultValue: any) => {
+  let data = localStorage.getItem(key);
+
+  if (!data) return defaultValue;
+  data = JSON.parse(data);
+  // console.log("data", data, defaultValue);
+  return data;
+};
 // export const getStorage = <T,>(key: string, defaultValue: T): T => {
 //   let data = localStorage.getItem(key);
 

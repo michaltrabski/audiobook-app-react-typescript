@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import {
-  Theme,
-  createStyles,
-  makeStyles,
-  useTheme,
-} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import React, { useState, useEffect, useRef } from "react";
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
-import { convertSeconds } from "../utils/utils";
+import { convertSeconds, getStorage, setStorage } from "../utils/utils";
 import { Box, Button, IconButton } from "@material-ui/core";
-import AccessAlarmsTwoToneIcon from "@material-ui/icons/AccessAlarmsTwoTone";
 import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import Snack from "./Snack";
@@ -19,81 +12,68 @@ interface Props {
   duration: number;
   allFilesDuration: number;
   ready: boolean;
+  currentFileName: string;
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
 }
 
-const marks = [
-  {
-    value: 60,
-  },
-  {
-    value: 170,
-  },
-  {
-    value: 540,
-  },
-  {
-    value: 900,
-  },
-  {
-    value: 2540,
-  },
-  {
-    value: 7540,
-  },
-  {
-    value: 1500,
-  },
-];
+type Mark = {
+  value: number;
+};
+
 export default function RangeSlider(props: Props) {
   const classes = useStyles();
   const [snackOpen, setSnackOpen] = useState(false);
-  const marks = [
-    {
-      value: Math.floor(props.duration * 0.05),
-    },
-    {
-      value: Math.floor(props.duration * 0.15),
-    },
-    {
-      value: Math.floor(props.duration * 0.4),
-    },
-    {
-      value: Math.floor(props.duration * 0.7),
-    },
-    {
-      value: Math.floor(props.duration * 0.9),
-    },
-  ];
+  const [marks, setMarks] = useState<Mark[] | []>([]);
+  const marksRef = useRef(0);
+  const {
+    currentTime,
+    duration,
+    ready,
+    currentFileName,
+    handleSliderChange,
+  } = props;
 
   const handleClick = () => {
     setSnackOpen(true);
   };
 
+  useEffect(() => {
+    const time = marksRef.current;
+    marksRef.current = time + 1;
+
+    if (time % 180 === 0) {
+      setMarks([...marks, { value: Math.floor(currentTime) }]);
+      setStorage(`marks-${currentFileName}`, marks);
+    }
+  }, [currentTime]);
+
+  useEffect(() => {
+    const marks = getStorage(`marks-${currentFileName}`, []);
+    setMarks(marks);
+  }, [currentFileName]);
+
   return (
     <div className={classes.root}>
       <Slider
         className={classes.sliderLabel}
-        value={Math.floor(props.currentTime)}
-        onChange={(e, newCurrentTime) =>
-          props.handleSliderChange(e, newCurrentTime)
-        }
+        value={Math.floor(currentTime)}
+        onChange={(e, newCurrentTime) => handleSliderChange(e, newCurrentTime)}
         valueLabelDisplay="auto"
         aria-labelledby="slider"
-        max={Math.floor(props.duration)}
-        valueLabelFormat={() => convertSeconds(props.currentTime)}
-        disabled={!props.ready}
+        max={Math.floor(duration)}
+        valueLabelFormat={() => convertSeconds(currentTime)}
+        disabled={!ready}
         marks={marks}
-        // color="primary"
+        // color="secondary"
       />
       <Box className={classes.flex} pb={1}>
         <IconButton onClick={handleClick}>
           <HourglassEmptyIcon />
         </IconButton>
         <Box>
-          <Button>{convertSeconds(props.currentTime)}</Button>
+          <Button>{convertSeconds(currentTime)}</Button>
           <span> / </span>
-          <Button>{convertSeconds(props.duration)}</Button>
+          <Button>{convertSeconds(duration)}</Button>
         </Box>
 
         <IconButton onClick={handleClick}>
@@ -109,12 +89,8 @@ export default function RangeSlider(props: Props) {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      // width: "100%",
       paddingRight: theme.spacing(2),
       paddingLeft: theme.spacing(2),
-
-      // paddingTop: theme.spacing(3),
-      // paddingBottom: theme.spacing(2),
     },
     flex: {
       display: "flex",

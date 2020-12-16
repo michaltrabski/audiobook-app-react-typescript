@@ -45,7 +45,6 @@ interface Props {
 const Player = (props: Props) => {
   // console.log("CardPlayer");
   const classes = useStyles();
-  const theme = useTheme();
 
   const {
     title,
@@ -55,21 +54,16 @@ const Player = (props: Props) => {
     subFolder,
     allFilesDuration,
   } = props.audioBook;
-  // console.log(props.folderWithMp3, subFolder, files);
+
   const { audioElement, state, setState, controls, ready } = useAudio(
     props.folderWithMp3,
     subFolder,
     files
   );
 
-  // console.log("audioElement = ", audioElement);
-  // console.log("state = ", state);
-  // console.log("controls = ", controls);
-
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
     let currentTime =
       newCurrentTime instanceof Array ? newCurrentTime[0] : newCurrentTime;
-    // console.log(currentTime, typeof currentTime);
     setState((s) => ({ ...s, currentTime }));
     controls.seek(currentTime);
   };
@@ -201,6 +195,7 @@ const Player = (props: Props) => {
             allFilesDuration={allFilesDuration}
             handleSliderChange={handleSliderChange}
             ready={ready}
+            currentFileName={files[state.fileNameIndex].name}
           />
 
           <div>{audioElement}</div>
