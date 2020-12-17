@@ -25,6 +25,8 @@ export default function RangeSlider(props: Props) {
   const [snackOpen, setSnackOpen] = useState(false);
   const [marks, setMarks] = useState<Mark[] | []>([]);
   const marksRef = useRef(0);
+  const prevTimeRef = useRef(0);
+
   const {
     currentTime,
     duration,
@@ -38,18 +40,32 @@ export default function RangeSlider(props: Props) {
   };
 
   useEffect(() => {
-    const time = marksRef.current;
-    marksRef.current = time + 1;
+    prevTimeRef.current = currentTime;
+  });
 
-    if ((time + 1) % (60 * 5) === 0) {
+  const prevTime = prevTimeRef.current;
+  useEffect(() => {
+    const time = marksRef.current++;
+    if (Math.abs(currentTime - prevTime) > 60) {
+      marksRef.current = 0;
+    }
+
+    if ((time + 1) % (60 * 2) === 0) {
       setMarks([...marks, { value: Math.floor(currentTime) }]);
       setStorage(`marks-${currentFileName}`, marks);
     }
+
+    console.log(
+      `[time = ${time}] [prevTime = ${prevTime}] [diff = ${Math.abs(
+        currentTime - prevTime
+      )}]`
+    );
   }, [currentTime]);
 
   useEffect(() => {
     const marks = getStorage(`marks-${currentFileName}`, []);
     setMarks(marks);
+    marksRef.current = 0;
   }, [currentFileName]);
 
   return (

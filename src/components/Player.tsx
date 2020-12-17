@@ -43,7 +43,6 @@ interface Props {
 }
 
 const Player = (props: Props) => {
-  // console.log("CardPlayer");
   const classes = useStyles();
 
   const {
@@ -74,7 +73,6 @@ const Player = (props: Props) => {
       currentTime = currentTime > step ? currentTime - step : 0;
     }
     if (direction === "RIGHT") {
-      console.log(state.duration, state.currentTime + step);
       currentTime =
         state.duration > state.currentTime + step
           ? state.currentTime + step
