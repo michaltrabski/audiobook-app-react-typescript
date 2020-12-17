@@ -41,7 +41,7 @@ export default function RangeSlider(props: Props) {
     const time = marksRef.current;
     marksRef.current = time + 1;
 
-    if (time % 180 === 0) {
+    if ((time + 1) % (60 * 5) === 0) {
       setMarks([...marks, { value: Math.floor(currentTime) }]);
       setStorage(`marks-${currentFileName}`, marks);
     }
@@ -64,7 +64,7 @@ export default function RangeSlider(props: Props) {
         valueLabelFormat={() => convertSeconds(currentTime)}
         disabled={!ready}
         marks={marks}
-        // color="secondary"
+        color="primary"
       />
       <Box className={classes.flex} pb={1}>
         <IconButton onClick={handleClick}>
