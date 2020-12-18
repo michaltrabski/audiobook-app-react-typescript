@@ -16,24 +16,10 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import PauseIcon from "@material-ui/icons/Pause";
 import Slider from "./Slider";
-
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-
-import Button from "@material-ui/core/Button";
-import { makeSlug } from "../utils/utils";
-import MySkeleton from "./MySkeleton";
 import { useAudio } from "../hooks/useAudio";
-import { Badge, CircularProgress, Grid, Paper } from "@material-ui/core";
+import { Badge, Paper } from "@material-ui/core";
 import MySelect from "./MySelect";
-
-import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
-
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import { AudioBookI, FileI } from "./FixedContainer";
-
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import { AudioBookI } from "./FixedContainer";
 import Forward10Icon from "@material-ui/icons/Forward10";
 import Replay30Icon from "@material-ui/icons/Replay30";
 
@@ -105,25 +91,6 @@ const Player = (props: Props) => {
             </div>
           )}
         </Card>
-        {/* <Card className={classes.cardRoot}>
-          <div className={classes.cardActionArea}>
-            <CardMedia
-              className={classes.cover}
-              image={props.folderWithMp3 + subFolder + image}
-              title={title}
-            />
-            <div className={classes.details}>
-              <CardContent className={classes.content}>
-                <Typography component="h2" variant="h6">
-                  {title}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  {author}
-                </Typography>
-              </CardContent>
-            </div>
-          </div>
-        </Card> */}
         <MySelect
           files={state.files}
           fileNameIndex={state.fileNameIndex}
@@ -242,11 +209,6 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: theme.spacing(2),
       boxShadow: "none",
     },
-    cardActionArea: {
-      // display: "flex",
-      // justifyContent: "flex-start",
-      // alignItems: "flex-start",
-    },
     coverTop: {
       width: 150,
       height: 220,
@@ -271,13 +233,9 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flex: "1 0 auto",
     },
-
     controls: {
       display: "flex",
       alignItems: "center",
-      // paddingLeft: theme.spacing(1),
-      // paddingBottom: theme.spacing(1),
-      // backgroundColor: "blue",
       justifyContent: "space-between",
     },
     playPauseIcon: {

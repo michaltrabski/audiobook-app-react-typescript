@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import { convertSeconds, getStorage, setStorage } from "../utils/utils";
-import { Box, Button, IconButton } from "@material-ui/core";
+import { Badge, Box, Button, IconButton } from "@material-ui/core";
 import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import Snack from "./Snack";
@@ -24,8 +24,8 @@ export default function RangeSlider(props: Props) {
   const classes = useStyles();
   const [snackOpen, setSnackOpen] = useState(false);
   const [marks, setMarks] = useState<Mark[] | []>([]);
-  const marksRef = useRef(0);
-  const prevTimeRef = useRef(0);
+  const time = useRef(0);
+  const prevTime = useRef(0);
 
   const {
     currentTime,
@@ -40,32 +40,28 @@ export default function RangeSlider(props: Props) {
   };
 
   useEffect(() => {
-    prevTimeRef.current = currentTime;
+    prevTime.current = currentTime;
   });
 
-  const prevTime = prevTimeRef.current;
   useEffect(() => {
-    const time = marksRef.current++;
-    if (Math.abs(currentTime - prevTime) > 60) {
-      marksRef.current = 0;
-    }
+    const marksStep = 7 * 60;
+    time.current++;
+    if (Math.abs(currentTime - prevTime.current) > marksStep) time.current = 1;
 
-    if ((time + 1) % (60 * 2) === 0) {
-      setMarks([...marks, { value: Math.floor(currentTime) }]);
+    const markValue = Math.floor(currentTime);
+    const isMark = marks.find((mark) => mark.value === markValue);
+    if (isMark) time.current = 1;
+
+    if ((time.current + 1) % marksStep === 0) {
+      setMarks([...marks, { value: markValue }]);
       setStorage(`marks-${currentFileName}`, marks);
     }
-
-    console.log(
-      `[time = ${time}] [prevTime = ${prevTime}] [diff = ${Math.abs(
-        currentTime - prevTime
-      )}]`
-    );
   }, [currentTime]);
 
   useEffect(() => {
     const marks = getStorage(`marks-${currentFileName}`, []);
     setMarks(marks);
-    marksRef.current = 0;
+    time.current = 1;
   }, [currentFileName]);
 
   return (
@@ -83,8 +79,10 @@ export default function RangeSlider(props: Props) {
         color="primary"
       />
       <Box className={classes.flex} pb={1}>
-        <IconButton onClick={handleClick}>
-          <HourglassEmptyIcon />
+        <IconButton onClick={handleClick} color="primary">
+          <Badge badgeContent={convertSeconds(60 * 30)} color="secondary">
+            <HourglassEmptyIcon />
+          </Badge>
         </IconButton>
         <Box>
           <Button>{convertSeconds(currentTime)}</Button>
