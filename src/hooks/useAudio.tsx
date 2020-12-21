@@ -1,16 +1,19 @@
 import { createElement, useEffect, useRef, useState } from "react";
 import { FileI } from "../components/FixedContainer";
-import { getStorage, saveData, setStorage } from "../utils/utils";
+import { getStorage, setStorage } from "../utils/utils";
 
 export const useAudio = (
   folderWithMp3: string,
   subFolder: string,
   files: FileI[]
 ) => {
+  const index = getStorage(`${subFolder}-fileNameIndex`, 0);
+  const fileNameIndex = index < files.length ? index : 0;
+
   const [state, setState] = useState({
     ready: false,
     files,
-    fileNameIndex: getStorage(`${subFolder}-fileNameIndex`, 0),
+    fileNameIndex,
     paused: true,
     waiting: false,
     autoplay: false,

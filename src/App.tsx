@@ -46,7 +46,7 @@ function App() {
       .get(ENDPOINT)
       // .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setAudioBooksData((s) => ({ ...s, ...res.data }));
       });
   }, []);

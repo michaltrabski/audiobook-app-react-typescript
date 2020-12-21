@@ -2,21 +2,13 @@ import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import Slide from "@material-ui/core/Slide";
-import {
-  Button,
-  createStyles,
-  IconButton,
-  makeStyles,
-  Theme,
-} from "@material-ui/core";
+import { createStyles, IconButton, makeStyles, Theme } from "@material-ui/core";
 import Switch from "./Switch";
 import { Context } from "../App";
 import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
+import { APPTITLE } from "../settings/settings";
 
 interface Props {
   /**
@@ -60,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function HideAppBar(props: Props) {
+function HideAppBar(props: Props) {
   const classes = useStyles();
   const { darkMode } = useContext(Context);
 
@@ -81,12 +73,9 @@ export default function HideAppBar(props: Props) {
               <MenuBookTwoToneIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              AudioBook App
+              {APPTITLE}
             </Typography>
-
             <Switch />
-
-            {/* <Button color="inherit">Login</Button> */}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -94,3 +83,13 @@ export default function HideAppBar(props: Props) {
     </>
   );
 }
+
+const Header = () => {
+  return (
+    <HideAppBar>
+      <></>
+    </HideAppBar>
+  );
+};
+
+export default Header;

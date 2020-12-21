@@ -1,28 +1,14 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import React, { Fragment, useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-// import data from "../data/audioBooks.json";
 import { Box, Button } from "@material-ui/core";
 import Player from "./Player";
-import HideAppBar from "./HideAppBar";
 import MyCard from "./MyCard";
 import { animateScroll as scroll } from "react-scroll";
-import { v4 as uuidv4 } from "uuid";
 import { setStorage, getStorage, mapArrayOrder } from "../utils/utils";
 import Footer from "./Footer";
-import { limitStep } from "../settings/settings";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: "100%",
-    },
-    media: {
-      height: 100,
-    },
-  })
-);
+import { FOLDERWITHAUDIOBOOKS, limitStep } from "../settings/settings";
+import Header from "./Header";
 
 export interface FileI {
   name: string;
@@ -46,7 +32,6 @@ interface Props {
   audioBooksData: any;
 }
 export default function FixedContainer(props: Props) {
-  const classes = useStyles();
   const [limit, setLimit] = useState(5);
 
   const { audioBooksData } = props;
@@ -70,9 +55,7 @@ export default function FixedContainer(props: Props) {
   };
   return (
     <>
-      <HideAppBar>
-        <></>
-      </HideAppBar>
+      <Header />
 
       <Container maxWidth="md">
         <Box my={2}>
@@ -84,7 +67,7 @@ export default function FixedContainer(props: Props) {
                   {index === 0 ? (
                     <Player
                       audioBook={book}
-                      folderWithMp3={audioBooksData.folderWithMp3}
+                      folderWithMp3={FOLDERWITHAUDIOBOOKS}
                     />
                   ) : (
                     <MyCard
@@ -92,7 +75,7 @@ export default function FixedContainer(props: Props) {
                       title={book.title}
                       available={book.available}
                       author={book.author}
-                      folderWithMp3={audioBooksData.folderWithMp3}
+                      folderWithMp3={FOLDERWITHAUDIOBOOKS}
                       subFolder={book.subFolder}
                       image={book.image}
                       listenAudioBook={listenAudioBook}

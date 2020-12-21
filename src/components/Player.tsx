@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React from "react";
 import {
   Theme,
   createStyles,
   makeStyles,
   withStyles,
-  useTheme,
 } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
