@@ -6,6 +6,8 @@ import { Badge, Box, Button, IconButton } from "@material-ui/core";
 import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import Snack from "./Snack";
+import Timer from "./Timer";
+import { marksStep } from "../settings/settings";
 
 interface Props {
   currentTime: number;
@@ -44,7 +46,6 @@ export default function RangeSlider(props: Props) {
   });
 
   useEffect(() => {
-    const marksStep = 7 * 60;
     time.current++;
     if (Math.abs(currentTime - prevTime.current) > marksStep) time.current = 1;
 
@@ -79,11 +80,13 @@ export default function RangeSlider(props: Props) {
         color="primary"
       />
       <Box className={classes.flex} pb={1}>
-        <IconButton onClick={handleClick} color="primary">
+        <Timer />
+
+        {/* <IconButton onClick={handleClick} color="primary">
           <Badge badgeContent={convertSeconds(60 * 30)} color="secondary">
             <HourglassEmptyIcon />
           </Badge>
-        </IconButton>
+        </IconButton> */}
         <Box>
           <Button>{convertSeconds(currentTime)}</Button>
           <span> / </span>

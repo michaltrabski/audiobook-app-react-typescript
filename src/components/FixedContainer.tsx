@@ -11,6 +11,7 @@ import { animateScroll as scroll } from "react-scroll";
 import { v4 as uuidv4 } from "uuid";
 import { setStorage, getStorage, mapArrayOrder } from "../utils/utils";
 import Footer from "./Footer";
+import { limitStep } from "../settings/settings";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -106,7 +107,7 @@ export default function FixedContainer(props: Props) {
             color="primary"
             fullWidth
             size="large"
-            onClick={() => setLimit(limit + 10)}
+            onClick={() => setLimit((limit) => limit + limitStep)}
           >
             Show more
           </Button>

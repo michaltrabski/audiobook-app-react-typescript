@@ -4,6 +4,7 @@ import FixedContainer from "./components/FixedContainer";
 import { CssBaseline } from "@material-ui/core";
 import { ENDPOINT } from "./settings/settings";
 import LoadingScreen from "./components/LoadingScreen";
+import axios from "axios";
 
 const lightTheme = createMuiTheme({
   palette: {
@@ -41,9 +42,13 @@ function App() {
   const [audioBooksData, setAudioBooksData] = useState({});
 
   useEffect(() => {
-    fetch(ENDPOINT)
-      .then((res) => res.json())
-      .then((newData) => setAudioBooksData((s) => ({ ...s, ...newData })));
+    axios
+      .get(ENDPOINT)
+      // .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+        setAudioBooksData((s) => ({ ...s, ...res.data }));
+      });
   }, []);
 
   return (

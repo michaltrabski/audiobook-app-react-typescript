@@ -73,6 +73,9 @@ export const useAudio = (
       // console.log("onDurationChange", duration);
       setState((s) => ({ ...s, duration }));
     },
+    onError: (err) => {
+      console.log("XXX err = ", err);
+    },
   });
 
   const controls = {
