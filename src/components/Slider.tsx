@@ -26,8 +26,8 @@ export default function RangeSlider(props: Props) {
   const classes = useStyles();
   const [snackOpen, setSnackOpen] = useState(false);
   const [marks, setMarks] = useState<Mark[] | []>([]);
-  const time = useRef(0);
-  const prevTime = useRef(0);
+  const timer = useRef(0);
+  const prevCurrentTime = useRef(0);
 
   const {
     currentTime,
@@ -42,28 +42,43 @@ export default function RangeSlider(props: Props) {
   };
 
   useEffect(() => {
-    prevTime.current = currentTime;
-  });
+    timer.current++;
 
-  useEffect(() => {
-    time.current++;
-    if (Math.abs(currentTime - prevTime.current) > marksStep) time.current = 1;
+    if (Math.abs(currentTime - prevCurrentTime.current) > marksStep) {
+      timer.current = 0;
+    }
+    // console.log(currentTime, prevCurrentTime.current, timer.current);
 
+    // if there is allready mark dont save it again
     const markValue = Math.floor(currentTime);
     const isMark = marks.find((mark) => mark.value === markValue);
-    if (isMark) time.current = 1;
+    if (isMark) timer.current = 0;
 
-    if ((time.current + 1) % marksStep === 0) {
+    // console.log(`${timer.current % marksStep}             ${timer.current}`);
+
+    if (timer.current % marksStep === 0 && timer.current !== 0) {
+      timer.current = 0;
       setMarks([...marks, { value: markValue }]);
-      setStorage(`marks-${currentFileName}`, marks);
+
+      // console.log(` ${isMark ? "saved" : null} `);
     }
+    // console.log(`timer=${timer.current} time=${markValue}`);
   }, [currentTime]);
+
+  useEffect(() => {
+    prevCurrentTime.current = currentTime;
+  });
 
   useEffect(() => {
     const marks = getStorage(`marks-${currentFileName}`, []);
     setMarks(marks);
-    time.current = 1;
+    timer.current = 0;
   }, [currentFileName]);
+
+  useEffect(() => {
+    // console.log("marks changed");
+    setStorage(`marks-${currentFileName}`, marks);
+  }, [marks]);
 
   return (
     <div className={classes.root}>

@@ -7,15 +7,23 @@ import _ from "lodash";
 export default function MySwith() {
   const { darkMode, setDarkMode } = useContext(Context);
 
+  const handleChange = () => {
+    let go = true;
+
+    // write debounce function
+
+    console.log("onTouchStart");
+    setDarkMode((darkMode: boolean) => !darkMode);
+  };
   return (
     <Box>
       {/* {darkMode ? "Dark" : "Light"} theme */}
       <Switch
         checked={darkMode}
-        onChange={() => setDarkMode((darkMode: boolean) => !darkMode)}
+        onChange={handleChange}
         name="checked"
         inputProps={{ "aria-label": "secondary checkbox" }}
-        onTouchStart={() => console.log("onTouchStart")}
+        onTouchStart={handleChange}
       />
     </Box>
   );

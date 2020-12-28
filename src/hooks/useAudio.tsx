@@ -28,6 +28,8 @@ export const useAudio = (
   const ref = useRef<HTMLAudioElement | null>(null);
   const src = folderWithMp3 + subFolder + files[state.fileNameIndex].mp3;
 
+  // console.log("|||" + src + "|||");
+
   const audioElement = createElement("audio", {
     src,
     ref,
