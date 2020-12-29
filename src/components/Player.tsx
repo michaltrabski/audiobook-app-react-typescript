@@ -160,6 +160,7 @@ const Player = (props: Props) => {
             handleSliderChange={handleSliderChange}
             ready={ready}
             currentFileName={files[state.fileNameIndex].name}
+            pause={controls.pause}
           />
 
           <div>{audioElement}</div>

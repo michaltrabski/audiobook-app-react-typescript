@@ -16,6 +16,7 @@ interface Props {
   ready: boolean;
   currentFileName: string;
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
+  pause: () => void;
 }
 
 type Mark = {
@@ -35,6 +36,7 @@ export default function RangeSlider(props: Props) {
     ready,
     currentFileName,
     handleSliderChange,
+    pause,
   } = props;
 
   const handleClick = () => {
@@ -95,13 +97,8 @@ export default function RangeSlider(props: Props) {
         color="primary"
       />
       <Box className={classes.flex} pb={1}>
-        <Timer />
+        <Timer pause={pause} />
 
-        {/* <IconButton onClick={handleClick} color="primary">
-          <Badge badgeContent={convertSeconds(60 * 30)} color="secondary">
-            <HourglassEmptyIcon />
-          </Badge>
-        </IconButton> */}
         <Box>
           <Button>{convertSeconds(currentTime)}</Button>
           <span> / </span>
