@@ -125,5 +125,5 @@ export const useAudio = (
     }
   }, [src, state.duration]);
 
-  return { audioElement, state, setState, controls, ready: state.ready };
+  return { audioElement, state, setState, controls, ready: state.ready, src };
 };

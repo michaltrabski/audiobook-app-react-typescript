@@ -39,7 +39,7 @@ const Player = (props: Props) => {
     allFilesDuration,
   } = props.audioBook;
 
-  const { audioElement, state, setState, controls, ready } = useAudio(
+  const { audioElement, state, setState, controls, ready, src } = useAudio(
     props.folderWithMp3,
     subFolder,
     files
@@ -161,6 +161,7 @@ const Player = (props: Props) => {
             ready={ready}
             currentFileName={files[state.fileNameIndex].name}
             pause={controls.pause}
+            src={src}
           />
 
           <div>{audioElement}</div>

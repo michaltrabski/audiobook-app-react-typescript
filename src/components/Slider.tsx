@@ -8,6 +8,7 @@ import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import Snack from "./Snack";
 import Timer from "./Timer";
 import { marksStep } from "../settings/settings";
+import LinkIcon from "@material-ui/icons/Link";
 
 interface Props {
   currentTime: number;
@@ -17,6 +18,7 @@ interface Props {
   currentFileName: string;
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
   pause: () => void;
+  src: string;
 }
 
 type Mark = {
@@ -37,6 +39,7 @@ export default function RangeSlider(props: Props) {
     currentFileName,
     handleSliderChange,
     pause,
+    src,
   } = props;
 
   const handleClick = () => {
@@ -104,10 +107,15 @@ export default function RangeSlider(props: Props) {
           <span> / </span>
           <Button>{convertSeconds(duration)}</Button>
         </Box>
+        <Box>
+          <IconButton href={src} target="_blank" rel="noreferrer noopener">
+            <LinkIcon />
+          </IconButton>
 
-        <IconButton onClick={handleClick}>
-          <SpeedTwoToneIcon />
-        </IconButton>
+          <IconButton onClick={handleClick}>
+            <SpeedTwoToneIcon />
+          </IconButton>
+        </Box>
       </Box>
 
       <Snack snackOpen={snackOpen} setSnackOpen={setSnackOpen} />
