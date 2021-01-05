@@ -7,9 +7,10 @@ interface Props {
   pause: () => void;
   paused: boolean;
   clicked: number;
+  resetTimer: number;
 }
 export default function Timer(props: Props) {
-  const defaultTime = 9; //60 * 30;
+  const defaultTime = 60 * 30;
   const [time, setTime] = useState(defaultTime);
   const [isActive, setIsActive] = useState(true);
   const [stop, setStop] = useState(false);
@@ -35,7 +36,7 @@ export default function Timer(props: Props) {
   useEffect(() => {
     setTime(defaultTime);
     setStop(false);
-  }, [props.clicked]);
+  }, [props.clicked, props.resetTimer]);
 
   const setTimer = () => {
     setStop(false);

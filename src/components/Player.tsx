@@ -41,11 +41,15 @@ const Player = (props: Props) => {
     allFilesDuration,
   } = props.audioBook;
 
-  const { audioElement, state, setState, controls, ready, src } = useAudio(
-    props.folderWithMp3,
-    subFolder,
-    files
-  );
+  const {
+    audioElement,
+    state,
+    setState,
+    controls,
+    ready,
+    src,
+    resetTimer,
+  } = useAudio(props.folderWithMp3, subFolder, files);
 
   const handleSliderChange = (e: any, newCurrentTime: number | number[]) => {
     let currentTime =
@@ -170,6 +174,7 @@ const Player = (props: Props) => {
             paused={state.paused}
             src={src}
             clicked={clicked}
+            resetTimer={resetTimer}
           />
 
           <div>{audioElement}</div>

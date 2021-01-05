@@ -10,6 +10,8 @@ export const useAudio = (
   const index = getStorage(`${subFolder}-fileNameIndex`, 0);
   const fileNameIndex = index < files.length ? index : 0;
 
+  const [resetTimer, setResetTimer] = useState(0);
+
   const [state, setState] = useState({
     ready: false,
     files,
@@ -32,7 +34,10 @@ export const useAudio = (
     src,
     ref,
     controls: false,
-    onPlay: () => setState((s) => ({ ...s, paused: false })),
+    onPlay: () => {
+      if (state.currentTime > 0) setResetTimer((t) => t + 1);
+      setState((s) => ({ ...s, paused: false }));
+    },
     onPause: () => setState((s) => ({ ...s, paused: true })),
     onWaiting: () => setState((s) => ({ ...s, waiting: true })),
     onPlaying: () =>
@@ -107,5 +112,13 @@ export const useAudio = (
     if (state.duration > 0) setState((s) => ({ ...s, ready: true }));
   }, [src, state.duration]);
 
-  return { audioElement, state, setState, controls, ready: state.ready, src };
+  return {
+    audioElement,
+    state,
+    setState,
+    controls,
+    ready: state.ready,
+    src,
+    resetTimer,
+  };
 };

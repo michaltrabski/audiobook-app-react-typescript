@@ -21,6 +21,7 @@ interface Props {
   paused: boolean;
   src: string;
   clicked: number;
+  resetTimer: number;
 }
 
 type Mark = {
@@ -102,7 +103,12 @@ export default function RangeSlider(props: Props) {
         color="primary"
       />
       <Box className={classes.flex} pb={1}>
-        <Timer pause={pause} paused={props.paused} clicked={props.clicked} />
+        <Timer
+          pause={pause}
+          paused={props.paused}
+          clicked={props.clicked}
+          resetTimer={props.resetTimer}
+        />
 
         <Box>
           <Button>{convertSeconds(currentTime)}</Button>
