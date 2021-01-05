@@ -9,7 +9,7 @@ interface Props {
   clicked: number;
 }
 export default function Timer(props: Props) {
-  const defaultTime = 15; //60 * 30;
+  const defaultTime = 9; //60 * 30;
   const [time, setTime] = useState(defaultTime);
   const [isActive, setIsActive] = useState(true);
   const [stop, setStop] = useState(false);
@@ -19,7 +19,6 @@ export default function Timer(props: Props) {
 
     if (isActive && !stop) {
       interval = setInterval(() => {
-        console.log("paused = ", props.paused);
         if (time === 0) {
           clearInterval(interval);
           setStop(true);
@@ -35,6 +34,7 @@ export default function Timer(props: Props) {
 
   useEffect(() => {
     setTime(defaultTime);
+    setStop(false);
   }, [props.clicked]);
 
   const setTimer = () => {

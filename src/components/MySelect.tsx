@@ -1,16 +1,9 @@
 import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import { Box, IconButton } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
-
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import { FileI } from "./FixedContainer";
@@ -31,7 +24,6 @@ export default function MySelect(props: Props) {
   };
 
   const handleClick = (newFileNameIndex: number) => {
-    // console.log(newFileNameIndex);
     changeFile(newFileNameIndex);
   };
 
@@ -51,7 +43,6 @@ export default function MySelect(props: Props) {
           value={fileNameIndex}
           onChange={handleChange}
           displayEmpty
-          className={classes.selectEmpty}
           inputProps={{ "aria-label": "Without label" }}
         >
           {files.map((file, i) => (
@@ -81,24 +72,17 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(0),
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(3),
-      // backgroundColor: "red",
       justifyContent: "center",
       alignItems: "center",
     },
     formControl: {
       margin: theme.spacing(1),
-
-      // backgroundColor: "red",
       "& > div": {
         fontSize: "smaller",
       },
       "& > div::before": {
         borderBottom: "none",
       },
-      // minWidth: 120,
-    },
-    selectEmpty: {
-      // marginTop: theme.spacing(2),
     },
     menuItem: {
       whiteSpace: "normal",

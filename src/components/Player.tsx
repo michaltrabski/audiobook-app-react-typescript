@@ -70,7 +70,6 @@ const Player = (props: Props) => {
   };
 
   const playerClicked = () => {
-    console.log(clicked);
     setClicked((c) => c + 1);
   };
 

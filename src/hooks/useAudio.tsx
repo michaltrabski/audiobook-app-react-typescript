@@ -28,8 +28,6 @@ export const useAudio = (
   const ref = useRef<HTMLAudioElement | null>(null);
   const src = folderWithMp3 + subFolder + files[state.fileNameIndex].mp3;
 
-  // console.log("|||" + src + "|||");
-
   const audioElement = createElement("audio", {
     src,
     ref,
@@ -40,14 +38,12 @@ export const useAudio = (
     onPlaying: () =>
       setState((s) => ({ ...s, waiting: false, autoplay: true })),
     onLoadedData: () => {
-      // console.log("onLoadedData");
       const audio = ref.current;
       if (!audio) return;
     },
     onEnded: () => {
       const audio = ref.current;
       if (!audio) return;
-      // console.log("ended");
       setState((s) => ({
         ...s,
         ended: true,
@@ -58,7 +54,6 @@ export const useAudio = (
       }));
     },
     onTimeUpdate: () => {
-      // console.log("onTimeUpdate");
       const audio = ref.current;
       if (!audio) return;
 
@@ -67,20 +62,14 @@ export const useAudio = (
         setStorage(`${subFolder}-fileNameIndex`, state.fileNameIndex);
         setStorage(`${subFolder}-currentTime`, Math.floor(state.currentTime));
       }
-
-      // saveData(subFolder, state.fileNameIndex, state.currentTime);
     },
     onDurationChange: () => {
       const audio = ref.current;
       if (!audio) return;
-
       const { duration, buffered } = audio;
-      // console.log("onDurationChange", duration);
       setState((s) => ({ ...s, duration }));
     },
-    onError: (err) => {
-      console.log("XXX err = ", err);
-    },
+    onError: (error) => console.log(error),
   });
 
   const controls = {
@@ -97,19 +86,15 @@ export const useAudio = (
       if (!audio) return;
 
       if (newCurrentTime instanceof Array) newCurrentTime = newCurrentTime[0];
-      // newCurrentTime = Math.min(state.duration, Math.max(0, newCurrentTime));
-      // console.log("xxxxxxxxxxxxxx", Math.floor(newCurrentTime));
       audio.currentTime = Math.floor(newCurrentTime) || 0;
       audio.play();
     },
     changeFile: (fileNameIndex: number) => {
-      // // console.log("changeFile", fileNameIndex);
       setState((s) => ({ ...s, fileNameIndex }));
     },
   };
 
   useEffect(() => {
-    // console.log("useEffect src = ", src);
     const audio = ref.current;
     if (!audio) return;
     if (state.autoplay) audio.play();
@@ -118,11 +103,8 @@ export const useAudio = (
   }, [src]);
 
   useEffect(() => {
-    // console.log("state.duration");
     setState((s) => ({ ...s, ready: false }));
-    if (state.duration > 0) {
-      setState((s) => ({ ...s, ready: true }));
-    }
+    if (state.duration > 0) setState((s) => ({ ...s, ready: true }));
   }, [src, state.duration]);
 
   return { audioElement, state, setState, controls, ready: state.ready, src };
