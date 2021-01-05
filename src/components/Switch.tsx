@@ -1,29 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import Switch from "@material-ui/core/Switch";
 import { Box } from "@material-ui/core";
 import { Context } from "../App";
 import _ from "lodash";
 
+type Timeout = ReturnType<typeof setTimeout>;
+
 export default function MySwith() {
   const { darkMode, setDarkMode } = useContext(Context);
+  const timeout = useRef<Timeout | null>(null);
 
   const handleChange = () => {
-    let go = true;
+    timeout.current && clearTimeout(timeout.current);
 
-    // write debounce function
+    timeout.current = setTimeout(() => {
+      setDarkMode((darkMode: boolean) => !darkMode);
+    }, 70);
 
-    console.log("onTouchStart");
-    setDarkMode((darkMode: boolean) => !darkMode);
+    return () => timeout.current && clearTimeout(timeout.current);
   };
+
   return (
     <Box>
       {/* {darkMode ? "Dark" : "Light"} theme */}
       <Switch
         checked={darkMode}
-        onChange={handleChange}
+        onClick={() => {
+          console.log("onClick", new Date().getTime());
+          handleChange();
+        }}
         name="checked"
         inputProps={{ "aria-label": "secondary checkbox" }}
-        onTouchStart={handleChange}
+        onTouchStart={() => {
+          console.log("onTouchStart", new Date().getTime());
+          handleChange();
+        }}
       />
     </Box>
   );
