@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Theme,
   createStyles,
@@ -29,6 +29,8 @@ interface Props {
 
 const Player = (props: Props) => {
   const classes = useStyles();
+
+  const [clicked, setClicked] = useState(0);
 
   const {
     title,
@@ -67,8 +69,13 @@ const Player = (props: Props) => {
     controls.seek(currentTime);
   };
 
+  const playerClicked = () => {
+    console.log(clicked);
+    setClicked((c) => c + 1);
+  };
+
   return (
-    <Paper elevation={3} className={classes.paperRoot}>
+    <Paper elevation={3} className={classes.paperRoot} onClick={playerClicked}>
       <div>
         <Card className={classes.cardRoot}>
           {image ? (
@@ -161,7 +168,9 @@ const Player = (props: Props) => {
             ready={ready}
             currentFileName={files[state.fileNameIndex].name}
             pause={controls.pause}
+            paused={state.paused}
             src={src}
+            clicked={clicked}
           />
 
           <div>{audioElement}</div>

@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Badge, Box, Button, IconButton } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { Badge, IconButton } from "@material-ui/core";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import { convertSeconds } from "../utils/utils";
 
 interface Props {
   pause: () => void;
+  paused: boolean;
+  clicked: number;
 }
 export default function Timer(props: Props) {
-  console.log("Timer fired");
-
-  const defaultTime = 60 * 30;
+  const defaultTime = 15; //60 * 30;
   const [time, setTime] = useState(defaultTime);
-
   const [isActive, setIsActive] = useState(true);
   const [stop, setStop] = useState(false);
 
@@ -20,6 +19,7 @@ export default function Timer(props: Props) {
 
     if (isActive && !stop) {
       interval = setInterval(() => {
+        console.log("paused = ", props.paused);
         if (time === 0) {
           clearInterval(interval);
           setStop(true);
@@ -32,6 +32,10 @@ export default function Timer(props: Props) {
 
     return () => clearInterval(interval);
   }, [isActive, time]);
+
+  useEffect(() => {
+    setTime(defaultTime);
+  }, [props.clicked]);
 
   const setTimer = () => {
     setStop(false);

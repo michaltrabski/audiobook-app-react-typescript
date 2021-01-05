@@ -18,7 +18,9 @@ interface Props {
   currentFileName: string;
   handleSliderChange: (e: any, newCurrentTime: number | number[]) => void;
   pause: () => void;
+  paused: boolean;
   src: string;
+  clicked: number;
 }
 
 type Mark = {
@@ -100,7 +102,7 @@ export default function RangeSlider(props: Props) {
         color="primary"
       />
       <Box className={classes.flex} pb={1}>
-        <Timer pause={pause} />
+        <Timer pause={pause} paused={props.paused} clicked={props.clicked} />
 
         <Box>
           <Button>{convertSeconds(currentTime)}</Button>
