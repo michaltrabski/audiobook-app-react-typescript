@@ -1,41 +1,32 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import Switch from "@material-ui/core/Switch";
-import { Box } from "@material-ui/core";
+import { Box, IconButton } from "@material-ui/core";
 import { Context } from "../App";
 import _ from "lodash";
-
-type Timeout = ReturnType<typeof setTimeout>;
+import Brightness3TwoToneIcon from "@material-ui/icons/Brightness3TwoTone";
 
 export default function MySwith() {
   const { darkMode, setDarkMode } = useContext(Context);
-  const timeout = useRef<Timeout | null>(null);
 
   const handleChange = () => {
-    timeout.current && clearTimeout(timeout.current);
-
-    timeout.current = setTimeout(() => {
-      setDarkMode((darkMode: boolean) => !darkMode);
-    }, 70);
-
-    return () => timeout.current && clearTimeout(timeout.current);
+    setDarkMode((darkMode: boolean) => !darkMode);
   };
 
+  const color = darkMode ? "secondary" : "inherit";
   return (
     <Box>
       {/* {darkMode ? "Dark" : "Light"} theme */}
-      <Switch
+
+      {/* <Switch
         checked={darkMode}
-        onClick={() => {
-          console.log("onClick", new Date().getTime());
-          handleChange();
-        }}
+        onClick={handleChange}
         name="checked"
         inputProps={{ "aria-label": "secondary checkbox" }}
-        onTouchStart={() => {
-          console.log("onTouchStart", new Date().getTime());
-          handleChange();
-        }}
-      />
+      /> */}
+
+      <IconButton onClick={handleChange}>
+        <Brightness3TwoToneIcon color={color} />
+      </IconButton>
     </Box>
   );
 }
