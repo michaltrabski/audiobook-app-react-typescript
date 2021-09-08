@@ -28,11 +28,15 @@ type Mark = {
   value: number;
 };
 
+type Timeout = NodeJS.Timeout | null;
+
 export default function RangeSlider(props: Props) {
   const classes = useStyles();
+  const [gray, setGray] = useState(true);
   const [snackOpen, setSnackOpen] = useState(false);
   const [marks, setMarks] = useState<Mark[] | []>([]);
   const timer = useRef(0);
+  const timeout = useRef<Timeout>(null);
   const prevCurrentTime = useRef(0);
 
   const {
@@ -48,6 +52,20 @@ export default function RangeSlider(props: Props) {
   const handleClick = () => {
     setSnackOpen(true);
   };
+
+  // useEffect(() => {
+  //   console.log("111111111111");
+  //   timeout.current = setTimeout(() => {
+  //     setGray(true);
+  //   }, 1000);
+
+  //   if (timeout.current) return () => clearTimeout(timeout.current);
+  // }, [gray]);
+
+  // const handleGray = () => {
+  //   setGray(false);
+  //   console.log("22222222222222");
+  // };
 
   useEffect(() => {
     timer.current++;
@@ -88,8 +106,10 @@ export default function RangeSlider(props: Props) {
     setStorage(`marks-${currentFileName}`, marks);
   }, [marks]);
 
+  const disable = ready && !gray ? false : true;
   return (
     <div className={classes.root}>
+      {/* <Box onClick={handleGray}> */}
       <Slider
         className={classes.sliderLabel}
         value={Math.floor(currentTime)}
@@ -98,10 +118,12 @@ export default function RangeSlider(props: Props) {
         aria-labelledby="slider"
         max={Math.floor(duration)}
         valueLabelFormat={() => convertSeconds(currentTime)}
-        disabled={!ready}
+        disabled={disable}
         marks={marks}
         color="primary"
       />
+      {/* </Box> */}
+
       <Box className={classes.flex} pb={1}>
         <Timer
           pause={pause}
