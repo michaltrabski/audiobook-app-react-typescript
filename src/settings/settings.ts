@@ -1,7 +1,7 @@
 export const APPTITLE = "AudioBooks App";
 
 export const FOLDERWITHAUDIOBOOKS =
-  "https://hosting2396491.online.pro/audiobooks/";
+  "https://hosting2421517.online.pro/audiobooks/";
 
 export const ENDPOINT = FOLDERWITHAUDIOBOOKS + "api/";
 export const marksStep = 60 * 4; // it marks steps on slider every 5 min
